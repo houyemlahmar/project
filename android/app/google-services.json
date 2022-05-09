@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "878064520372",
+    "project_id": "login-faa2f",
+    "storage_bucket": "login-faa2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878064520372:android:b930b4770ef99e0667dbe1",
+        "android_client_info": {
+          "package_name": "com.example.login"
+          
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878064520372-lqmjjp8952qt843ir5o0gf3mi9bc5k5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJys0yUdP8yprupMCtbhWMAUAXGxd8cOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878064520372-lqmjjp8952qt843ir5o0gf3mi9bc5k5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
