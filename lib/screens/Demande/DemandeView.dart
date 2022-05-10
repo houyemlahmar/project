@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/UI/startup/startup_viewmodel.dart';
-import 'package:login/screens/formulair_screen.dart';
-import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/Formulaire/FormulaireView.dart';
+import 'package:login/screens/Menu/MenuView.dart';
 import 'package:stacked/stacked.dart';
 
 class DemandeView extends StatelessWidget {
@@ -22,7 +22,7 @@ class DemandeView extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MenuScreen()));
+                      MaterialPageRoute(builder: (context) => MenuView()));
                 },
                 color: Colors.grey),
             toolbarHeight: 100,
@@ -62,8 +62,10 @@ class DemandeView extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => formulaire()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FormulaireView()));
                   },
                 ),
               ),

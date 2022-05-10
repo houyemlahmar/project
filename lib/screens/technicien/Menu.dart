@@ -1,12 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/screens/Home_screen.dart';
-import 'package:login/screens/SignIn_screen.dart';
-import 'package:login/screens/admin/client.dart';
-import 'package:login/screens/admin/signin.dart';
-import 'package:login/screens/admin/technicien.dart';
-import 'package:login/screens/demande_screen.dart';
-import 'package:login/screens/message_screen.dart';
+import 'package:login/screens/technicien/construction/constructionView.dart';
 import 'package:login/screens/technicien/signin.dart';
 import 'package:login/widgets/primary_button.dart';
 
@@ -17,7 +10,6 @@ class technicien extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _signOut;
     return Scaffold(
         appBar: AppBar(
           title: const Text('TECHNICIEN'),
@@ -51,7 +43,12 @@ class technicien extends StatelessWidget {
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
                       title: "Listes des constructions",
-                      onPressed: () {}),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ConstructionView()));
+                      }),
                   const SizedBox(height: 10),
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,

@@ -193,8 +193,8 @@ class _signintechnicienState extends State<signintechnicien> {
             .signInWithEmailAndPassword(
                 email: email.trim(), password: password);
 
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => consultertechnicien()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => technicien()));
       } on FirebaseAuthException catch (e) {
         showDialog(
             context: context,

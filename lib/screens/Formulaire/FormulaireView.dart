@@ -14,24 +14,26 @@ class FormulaireView extends StatefulWidget {
 class _FormulaireViewState extends State<FormulaireView> {
   String? selectedValue;
 
- 
-  final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
-      .map(
-        (String value) => DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
-      )
-      .toList();
-  final List<DropdownMenuItem<String>> _dropDownCollection (FormulaireViewModel model) = model.collection
-      .map(
-        (String val) => DropdownMenuItem<String>(
-          value: val,
-          child: Text(val),
-        ),
-      )
-      .toList();
-  final List<DropdownMenuItem<String>> _dropDownItem = Item.map(
+  final List<DropdownMenuItem<String>> _dropDownMenuItems =
+      FormulaireViewModel.menuItems
+          .map(
+            (String value) => DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            ),
+          )
+          .toList();
+  final List<DropdownMenuItem<String>> _dropDownCollection =
+      FormulaireViewModel.collection
+          .map(
+            (String val) => DropdownMenuItem<String>(
+              value: val,
+              child: Text(val),
+            ),
+          )
+          .toList();
+  final List<DropdownMenuItem<String>> _dropDownItem =
+      FormulaireViewModel.Item.map(
     (String value1) => DropdownMenuItem<String>(
       value: value1,
       child: Text(value1),

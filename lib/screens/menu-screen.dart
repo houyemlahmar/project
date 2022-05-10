@@ -4,6 +4,7 @@ import 'package:login/screens/Home_screen.dart';
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/demande_screen.dart';
 import 'package:login/screens/message_screen.dart';
+import 'package:login/screens/premier_screen.dart';
 import 'package:login/widgets/primary_button.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -75,7 +76,7 @@ class MenuScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignInScreen()));
+                                builder: (context) => premierScreen()));
                       }),
                 ]),
               ),

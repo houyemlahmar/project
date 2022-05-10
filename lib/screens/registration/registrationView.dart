@@ -6,8 +6,10 @@ import 'package:login/screens/menu-screen.dart';
 
 import 'package:stacked/stacked.dart';
 
-class RegistrationView extends StatelessWidget {
+class RegistrationView extends StatefulWidget {
   const RegistrationView({required Key key}) : super(key: key);
+  @override
+  State<RegistrationView> createState() => _RegistrationViewState();
 }
 
 class _RegistrationViewState extends State<RegistrationView> {

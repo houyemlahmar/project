@@ -1,14 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login/screens/Demande/DemandeView.dart';
+import 'package:login/screens/Home/Homeview.dart';
 import 'package:login/screens/Home_screen.dart';
-import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/demande_screen.dart';
 import 'package:login/screens/message_screen.dart';
+import 'package:login/screens/premier_screen.dart';
 import 'package:login/widgets/primary_button.dart';
 import 'package:stacked/stacked.dart';
 
+import 'MenuViewModel.dart';
+
 class MenuView extends StatelessWidget {
-  var _signOut;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MenuViewModel>.reactive(
@@ -66,7 +69,7 @@ class MenuView extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignInScreen()));
+                                  builder: (context) => premierScreen()));
                         }),
                   ]),
                 ),
