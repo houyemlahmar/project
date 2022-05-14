@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/Home_screen.dart';
+import 'package:login/screens/Message/MessageView.dart';
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/demande_screen.dart';
 import 'package:login/screens/message_screen.dart';
@@ -65,7 +66,7 @@ class MenuScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => messageScreen()));
+                                builder: (context) => MessageView()));
                       }),
                   const SizedBox(height: 10),
                   PrimaryButton(

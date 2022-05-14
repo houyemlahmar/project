@@ -44,16 +44,16 @@ class MessageView extends StatelessWidget {
                     width: double.maxFinite,
                     child: Card(
                       elevation: 5,
+
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            color: Color.fromARGB(255, 239, 154, 154),
+                            width: 2),
+                      ), // RoundedRectangleBorder
                       child: Column(
                         children: [
                           Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                              top: BorderSide(
-                                  color: Color.fromARGB(255, 240, 156, 156),
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                            )),
+                            decoration: BoxDecoration(border: Border()),
                           ),
                           SizedBox(
                             height: 110,
