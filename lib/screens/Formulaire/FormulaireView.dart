@@ -108,17 +108,6 @@ class _FormulaireViewState extends State<FormulaireView> {
           ),
           const SizedBox(height: 20),
           Container(
-            height: 200,
-            child: CupertinoDatePicker(
-              mode: CupertinoDatePickerMode.date,
-              initialDateTime: DateTime(2022, 1, 1),
-              onDateTimeChanged: (DateTime newDateTime) {
-                // Do something
-              },
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
             margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:login/UI/startup/startup_viewmodel.dart';
+import 'package:login/screens/Demande/demandeViewModel.dart';
 import 'package:login/screens/Formulaire/FormulaireView.dart';
 import 'package:login/screens/Menu/MenuView.dart';
 import 'package:stacked/stacked.dart';
 
-class DemandeView extends StatelessWidget {
-  const DemandeView({required Key key}) : super(key: key);
+class demandeView extends StatelessWidget {
+  const demandeView({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<StartUpViewModel>.reactive(
+    return ViewModelBuilder<demandeViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
             title: const Text('LISTE DES DEMANDES'),
@@ -58,7 +58,7 @@ class DemandeView extends StatelessWidget {
                         width: 16,
                       ),
                       Text("Déclarer une construction",
-                          style: TextStyle(fontSize: 19, color: Colors.black)),
+                          style: TextStyle(fontSize: 16, color: Colors.black)),
                     ],
                   ),
                   onPressed: () {
@@ -69,9 +69,17 @@ class DemandeView extends StatelessWidget {
                   },
                 ),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                height: 220,
+                width: double.maxFinite,
+                child: Card(
+                  elevation: 5,
+                ),
+              ),
             ],
           )),
-      viewModelBuilder: () => StartUpViewModel(),
+      viewModelBuilder: () => demandeViewModel(),
     );
   }
 }

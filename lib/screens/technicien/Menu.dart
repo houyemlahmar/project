@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login/screens/premier_screen.dart';
 import 'package:login/screens/technicien/construction/constructionView.dart';
+import 'package:login/screens/technicien/construction/constructionViewModel.dart';
 import 'package:login/screens/technicien/signin.dart';
 import 'package:login/widgets/primary_button.dart';
 
@@ -42,7 +45,7 @@ class technicien extends StatelessWidget {
                   const SizedBox(height: 0),
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
-                      title: "Listes des constructions",
+                      title: "Orders de travaux",
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -58,7 +61,13 @@ class technicien extends StatelessWidget {
                   PrimaryButton(
                       iconData: Icons.logout_rounded,
                       title: "Déconnexion",
-                      onPressed: () {}),
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut();
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => premierScreen()));
+                      }),
                   const SizedBox(height: 10),
                 ]),
               ),

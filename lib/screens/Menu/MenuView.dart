@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/Demande/DemandeView.dart';
-import 'package:login/screens/Home/Homeview.dart';
 import 'package:login/screens/Home_screen.dart';
+import 'package:login/screens/Message/MessageView.dart';
 import 'package:login/screens/demande_screen.dart';
 import 'package:login/screens/message_screen.dart';
 import 'package:login/screens/premier_screen.dart';
@@ -43,7 +43,7 @@ class MenuView extends StatelessWidget {
                     const SizedBox(height: 10),
                     PrimaryButton(
                         iconData: Icons.portrait_rounded,
-                        title: "Profile",
+                        title: "Profil",
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -58,7 +58,7 @@ class MenuView extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => messageScreen()));
+                                  builder: (context) => MessageView()));
                         }),
                     const SizedBox(height: 10),
                     PrimaryButton(

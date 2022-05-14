@@ -1,3 +1,3 @@
 import 'package:stacked/stacked.dart';
 
-class DemandeViewModel extends BaseViewModel {}
+class demandeViewModel extends BaseViewModel {}

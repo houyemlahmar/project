@@ -2,11 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/Home_screen.dart';
 import 'package:login/screens/SignIn_screen.dart';
+import 'package:login/screens/admin/G%C3%A9rertechnicien/g%C3%A9r%C3%A9rtechnicienView.dart';
 import 'package:login/screens/admin/client.dart';
 import 'package:login/screens/admin/signin.dart';
 import 'package:login/screens/admin/technicien.dart';
 import 'package:login/screens/demande_screen.dart';
 import 'package:login/screens/message_screen.dart';
+import 'package:login/screens/technicien/Menu.dart';
 
 class page extends StatelessWidget {
   const page({Key? key}) : super(key: key);
@@ -66,7 +68,7 @@ class page extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Consulter technicien",
+                          Text("Gérer technicien",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],
@@ -75,7 +77,7 @@ class page extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => consultertechnicien()));
+                                builder: (context) => GerertechnicienView()));
                       },
                     ),
                   ),

@@ -29,7 +29,7 @@ class _demandeScreenState extends State<demandeScreen> {
                     MaterialPageRoute(builder: (context) => MenuScreen()));
               },
               color: Colors.grey),
-          toolbarHeight: 100,
+          toolbarHeight: 90,
         ),
         backgroundColor: Colors.indigo[50],
         body: Stack(
@@ -40,7 +40,15 @@ class _demandeScreenState extends State<demandeScreen> {
                     image: AssetImage("assets/font1.jpeg"), fit: BoxFit.cover),
               ),
             ),
-            const SizedBox(height: 85, width: 70),
+            const SizedBox(height: 80, width: 70),
+            Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                height: 220,
+                width: double.maxFinite,
+                child: Card(
+                  elevation: 5,
+                )),
+            const SizedBox(height: 100),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
