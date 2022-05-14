@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:login/screens/premier_screen.dart';
 import 'package:login/screens/technicien/construction/constructionView.dart';
 import 'package:login/screens/technicien/construction/constructionViewModel.dart';
+import 'package:login/screens/technicien/constructiontrait%C3%A9es/constructiontraite%C3%A9View.dart';
 import 'package:login/screens/technicien/signin.dart';
 import 'package:login/widgets/primary_button.dart';
 
@@ -56,7 +57,13 @@ class technicien extends StatelessWidget {
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
                       title: "Constructions traitées",
-                      onPressed: () {}),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ConstructiontraiteView()));
+                      }),
                   const SizedBox(height: 10),
                   PrimaryButton(
                       iconData: Icons.logout_rounded,

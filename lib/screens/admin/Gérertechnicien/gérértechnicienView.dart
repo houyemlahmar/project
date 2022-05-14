@@ -1,14 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:login/screens/admin/page.dart';
 
 class GerertechnicienView extends StatelessWidget {
   const GerertechnicienView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) => EntryItem(data[index]),
-      itemCount: data.length,
-    );
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text('Technicies'),
+              flexibleSpace: const Image(
+                image: AssetImage('assets/TT2.png'),
+                fit: BoxFit.cover,
+              ),
+              backgroundColor: Colors.transparent,
+              toolbarHeight: 100,
+              leading: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => page()));
+                  },
+                  color: Colors.grey),
+            ),
+            body: ListView.builder(
+              itemBuilder: (BuildContext context, int index) =>
+                  EntryItem(data[index]),
+              itemCount: data.length,
+            )));
   }
 }
 

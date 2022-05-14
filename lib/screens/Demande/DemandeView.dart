@@ -4,9 +4,13 @@ import 'package:login/screens/Formulaire/FormulaireView.dart';
 import 'package:login/screens/Menu/MenuView.dart';
 import 'package:stacked/stacked.dart';
 
-class demandeView extends StatelessWidget {
+class demandeView extends StatefulWidget {
   const demandeView({required Key key}) : super(key: key);
+  @override
+  State<demandeView> createState() => _demandeViewState();
+}
 
+class _demandeViewState extends State<demandeView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<demandeViewModel>.reactive(

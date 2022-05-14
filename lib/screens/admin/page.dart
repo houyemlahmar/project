@@ -147,12 +147,7 @@ class page extends StatelessWidget {
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => messageScreen()));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   const SizedBox(height: 10),
