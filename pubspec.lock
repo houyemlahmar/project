@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  bottom_bar_with_sheet:
+    dependency: "direct main"
+    description:
+      name: bottom_bar_with_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.4.0"
   build:
     dependency: transitive
     description:
@@ -204,6 +211,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
+  dart_utils:
+    dependency: "direct main"
+    description:
+      name: dart_utils
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   data_tables:
     dependency: "direct main"
     description:
@@ -211,6 +225,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
+  date_time_field:
+    dependency: "direct main"
+    description:
+      name: date_time_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   drawerbehavior:
     dependency: "direct main"
     description:
@@ -323,6 +344,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  floating_action_bubble:
+    dependency: "direct main"
+    description:
+      name: floating_action_bubble
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.4"
   flutter:
     dependency: "direct main"
     description: flutter

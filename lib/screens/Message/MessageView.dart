@@ -53,7 +53,9 @@ class MessageView extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            decoration: BoxDecoration(border: Border()),
+                            decoration: BoxDecoration(
+                              border: Border(),
+                            ),
                           ),
                           SizedBox(
                             height: 110,
@@ -73,6 +75,11 @@ class MessageView extends StatelessWidget {
                               child: Text("Supprime",
                                   style: TextStyle(color: Colors.white)),
                             ),
+                          ),
+                          Icon(
+                            Icons.notification_add,
+                            color: Colors.red[200],
+                            size: 20,
                           ),
                         ],
                       ),
