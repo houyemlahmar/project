@@ -43,7 +43,7 @@ class HomeView extends StatelessWidget {
                     const SizedBox(height: 10),
                     const SizedBox(height: 10),
                     Text(
-                        "${model.loggedInUser.firstname}! ${model.loggedInUser.secondname}!",
+                        "${model.loggedInUser.firstname}! ${model.loggedInUser.lastname}!",
                         style: const TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.w500)),

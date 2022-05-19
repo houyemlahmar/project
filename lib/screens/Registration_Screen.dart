@@ -21,7 +21,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   signUp() async {
     var formdata = formstate.currentState;
 
-    if (formdata!.validate) {
+    if (formdata!.validate()) {
       formdata.save();
       try {
         UserCredential userCredential = await FirebaseAuth.instance

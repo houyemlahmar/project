@@ -3,6 +3,7 @@ import 'package:login/screens/Registration_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/registration/registration_view.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -181,7 +182,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegistrationScreen()));
+                                  builder: (context) => RegistrationView()));
                         },
                         child: const Text(
                           "  S'inscrire",
@@ -204,7 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   //login function
   void signIn() async {
-    if (_formKey.currentState!.validate) {
+    if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       try {
         UserCredential userCredential = await FirebaseAuth.instance

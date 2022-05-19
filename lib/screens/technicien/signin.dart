@@ -186,7 +186,7 @@ class _signintechnicienState extends State<signintechnicien> {
 
   //login function
   void signIn() async {
-    if (_formKey.currentState!.validate) {
+    if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       try {
         UserCredential userCredential = await FirebaseAuth.instance

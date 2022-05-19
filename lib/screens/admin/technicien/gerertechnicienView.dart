@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:login/screens/admin/G%C3%A9rertechnicien/ajoutetechnicien.dart';
+import 'package:login/screens/admin/technicien/ajoutetechnicien.dart';
+
 import "package:login/screens/admin/page.dart";
 
 class GerertechnicienView extends StatefulWidget {

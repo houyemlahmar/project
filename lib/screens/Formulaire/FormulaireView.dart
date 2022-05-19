@@ -4,18 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:login/screens/Formulaire/FormulaireViewModel.dart';
 import 'package:stacked/stacked.dart';
 
-class FormulaireView extends StatefulWidget {
-  const FormulaireView({Key? key}) : super(key: key);
+class FormulaireView extends StatelessWidget {
+  FormulaireView({Key? key}) : super(key: key);
 
-  @override
-  State<FormulaireView> createState() => _FormulaireViewState();
-}
-
-class _FormulaireViewState extends State<FormulaireView> {
   String? selectedValue;
 
   final List<DropdownMenuItem<String>> _dropDownMenuItems =
-      FormulaireViewModel.menuItems
+      FormulaireViewModel.regions
           .map(
             (String value) => DropdownMenuItem<String>(
               value: value,
@@ -24,7 +19,7 @@ class _FormulaireViewState extends State<FormulaireView> {
           )
           .toList();
   final List<DropdownMenuItem<String>> _dropDownCollection =
-      FormulaireViewModel.collection
+      FormulaireViewModel.offers
           .map(
             (String val) => DropdownMenuItem<String>(
               value: val,
@@ -33,26 +28,20 @@ class _FormulaireViewState extends State<FormulaireView> {
           )
           .toList();
   final List<DropdownMenuItem<String>> _dropDownItem =
-      FormulaireViewModel.Item.map(
-    (String value1) => DropdownMenuItem<String>(
-      value: value1,
-      child: Text(value1),
-    ),
-  ).toList();
-  var date;
+      FormulaireViewModel.debits
+          .map(
+            (String value1) => DropdownMenuItem<String>(
+              value: value1,
+              child: Text(value1),
+            ),
+          )
+          .toList();
 
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  var _formKey = GlobalKey<FormState>();
-  final _auth = FirebaseAuth.instance;
-
-  String _btn1SelectedVal = 'Sahloul';
-  String _btn2SelectedVal = 'WAFFI';
-  String _btn3SelectedVal = '8';
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FormulaireViewModel>.reactive(
-      onModelReady: (model) => model.GetUser(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -69,10 +58,10 @@ class _FormulaireViewState extends State<FormulaireView> {
             title: const Text('Région:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
-              value: _btn1SelectedVal,
+              value: model.selectedRegion,
               onChanged: (String? newValue) {
                 if (newValue != null) {
-                  setState(() => _btn1SelectedVal = newValue);
+                  model.setSelectedRegion(newValue);
                 }
               },
               items: _dropDownMenuItems,
@@ -83,10 +72,10 @@ class _FormulaireViewState extends State<FormulaireView> {
             title: const Text('Offre:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
-              value: _btn2SelectedVal,
+              value: model.selectedOffer,
               onChanged: (String? newVal) {
                 if (newVal != null) {
-                  setState(() => _btn2SelectedVal = newVal);
+                  model.setSelectedOffer(newVal);
                 }
               },
               items: _dropDownCollection,
@@ -97,10 +86,10 @@ class _FormulaireViewState extends State<FormulaireView> {
             title: const Text('Débit:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
-              value: _btn3SelectedVal,
+              value: model.selectedDebit,
               onChanged: (String? newValue1) {
                 if (newValue1 != null) {
-                  setState(() => _btn3SelectedVal = newValue1);
+                  model.setSelectedDebit(newValue1);
                 }
               },
               items: _dropDownItem,
@@ -117,10 +106,10 @@ class _FormulaireViewState extends State<FormulaireView> {
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                minimumSize: const Size.fromHeight(50),
+               
               ),
               child: const Text("Enregistrer", textAlign: TextAlign.center),
-              onPressed: () {},
+              onPressed: model.createDemande,
             ),
           ),
         ])),

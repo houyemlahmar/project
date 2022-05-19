@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:login/Model/UserModel.dart';
+import 'package:login/Model/user_model.dart';
 import 'package:login/screens/utils/Controllerprofil.dart';
 import 'package:stacked_services/stacked_services.dart';
 

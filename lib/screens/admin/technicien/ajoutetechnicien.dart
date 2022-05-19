@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
-import 'package:login/Model/techModel.dart';
+import 'package:login/Model/tech_model.dart';
 
 class ajoutertechnicien extends StatefulWidget {
   const ajoutertechnicien({Key? key}) : super(key: key);

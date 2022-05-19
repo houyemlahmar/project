@@ -184,7 +184,7 @@ class _signinadminState extends State<signinadmin> {
 
   //login function
   void signIn() async {
-    if (_formKey.currentState!.validate) {
+    if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       try {
         UserCredential userCredential = await FirebaseAuth.instance

@@ -1,26 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/screens/Registration/RegistrationViewmodel.dart';
+import 'package:login/Model/user_model.dart';
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/registration/registration_viewmodel.dart';
 
 import 'package:stacked/stacked.dart';
 
-class RegistrationView extends StatefulWidget {
-  const RegistrationView({required Key key}) : super(key: key);
-  @override
-  State<RegistrationView> createState() => _RegistrationViewState();
-}
-
-class _RegistrationViewState extends State<RegistrationView> {
-  var firstname, secondname, CIN, phonenumber, email, password, confirmpassword;
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  var _formKey = GlobalKey<FormState>();
-
+class RegistrationView extends StatelessWidget {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  RegistrationView({Key? key}) : super(key: key);
+  UserModel user = UserModel(id: "s");
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<RegistrationViewModel>.reactive(
-      onModelReady: (model) => model.GetSignUp(),
       builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.white,
           body: Center(
@@ -40,11 +32,11 @@ class _RegistrationViewState extends State<RegistrationView> {
                           Container(
                             padding: const EdgeInsets.all(20),
                             child: Form(
-                                key: formstate,
+                                key: formKey,
                                 child: Column(children: [
                                   TextFormField(
                                       onSaved: (value) {
-                                        firstname = value;
+                                        user.firstname = value;
                                       },
                                       keyboardType: TextInputType.name,
                                       validator: (value) {
@@ -71,7 +63,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        secondname = value;
+                                        user.lastname = value;
                                       },
                                       keyboardType: TextInputType.name,
                                       validator: (value) {
@@ -98,7 +90,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        phonenumber = value;
+                                        user.phonenumber = value;
                                       },
                                       keyboardType: TextInputType.number,
                                       maxLength: 8,
@@ -127,7 +119,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        CIN = value;
+                                        user.cin = value;
                                       },
                                       keyboardType: TextInputType.number,
                                       maxLength: 8,
@@ -155,7 +147,8 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        email = value;
+                                        user.email = value;
+                                        model.email = value ?? "";
                                       },
                                       keyboardType: TextInputType.text,
                                       validator: (value) {
@@ -183,7 +176,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        password = value;
+                                        model.password = value ?? "password";
                                       },
                                       validator: (value) {
                                         RegExp regex = RegExp(r'^.{6,}$');
@@ -206,9 +199,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                                   BorderRadius.circular(10)))),
                                   const SizedBox(height: 20),
                                   TextFormField(
-                                      onSaved: (value) {
-                                        confirmpassword = value;
-                                      },
+                                      onSaved: (value) {},
                                       obscureText: true,
                                       decoration: InputDecoration(
                                           prefixIcon: const Icon(Icons.vpn_key),
@@ -262,22 +253,22 @@ class _RegistrationViewState extends State<RegistrationView> {
                                         child: const Text("S'inscrire",
                                             textAlign: TextAlign.center),
                                         onPressed: () async {
-                                          setState(() {
-                                            launchURL();
-                                          });
-                                          UserCredential response =
-                                              await SignUp();
-                                          print("=================");
-                                          if (response != null) {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MenuScreen()));
-                                          } else
-                                            print("SignUp is failed");
+                                          if (formKey.currentState
+                                                  ?.validate() ??
+                                              false) {
+                                                formKey.currentState?.save();
+                                            final response = await model
+                                                .register(context, user);
 
-                                          print("=================");
+                                            if (response ) {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                        const  MenuScreen()));
+                                            } 
+
+                                          }
                                         }),
                                   ),
                                 ])),
@@ -287,8 +278,4 @@ class _RegistrationViewState extends State<RegistrationView> {
       viewModelBuilder: () => RegistrationViewModel(),
     );
   }
-
-  void launchURL() {}
-
-  SignUp() {}
 }

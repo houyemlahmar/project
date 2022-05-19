@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -29,17 +29,22 @@ environment:
 dependencies:
   auto_route: ^4.0.0
   awesome_dialog: ^2.1.2
+  bottom_bar_with_sheet: ^2.4.0
   cloud_firestore: ^3.1.10
   cloud_functions: ^3.2.8
   code_builder: ^4.1.0
   cupertino_icons: ^1.0.2
+  dart_crypto: ^1.0.0
+  dart_utils: ^2.0.0
   data_tables: ^1.4.0
+  date_time_field: ^0.0.2
   drawerbehavior: ^2.2.2
   dropdown_button2: ^1.2.2
   expanding_button: ^1.0.2
   firebase_auth: ^3.3.8
   firebase_core: ^1.12.0
   firebase_storage: ^10.2.8
+  floating_action_bubble: ^1.1.4
   flutter:
     sdk: flutter
   flutter_menu: ^0.4.1
@@ -47,6 +52,7 @@ dependencies:
   flutter_zoom_drawer: ^2.3.1+1
   fluttertoast: ^8.0.9
   font_awesome_flutter: ^10.0.0
+  freezed_annotation: ^2.0.3
   hidden_drawer_menu: ^3.0.1
   kf_drawer: ^1.2.1
   navigation_drawer_menu: ^0.2.0-beta
@@ -58,23 +64,18 @@ dependencies:
   text_form_validator: ^1.0.2
   url_launcher: ^6.1.0
   uuid: ^3.0.6
-  dart_crypto: ^1.0.0
-  dart_utils: ^2.0.0
-  date_time_field: ^0.0.2
-  bottom_bar_with_sheet: ^2.4.0
-  floating_action_bubble: ^1.1.4
-  
 dev_dependencies:
+  build_runner: ^2.1.11
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
-  stacked_generator: ^0.6.2
-
+  freezed: ^2.0.3+1
+  json_serializable:
+  json_annotation: ^4.5.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
