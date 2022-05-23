@@ -1,5 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/Formulaire/FormulaireViewModel.dart';
 import 'package:stacked/stacked.dart';
@@ -106,7 +104,6 @@ class FormulaireView extends StatelessWidget {
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-               
               ),
               child: const Text("Enregistrer", textAlign: TextAlign.center),
               onPressed: model.createDemande,

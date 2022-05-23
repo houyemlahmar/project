@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:stacked/stacked.dart';
 
@@ -49,10 +48,10 @@ class FormulaireViewModel extends BaseViewModel {
         FirebaseFirestore.instance.collection('construction').doc();
 
     collection.set(ConstructionModel(
-      debit : int.parse(selectedDebit),
-      etatDemande: "new",
-      offre :selectedOffer,
-      userId: FirebaseAuth.instance.currentUser?.uid
-    ).toJson());
+            debit: int.parse(selectedDebit),
+            etatDemande: "new",
+            offre: selectedOffer,
+            userId: FirebaseAuth.instance.currentUser?.uid)
+        .toJson());
   }
 }

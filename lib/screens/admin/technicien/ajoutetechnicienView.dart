@@ -1,22 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
-import 'package:login/Model/tech_model.dart';
+import 'package:login/Model/technicien_model.dart';
+import 'package:login/screens/admin/technicien/ajoutertechnicienViewModel.dart';
+import 'package:stacked/stacked.dart';
 
-class ajoutertechnicien extends StatefulWidget {
-  const ajoutertechnicien({Key? key}) : super(key: key);
+class ajoutertechnicienView extends StatefulWidget {
+  const ajoutertechnicienView({Key? key}) : super(key: key);
   @override
-  State<ajoutertechnicien> createState() => _ajoutertechnicienState();
+  State<ajoutertechnicienView> createState() => _ajoutertechnicienViewState();
 }
 
-class _ajoutertechnicienState extends State<ajoutertechnicien> {
+class _ajoutertechnicienViewState extends State<ajoutertechnicienView> {
   final controllerNom = TextEditingController();
   final controllerPrenom = TextEditingController();
   final controllerZone = TextEditingController();
   final controllerNumtele = TextEditingController();
   final controllerCIN = TextEditingController();
-
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    return ViewModelBuilder<ajoutertechnicienViewModel>.reactive(
+      onModelReady: (model) => model.createjoute(),
+      builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Ajouter technicien'),
           backgroundColor: Colors.blue.shade200,
@@ -45,7 +49,7 @@ class _ajoutertechnicienState extends State<ajoutertechnicien> {
           const SizedBox(height: 24),
           TextField(
             controller: controllerNumtele,
-            decoration: InputDecoration(labelText: 'Num Télé'),
+            decoration: InputDecoration(labelText: 'Numéro téléphone'),
             keyboardType: TextInputType.number,
           ), // TextField// TextField// TextField// TextField
           const SizedBox(height: 24),
@@ -58,27 +62,14 @@ class _ajoutertechnicienState extends State<ajoutertechnicien> {
 
           const SizedBox(height: 32),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(primary: Colors.blue.shade200),
+            style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 8, 82, 143)),
             child: Text('Enregistre'),
-            onPressed: () {
-              final usertechnicien = tech(
-                Nom: controllerNom.text,
-                Prenom: controllerPrenom.text,
-                Zone: controllerZone.text,
-              ); // User
-              createtech(usertechnicien);
-
-              Navigator.pop(context);
-            },
+            onPressed: model.createjoute(),
           ), // ElevatedButton
         ]),
-      );
-
-  Future createtech(tech usertechnicien) async {
-    final doctech = FirebaseFirestore.instance.collection('Technicien').doc();
-
-    usertechnicien.id = doctech.id;
-    final json = usertechnicien.toJson();
-    await doctech.set(json);
+      ),
+      viewModelBuilder: () => ajoutertechnicienViewModel(),
+    );
   }
 }

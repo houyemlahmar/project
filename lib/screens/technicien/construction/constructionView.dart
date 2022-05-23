@@ -1,4 +1,6 @@
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Model/construction_model.dart';
 import 'package:login/screens/technicien/Menu.dart';
 import 'package:login/screens/technicien/construction/constructionViewModel.dart';
 import 'package:stacked/stacked.dart';
@@ -14,8 +16,8 @@ class _ConstructionViewState extends State<ConstructionView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ConstructionViewModel>.reactive(
-      onModelReady: (model) => model.GetConstruction(),
-      builder: (context, model, child) => Scaffold(
+      onModelReady: (viewmodel) => viewmodel.init(),
+      builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('ORDRES DES TRAVAUX'),
           flexibleSpace: const Image(
@@ -35,55 +37,75 @@ class _ConstructionViewState extends State<ConstructionView> {
         backgroundColor: Colors.indigo[50],
         body: Container(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    height: 220,
-                    width: double.maxFinite,
-                    child: Card(
-                      elevation: 5,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(itemBuilder: (context, index) {
+                    return Container(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      height: 220,
+                      width: double.maxFinite,
+                      child: Card(
+                        elevation: 5,
 
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Color.fromARGB(255, 239, 154, 154),
-                            width: 2),
-                      ), // RoundedRectangleBorder
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(border: Border()),
-                          ),
-                          SizedBox(
-                            height: 110,
-                          ),
-                          Container(
-                            alignment: Alignment.bottomRight,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.red[200],
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                              ), // RoundedRectangleBorder
-                              child: Text("Validé",
-                                  style: TextStyle(color: Colors.white)),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 239, 154, 154),
+                              width: 2),
+                        ), // RoundedRectangleBorder
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(),
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              height: 110,
+                            ),
+                            Container(
+                              alignment: Alignment.bottomRight,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 18.0, vertical: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red[200],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ), // RoundedRectangleBorder
+                                child: Text("Valide",
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-            ],
-          ),
+                    );
+                  }),
+                ),
+                StreamBuilder(
+                    stream: viewmodel.consts,
+                    builder: (context,
+                        AsyncSnapshot<List<ConstructionModel>> snapshots) {
+                      if (snapshots.hasData) {
+                        return ListView.builder(
+                            itemCount: snapshots.data?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              var model = snapshots.data![index];
+                              return Container(
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                child: Text(
+                                    "Offre :${model.offre} ,Débit :${model.debit} , Refrence :${model.reference}"),
+                              );
+                            });
+                      }
+                      return Container();
+                    }),
+              ]),
         ),
       ),
       viewModelBuilder: () => ConstructionViewModel(),

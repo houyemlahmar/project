@@ -4,8 +4,6 @@ import 'package:login/screens/Demande/DemandeView.dart';
 import 'package:login/screens/Home/Homeview.dart';
 import 'package:login/screens/Home_screen.dart';
 import 'package:login/screens/Message/MessageView.dart';
-import 'package:login/screens/demande_screen.dart';
-import 'package:login/screens/message_screen.dart';
 import 'package:login/screens/premier_screen.dart';
 import 'package:login/widgets/primary_button.dart';
 import 'package:stacked/stacked.dart';
@@ -39,7 +37,7 @@ class MenuView extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => demandeScreen()));
+                                  builder: (context) => DemandeView()));
                         }),
                     const SizedBox(height: 10),
                     PrimaryButton(
@@ -49,7 +47,7 @@ class MenuView extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => profilScreen()));
+                                  builder: (context) => HomeView()));
                         }),
                     const SizedBox(height: 10),
                     PrimaryButton(

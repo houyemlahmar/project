@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/admin/technicien/gerertechnicienView.dart';
 
-import 'package:login/screens/admin/client.dart';
+import 'package:login/screens/admin/technicien/client/clientView.dart';
 import 'package:login/screens/admin/signin.dart';
 import 'package:login/screens/admin/technicien.dart';
 
@@ -113,7 +113,7 @@ class page extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => consulterclient()));
+                                builder: (context) => consulterclientView()));
                       },
                     ),
                   ),

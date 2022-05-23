@@ -90,7 +90,7 @@ class RegistrationView extends StatelessWidget {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        user.phonenumber = value;
+                                        user.cin = value;
                                       },
                                       keyboardType: TextInputType.number,
                                       maxLength: 8,
@@ -119,7 +119,7 @@ class RegistrationView extends StatelessWidget {
                                   const SizedBox(height: 20),
                                   TextFormField(
                                       onSaved: (value) {
-                                        user.cin = value;
+                                        user.phonenumber = value;
                                       },
                                       keyboardType: TextInputType.number,
                                       maxLength: 8,
@@ -256,18 +256,17 @@ class RegistrationView extends StatelessWidget {
                                           if (formKey.currentState
                                                   ?.validate() ??
                                               false) {
-                                                formKey.currentState?.save();
+                                            formKey.currentState?.save();
                                             final response = await model
                                                 .register(context, user);
 
-                                            if (response ) {
+                                            if (response) {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                        const  MenuScreen()));
-                                            } 
-
+                                                          const MenuScreen()));
+                                            }
                                           }
                                         }),
                                   ),

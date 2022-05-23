@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:login/screens/admin/technicien/ajoutetechnicien.dart';
+import 'package:login/screens/admin/technicien/ajoutetechnicienView.dart';
 
 import "package:login/screens/admin/page.dart";
 
@@ -15,7 +15,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Liste Technies'),
+          title: const Text('Liste Techniciens'),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
@@ -42,8 +42,10 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
               size: 20,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ajoutertechnicien()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ajoutertechnicienView()));
             },
           ),
         )), // IconButton

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,19 @@ class profilScreen extends StatefulWidget {
 }
 
 class _profilScreenState extends State<profilScreen> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel(id: "s");
+  GetUser() {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromDocument(value);
+      notifyListeners();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -109,6 +123,11 @@ class _profilScreenState extends State<profilScreen> {
                                   initialValue: name,
                                   style: TextStyle(color: Colors.black),
                                   decoration: InputDecoration(
+                                      label: Text(
+                                          '${model.loggedInUser.firstname}! ${model.loggedInUser.lastname}!',
+                                          style: const TextStyle(
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w500)),
                                       border: const OutlineInputBorder(
                                           borderSide: BorderSide.none),
                                       prefixIcon: Container(
@@ -314,4 +333,6 @@ class _profilScreenState extends State<profilScreen> {
               )
             ])));
   }
+
+  void notifyListeners() {}
 }

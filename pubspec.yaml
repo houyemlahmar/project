@@ -45,6 +45,7 @@ dependencies:
   firebase_core: ^1.12.0
   firebase_storage: ^10.2.8
   floating_action_bubble: ^1.1.4
+  expansion_tile_card: ^2.0.0
   flutter:
     sdk: flutter
   flutter_menu: ^0.4.1
@@ -53,8 +54,6 @@ dependencies:
   fluttertoast: ^8.0.9
   font_awesome_flutter: ^10.0.0
   freezed_annotation: ^2.0.3
-  hidden_drawer_menu: ^3.0.1
-  kf_drawer: ^1.2.1
   navigation_drawer_menu: ^0.2.0-beta
   pluto_menu_bar: ^0.1.4
   provider: ^6.0.2

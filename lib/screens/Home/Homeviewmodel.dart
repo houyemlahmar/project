@@ -5,10 +5,10 @@ import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
   User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel(id:"s");
+  UserModel loggedInUser = UserModel(id: "s");
   GetUser() {
     FirebaseFirestore.instance
-        .collection("Users")
+        .collection("users")
         .doc(user!.uid)
         .get()
         .then((value) {
