@@ -32,7 +32,7 @@ class DemandeView extends StatelessWidget {
           toolbarHeight: 60,
         ),
         backgroundColor: Colors.indigo[50],
-        body: ListView(children: <Widget>[
+        body: Column(children: <Widget>[
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
@@ -57,13 +57,14 @@ class DemandeView extends StatelessWidget {
                 (context, AsyncSnapshot<List<ConstructionModel>> snapshots) {
               if (snapshots.hasData) {
                 return ListView.builder(
+                  shrinkWrap: true,
                     itemCount: snapshots.data?.length ?? 0,
                     itemBuilder: (context, index) {
                       var model = snapshots.data![index];
                       return ExpansionTileCard(
                           baseColor: Colors.cyan[50],
                           expandedColor: Colors.red[50],
-                          key: cardA,
+                        
                           leading: CircleAvatar(),
                           title: Text(
                             "Demande",
