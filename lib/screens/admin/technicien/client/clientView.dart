@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/Model/user_model.dart';
+
 import 'package:login/screens/admin/technicien/client/clientViewModel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,7 +11,7 @@ class consulterclientView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<consulterclientViewModel>.reactive(
-      onModelReady: (viewmodel) => viewmodel.init(),
+      onModelReady: (viewmodel) => viewmodel.client(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Consulter Client'),
@@ -26,8 +27,7 @@ class consulterclientView extends StatelessWidget {
               color: Colors.grey),
         ),
         backgroundColor: Colors.indigo[50],
-        body: Expanded(
-            child: StreamBuilder(
+        body: StreamBuilder(
           stream: viewmodel.consts,
           builder: (context, AsyncSnapshot<List<UserModel>> snapshots) {
             if (snapshots.hasData) {
@@ -43,7 +43,7 @@ class consulterclientView extends StatelessWidget {
             }
             return Container();
           },
-        )),
+        ),
       ),
       viewModelBuilder: () => consulterclientViewModel(),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login/screens/Formulaire/FormulaireViewModel.dart';
 import 'package:stacked/stacked.dart';
@@ -81,6 +82,20 @@ class FormulaireView extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           ListTile(
+            title: const Text('Adresse:'),
+            trailing: DropdownButton<String>(
+              // Must be one of items.value.
+              value: model.selectedOffer,
+              onChanged: (String? newVal) {
+                if (newVal != null) {
+                  model.setSelectedOffer(newVal);
+                }
+              },
+              items: _dropDownCollection,
+            ),
+          ),
+          const SizedBox(height: 15),
+          ListTile(
             title: const Text('Débit:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
@@ -91,6 +106,17 @@ class FormulaireView extends StatelessWidget {
                 }
               },
               items: _dropDownItem,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            height: 200,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: DateTime(2022, 1, 6),
+              onDateTimeChanged: (DateTime newDateTime) {
+                // Do something
+              },
             ),
           ),
           const SizedBox(height: 20),

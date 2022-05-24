@@ -40,52 +40,6 @@ class _ConstructionViewState extends State<ConstructionView> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Expanded(
-                  child: ListView.builder(itemBuilder: (context, index) {
-                    return Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      height: 220,
-                      width: double.maxFinite,
-                      child: Card(
-                        elevation: 5,
-
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              color: Color.fromARGB(255, 239, 154, 154),
-                              width: 2),
-                        ), // RoundedRectangleBorder
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border(),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 110,
-                            ),
-                            Container(
-                              alignment: Alignment.bottomRight,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 18.0, vertical: 10.0),
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.red[200],
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ), // RoundedRectangleBorder
-                                child: Text("Valide",
-                                    style: TextStyle(color: Colors.white)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-                ),
                 StreamBuilder(
                     stream: viewmodel.consts,
                     builder: (context,
@@ -98,8 +52,50 @@ class _ConstructionViewState extends State<ConstructionView> {
                               return Container(
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                child: Text(
-                                    "Offre :${model.offre} ,Débit :${model.debit} , Refrence :${model.reference}"),
+                                child: ListView.builder(
+                                    itemBuilder: (context, index) {
+                                  return Container(
+                                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                    height: 220,
+                                    width: double.maxFinite,
+                                    child: Card(
+                                      elevation: 5,
+
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Color.fromARGB(
+                                                255, 239, 154, 154),
+                                            width: 2),
+                                      ), // RoundedRectangleBorder
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                              "Offre :${model.offre} ,Débit :${model.debit} , Refrence :${model.reference}"),
+                                          Container(
+                                            alignment: Alignment.bottomRight,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 18.0,
+                                                vertical: 10.0),
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                primary: Colors.red[200],
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                              ), // RoundedRectangleBorder
+                                              child: Text("Valide",
+                                                  style: TextStyle(
+                                                      color: Colors.white)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }),
                               );
                             });
                       }

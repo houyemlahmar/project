@@ -14,11 +14,10 @@ class UserModel with _$UserModel {
       String? lastname,
       String? cin,
       String? phonenumber}) = _UserModel;
-
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
-
   factory UserModel.fromDocument(DocumentSnapshot doc) =>
       UserModel.fromJson(doc.data() as Map<String, dynamic>)
           .copyWith(id: doc.id);
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }
