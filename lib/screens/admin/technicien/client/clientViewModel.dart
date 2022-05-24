@@ -13,7 +13,6 @@ class consulterclientViewModel extends BaseViewModel {
   getclient() async {
     final collection = FirebaseFirestore.instance
         .collection('users')
-        .where("users", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
         .snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {

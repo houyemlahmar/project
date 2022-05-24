@@ -4,13 +4,13 @@ import 'package:login/Model/technicien_model.dart';
 import 'package:login/screens/admin/technicien/ajoutertechnicienViewModel.dart';
 import 'package:stacked/stacked.dart';
 
-class ajoutertechnicienView extends StatefulWidget {
-  const ajoutertechnicienView({Key? key}) : super(key: key);
+class AjouterTechnicienView extends StatefulWidget {
+  const AjouterTechnicienView({Key? key}) : super(key: key);
   @override
-  State<ajoutertechnicienView> createState() => _ajoutertechnicienViewState();
+  State<AjouterTechnicienView> createState() => _AjouterTechnicienViewState();
 }
 
-class _ajoutertechnicienViewState extends State<ajoutertechnicienView> {
+class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
   final controllerNom = TextEditingController();
   final controllerPrenom = TextEditingController();
   final controllerZone = TextEditingController();
@@ -18,8 +18,7 @@ class _ajoutertechnicienViewState extends State<ajoutertechnicienView> {
   final controllerCIN = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ajoutertechnicienViewModel>.reactive(
-      onModelReady: (model) => model.createjoute(),
+    return ViewModelBuilder<AjouterTechnicienViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Ajouter technicien'),
@@ -65,11 +64,16 @@ class _ajoutertechnicienViewState extends State<ajoutertechnicienView> {
             style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 8, 82, 143)),
             child: Text('Enregistre'),
-            onPressed: model.createjoute(),
+            onPressed: () {
+              techModel tech = techModel();
+              tech.Nom = controllerNom.text;
+              model.createjoute(tech);
+              Navigator.pop(context);
+            },
           ), // ElevatedButton
         ]),
       ),
-      viewModelBuilder: () => ajoutertechnicienViewModel(),
+      viewModelBuilder: () => AjouterTechnicienViewModel(),
     );
   }
 }

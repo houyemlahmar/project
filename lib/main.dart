@@ -9,12 +9,7 @@ bool islogin = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  var user = FirebaseAuth.instance.currentUser;
-  if (user == null) {
-    islogin = false;
-  } else {
-    islogin = true;
-  }
+
   runApp(MyApp());
 }
 
@@ -31,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // ignore: prefer_const_constructors
-      home: islogin == false ? premierScreen() : MenuScreen(),
+      home: premierScreen() ,
     );
   }
 }

@@ -29,26 +29,21 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
         ),
 
         backgroundColor: Colors.white,
-
-        body: Center(
-            child: Container(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(20),
-                primary: Colors.blue.shade200),
-            child: const Icon(
-              Icons.add,
-              size: 20,
-            ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ajoutertechnicienView()));
-            },
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AjouterTechnicienView()));
+          },
+          child: const Icon(
+            Icons.add,
+            size: 20,
           ),
-        )), // IconButton
+        ),
+        body: const Center(),
+
+        // IconButton
         // AppBar
       );
 
