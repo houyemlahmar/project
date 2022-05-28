@@ -44,7 +44,7 @@ class DemandeView extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             ),
-            child: Text("Déclarer une construction",
+            child: Text("Déposer une demande",
                 style: TextStyle(fontSize: 16, color: Colors.black)),
             onPressed: () {
               Navigator.push(context,
@@ -57,14 +57,13 @@ class DemandeView extends StatelessWidget {
                 (context, AsyncSnapshot<List<ConstructionModel>> snapshots) {
               if (snapshots.hasData) {
                 return ListView.builder(
-                  shrinkWrap: true,
+                    shrinkWrap: true,
                     itemCount: snapshots.data?.length ?? 0,
                     itemBuilder: (context, index) {
                       var model = snapshots.data![index];
                       return ExpansionTileCard(
                           baseColor: Colors.cyan[50],
                           expandedColor: Colors.red[50],
-                        
                           leading: CircleAvatar(),
                           title: Text(
                             "Demande",

@@ -58,6 +58,16 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
             decoration: InputDecoration(labelText: 'CIN'),
             keyboardType: TextInputType.number,
           ),
+          TextField(
+            controller: controllerCIN,
+            decoration: InputDecoration(labelText: 'Adresse e-mail'),
+            keyboardType: TextInputType.number,
+          ),
+          TextField(
+            controller: controllerCIN,
+            decoration: InputDecoration(labelText: 'Mot de passe'),
+            keyboardType: TextInputType.number,
+          ),
 
           const SizedBox(height: 32),
           ElevatedButton(
@@ -67,6 +77,10 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
             onPressed: () {
               techModel tech = techModel();
               tech.Nom = controllerNom.text;
+              tech.Prenom = controllerPrenom.text;
+              tech.Zone = controllerZone.text;
+              tech.CIN = controllerCIN.text;
+              tech.Numtele = controllerNumtele.text;
               model.createjoute(tech);
               Navigator.pop(context);
             },

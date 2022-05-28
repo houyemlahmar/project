@@ -3,13 +3,13 @@ import 'package:login/Model/user_model.dart';
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/menu-screen.dart';
 import 'package:login/screens/registration/registration_viewmodel.dart';
-
 import 'package:stacked/stacked.dart';
 
 class RegistrationView extends StatelessWidget {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RegistrationView({Key? key}) : super(key: key);
   UserModel user = UserModel(id: "s");
+  bool isHiddenPassword = true;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<RegistrationViewModel>.reactive(
@@ -179,17 +179,20 @@ class RegistrationView extends StatelessWidget {
                                         model.password = value ?? "password";
                                       },
                                       validator: (value) {
-                                        RegExp regex = RegExp(r'^.{6,}$');
+                                        RegExp regex = RegExp(r'^.{8,}$');
                                         if (value!.isEmpty) {
                                           return ("Merci de saisir votre mot de passe");
                                         }
                                         if (!regex.hasMatch(value)) {
-                                          return ("veuillez valider votre mot de passe (Min. 6 Charater)");
+                                          return ("veuillez valider votre mot de passe (Min 8 Charater)");
                                         }
                                       },
-                                      obscureText: true,
+                                      obscureText: isHiddenPassword,
                                       decoration: InputDecoration(
                                           prefixIcon: const Icon(Icons.vpn_key),
+                                          suffixIcon: InkWell(
+                                              onTap: _togglePasswordView,
+                                              child: Icon(Icons.visibility)),
                                           contentPadding:
                                               const EdgeInsets.fromLTRB(
                                                   20, 15, 20, 15),
@@ -199,14 +202,28 @@ class RegistrationView extends StatelessWidget {
                                                   BorderRadius.circular(10)))),
                                   const SizedBox(height: 20),
                                   TextFormField(
-                                      onSaved: (value) {},
-                                      obscureText: true,
+                                      onSaved: (value) {
+                                        model.password = value ?? "password";
+                                      },
+                                      validator: (value) {
+                                        RegExp regex = RegExp(r'^.{value,}$');
+                                        if (value!.isEmpty) {
+                                          return ("Merci de confirmer votre mot de passe");
+                                        }
+                                        if (!regex.hasMatch(value)) {
+                                          return ("Incompatible avec le mot de passe");
+                                        }
+                                      },
+                                      obscureText: isHiddenPassword,
                                       decoration: InputDecoration(
                                           prefixIcon: const Icon(Icons.vpn_key),
+                                          suffixIcon: InkWell(
+                                              onTap: _togglePasswordView,
+                                              child: Icon(Icons.visibility)),
                                           contentPadding:
                                               const EdgeInsets.fromLTRB(
                                                   20, 15, 20, 15),
-                                          hintText: "Confirmez le mot de passe",
+                                          hintText: "Confirmer mot de passe",
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10)))),
@@ -216,21 +233,20 @@ class RegistrationView extends StatelessWidget {
                                         children: [
                                           const Text("Si vous avez un compte"),
                                           InkWell(
-                                              onTap: () {},
                                               child: TextButton(
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              SignInScreen()));
-                                                },
-                                                child: const Text("cliquez ici",
-                                                    style: TextStyle(
-                                                        color: Colors.blue,
-                                                        backgroundColor:
-                                                            Colors.white)),
-                                              ))
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SignInScreen()));
+                                            },
+                                            child: const Text("cliquez ici",
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    backgroundColor:
+                                                        Colors.white)),
+                                          ))
                                         ],
                                       )),
                                   Container(
@@ -265,7 +281,7 @@ class RegistrationView extends StatelessWidget {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const MenuScreen()));
+                                                          const SignInScreen()));
                                             }
                                           }
                                         }),
@@ -276,5 +292,13 @@ class RegistrationView extends StatelessWidget {
                       ))))),
       viewModelBuilder: () => RegistrationViewModel(),
     );
+  }
+
+  void _togglePasswordView() {
+    if (isHiddenPassword == true) {
+      isHiddenPassword = false;
+    } else {
+      isHiddenPassword = true;
+    }
   }
 }

@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/Model/user_model.dart';
 
-import 'package:login/screens/admin/technicien/client/clientViewModel.dart';
+import 'package:login/screens/admin//client/clientViewModel.dart';
+import 'package:login/screens/admin/page.dart';
 import 'package:stacked/stacked.dart';
 
 class consulterclientView extends StatelessWidget {
@@ -23,7 +24,10 @@ class consulterclientView extends StatelessWidget {
           toolbarHeight: 100,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page()));
+              },
               color: Colors.grey),
         ),
         backgroundColor: Colors.indigo[50],

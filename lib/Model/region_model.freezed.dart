@@ -20,7 +20,7 @@ RegionModel _$RegionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegionModel {
-  String? get id => throw _privateConstructorUsedError;
+  String? get id_region => throw _privateConstructorUsedError;
   String? get nom => throw _privateConstructorUsedError;
   String? get rue => throw _privateConstructorUsedError;
   String? get code_postal => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $RegionModelCopyWith<$Res> {
   factory $RegionModelCopyWith(
           RegionModel value, $Res Function(RegionModel) then) =
       _$RegionModelCopyWithImpl<$Res>;
-  $Res call({String? id, String? nom, String? rue, String? code_postal});
+  $Res call({String? id_region, String? nom, String? rue, String? code_postal});
 }
 
 /// @nodoc
@@ -49,15 +49,15 @@ class _$RegionModelCopyWithImpl<$Res> implements $RegionModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id_region = freezed,
     Object? nom = freezed,
     Object? rue = freezed,
     Object? code_postal = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      id_region: id_region == freezed
+          ? _value.id_region
+          : id_region // ignore: cast_nullable_to_non_nullable
               as String?,
       nom: nom == freezed
           ? _value.nom
@@ -82,7 +82,7 @@ abstract class _$$_RegionModelCopyWith<$Res>
           _$_RegionModel value, $Res Function(_$_RegionModel) then) =
       __$$_RegionModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? nom, String? rue, String? code_postal});
+  $Res call({String? id_region, String? nom, String? rue, String? code_postal});
 }
 
 /// @nodoc
@@ -97,15 +97,15 @@ class __$$_RegionModelCopyWithImpl<$Res> extends _$RegionModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id_region = freezed,
     Object? nom = freezed,
     Object? rue = freezed,
     Object? code_postal = freezed,
   }) {
     return _then(_$_RegionModel(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      id_region: id_region == freezed
+          ? _value.id_region
+          : id_region // ignore: cast_nullable_to_non_nullable
               as String?,
       nom: nom == freezed
           ? _value.nom
@@ -126,13 +126,13 @@ class __$$_RegionModelCopyWithImpl<$Res> extends _$RegionModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
-  _$_RegionModel({this.id, this.nom, this.rue, this.code_postal});
+  _$_RegionModel({this.id_region, this.nom, this.rue, this.code_postal});
 
   factory _$_RegionModel.fromJson(Map<String, dynamic> json) =>
       _$$_RegionModelFromJson(json);
 
   @override
-  final String? id;
+  final String? id_region;
   @override
   final String? nom;
   @override
@@ -142,15 +142,15 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RegionModel(id: $id, nom: $nom, rue: $rue, code_postal: $code_postal)';
+    return 'RegionModel(id_region: $id_region, nom: $nom, rue: $rue, code_postal: $code_postal)';
   }
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  void_regiondebugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'RegionModel'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('id_region', id_region))
       ..add(DiagnosticsProperty('nom', nom))
       ..add(DiagnosticsProperty('rue', rue))
       ..add(DiagnosticsProperty('code_postal', code_postal));
@@ -161,7 +161,7 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegionModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.id_region, id_region) &&
             const DeepCollectionEquality().equals(other.nom, nom) &&
             const DeepCollectionEquality().equals(other.rue, rue) &&
             const DeepCollectionEquality()
@@ -172,7 +172,7 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(id_region),
       const DeepCollectionEquality().hash(nom),
       const DeepCollectionEquality().hash(rue),
       const DeepCollectionEquality().hash(code_postal));
@@ -190,7 +190,7 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
 
 abstract class _RegionModel implements RegionModel {
   factory _RegionModel(
-      {final String? id,
+      {final String? id_region,
       final String? nom,
       final String? rue,
       final String? code_postal}) = _$_RegionModel;
@@ -199,7 +199,7 @@ abstract class _RegionModel implements RegionModel {
       _$_RegionModel.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id_region => throw _privateConstructorUsedError;
   @override
   String? get nom => throw _privateConstructorUsedError;
   @override

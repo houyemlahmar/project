@@ -1,12 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/admin/technicien/gerertechnicienView.dart';
 
-import 'package:login/screens/admin/technicien/client/clientView.dart';
+import 'package:login/screens/admin//client/clientView.dart';
 import 'package:login/screens/admin/signin.dart';
-import 'package:login/screens/admin/technicien.dart';
 
 class page extends StatelessWidget {
   const page({Key? key}) : super(key: key);
@@ -66,7 +64,7 @@ class page extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Gérer technicien",
+                          Text("Gérer techniciens",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],
@@ -104,7 +102,7 @@ class page extends StatelessWidget {
                           SizedBox(
                             width: 17,
                           ),
-                          Text("Consulter client",
+                          Text("Consulter clients",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],
@@ -140,7 +138,7 @@ class page extends StatelessWidget {
                             size: 30,
                           ),
                           SizedBox(width: 3),
-                          Text("Consulter statistique",
+                          Text("Consulter statistiques",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],
