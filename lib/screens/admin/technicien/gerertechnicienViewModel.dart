@@ -5,16 +5,13 @@ import 'package:login/Model/technicien_model.dart';
 import 'package:stacked/stacked.dart';
 
 class geretechnicienVieModel extends BaseViewModel {
-  Stream<List<techModel>> consts = const Stream.empty();
-  gere() {
-    runBusyFuture(getgere());
-  }
-
-  getgere() async {
+ 
+ 
+ Stream<List<techModel>> getgere()  {
     final collection =
         FirebaseFirestore.instance.collection('Technicien').snapshots();
 
-    consts = collection.map((QuerySnapshot snapshots) {
+    return collection.map((QuerySnapshot snapshots) {
       return snapshots.docs.map((e) => techModel.fromDocument(e)).toList();
     });
   }

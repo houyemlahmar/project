@@ -18,7 +18,6 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<geretechnicienVieModel>.reactive(
-      onModelReady: (viewmodel) => viewmodel.gere(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Liste Techniciens'),
@@ -38,7 +37,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
         ),
         backgroundColor: Colors.indigo[50],
         body: StreamBuilder(
-          stream: viewmodel.consts,
+          stream: viewmodel.getgere(),
           builder: (context, AsyncSnapshot<List<techModel>> snapshots) {
             if (snapshots.hasData) {
               return ListView.builder(
