@@ -7,14 +7,17 @@ part 'technicien_model.g.dart';
 
 @unfreezed
 class techModel with _$techModel {
-  factory techModel(
-      {String? id,
-      String? Nom,
-      String? id_region,
-      String? Prenom,
-      String? Zone,
-      String? CIN,
-      String? Numtele}) = _techModel;
+  factory techModel({
+    String? id,
+    String? id_region,
+    String? Nom,
+    String? Prenom,
+    String? region,
+    String? CIN,
+    String? Numtele,
+    String? e_mail,
+    String? mp,
+  }) = _techModel;
 
   factory techModel.fromDocument(DocumentSnapshot doc) => techModel
       .fromJson(doc.data() as Map<String, dynamic>)

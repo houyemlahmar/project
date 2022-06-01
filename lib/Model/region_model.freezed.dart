@@ -146,7 +146,7 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
   }
 
   @override
-  void_regiondebugFillProperties(DiagnosticPropertiesBuilder properties) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'RegionModel'))

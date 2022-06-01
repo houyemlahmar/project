@@ -5,6 +5,7 @@ import 'package:login/screens/admin/page.dart';
 import 'package:login/screens/admin/technicien.dart';
 
 import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/premier_screen.dart';
 import 'package:login/screens/technicien/Menu.dart';
 
 class signintechnicien extends StatefulWidget {
@@ -26,31 +27,20 @@ class _signintechnicienState extends State<signintechnicien> {
 
   @override
   Widget build(BuildContext context) {
-    // email field
-    final emailField = TextFormField(
-        autofocus: false,
-        keyboardType: TextInputType.text,
-        // validator: (){},
-        onSaved: (value) {
-          email = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.mail,
-            color: Color.fromARGB(255, 120, 196, 255),
-          ),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Adresse E-mail",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
-
-    // password field
-
     var centre = MainAxisAlignment.center;
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => premierScreen()));
+              },
+              color: Colors.pink),
+          toolbarHeight: 60,
+          centerTitle: true,
+        ),
         backgroundColor: Colors.white,
         body: Center(
           child: SingleChildScrollView(

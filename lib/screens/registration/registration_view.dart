@@ -8,7 +8,7 @@ import 'package:stacked/stacked.dart';
 class RegistrationView extends StatelessWidget {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RegistrationView({Key? key}) : super(key: key);
-  UserModel user = UserModel(id: "s");
+  UserModel user = UserModel(id: "");
   bool isHiddenPassword = true;
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,33 @@ class RegistrationView extends StatelessWidget {
                                 child: Column(children: [
                                   TextFormField(
                                       onSaved: (value) {
+                                        user.lastname = value;
+                                      },
+                                      keyboardType: TextInputType.name,
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return "merci de saisir votre nom";
+                                        }
+                                        if (value.length > 30) {
+                                          return "le nom ne dépasse pas 20 lettres";
+                                        }
+                                        if (value.length < 3) {
+                                          return "le nom ne peut pas être inférieur à 3 lettres";
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                          prefixIcon: const Icon(Icons.person),
+                                          contentPadding:
+                                              const EdgeInsets.fromLTRB(
+                                                  20, 15, 20, 15),
+                                          hintText: "Nom de famille",
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)))),
+                                  const SizedBox(height: 20),
+                                  TextFormField(
+                                      onSaved: (value) {
                                         user.firstname = value;
                                       },
                                       keyboardType: TextInputType.name,
@@ -57,33 +84,6 @@ class RegistrationView extends StatelessWidget {
                                               const EdgeInsets.fromLTRB(
                                                   20, 15, 20, 15),
                                           hintText: "Prénom",
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)))),
-                                  const SizedBox(height: 20),
-                                  TextFormField(
-                                      onSaved: (value) {
-                                        user.lastname = value;
-                                      },
-                                      keyboardType: TextInputType.name,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "merci de saisir votre nom";
-                                        }
-                                        if (value.length > 30) {
-                                          return "le nom ne dépasse pas 20 lettres";
-                                        }
-                                        if (value.length < 3) {
-                                          return "le nom ne peut pas être inférieur à 3 lettres ";
-                                        }
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                          prefixIcon: const Icon(Icons.person),
-                                          contentPadding:
-                                              const EdgeInsets.fromLTRB(
-                                                  20, 15, 20, 15),
-                                          hintText: "Nom de famille",
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10)))),
@@ -210,9 +210,6 @@ class RegistrationView extends StatelessWidget {
                                         if (value!.isEmpty) {
                                           return ("Merci de confirmer votre mot de passe");
                                         }
-                                        if (!regex.hasMatch(value)) {
-                                          return ("Incompatible avec le mot de passe");
-                                        }
                                       },
                                       obscureText: isHiddenPassword,
                                       decoration: InputDecoration(
@@ -249,25 +246,16 @@ class RegistrationView extends StatelessWidget {
                                           ))
                                         ],
                                       )),
-                                  Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        20, 15, 20, 15),
-                                    child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.blueAccent,
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30),
-                                          textStyle: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w400),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                          minimumSize:
-                                              const Size.fromHeight(50),
-                                        ),
-                                        child: const Text("S'inscrire",
-                                            textAlign: TextAlign.center),
+                                  Material(
+                                    elevation: 5,
+                                    borderRadius: BorderRadius.circular(10),
+                                    color:
+                                        const Color.fromARGB(255, 254, 74, 152),
+                                    child: MaterialButton(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 10, 20, 10),
+                                        minWidth:
+                                            MediaQuery.of(context).size.width,
                                         onPressed: () async {
                                           if (formKey.currentState
                                                   ?.validate() ??
@@ -284,7 +272,16 @@ class RegistrationView extends StatelessWidget {
                                                           const SignInScreen()));
                                             }
                                           }
-                                        }),
+                                        },
+                                        child: const Text(
+                                          "S'inscrire",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                              fontWeight: FontWeight.bold),
+                                        )),
                                   ),
                                 ])),
                           )

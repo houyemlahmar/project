@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 
 class AjouterTechnicienView extends StatefulWidget {
   const AjouterTechnicienView({Key? key}) : super(key: key);
+
   @override
   State<AjouterTechnicienView> createState() => _AjouterTechnicienViewState();
 }
@@ -13,9 +14,12 @@ class AjouterTechnicienView extends StatefulWidget {
 class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
   final controllerNom = TextEditingController();
   final controllerPrenom = TextEditingController();
-  final controllerZone = TextEditingController();
+  final controllerRegion = TextEditingController();
   final controllerNumtele = TextEditingController();
   final controllerCIN = TextEditingController();
+  final controlleremail = TextEditingController();
+  final controllerpassword = TextEditingController();
+  techModel user = techModel(id: "");
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AjouterTechnicienViewModel>.reactive(
@@ -24,6 +28,7 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
           title: const Text('Ajouter technicien'),
           backgroundColor: Colors.blue.shade200,
           toolbarHeight: 60,
+          centerTitle: true,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {},
@@ -35,21 +40,22 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
             decoration: InputDecoration(labelText: 'Nom '),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
           TextField(
             controller: controllerPrenom,
             decoration: InputDecoration(labelText: 'Prénom'),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
           TextField(
-            controller: controllerZone,
-            decoration: InputDecoration(labelText: 'Zone'),
+            controller: controllerRegion,
+            decoration: InputDecoration(labelText: 'Région'),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
           TextField(
             controller: controllerNumtele,
             decoration: InputDecoration(labelText: 'Numéro téléphone'),
             keyboardType: TextInputType.number,
+            maxLength: 8,
           ), // TextField// TextField// TextField// TextField
           const SizedBox(height: 24),
 
@@ -57,19 +63,22 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
             controller: controllerCIN,
             decoration: InputDecoration(labelText: 'CIN'),
             keyboardType: TextInputType.number,
+            maxLength: 8,
           ),
+          const SizedBox(height: 20),
           TextField(
-            controller: controllerCIN,
+            controller: controlleremail,
             decoration: InputDecoration(labelText: 'Adresse e-mail'),
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
           ),
+          const SizedBox(height: 20),
           TextField(
-            controller: controllerCIN,
+            controller: controllerpassword,
             decoration: InputDecoration(labelText: 'Mot de passe'),
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
           ),
 
-          const SizedBox(height: 32),
+          const SizedBox(height: 30),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 8, 82, 143)),
@@ -78,9 +87,12 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
               techModel tech = techModel();
               tech.Nom = controllerNom.text;
               tech.Prenom = controllerPrenom.text;
-              tech.Zone = controllerZone.text;
+              tech.region = controllerRegion.text;
               tech.CIN = controllerCIN.text;
               tech.Numtele = controllerNumtele.text;
+              tech.e_mail = controlleremail.text;
+              tech.mp = controllerpassword.text;
+
               model.createjoute(tech);
               Navigator.pop(context);
             },

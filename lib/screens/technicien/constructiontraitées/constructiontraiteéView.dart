@@ -18,19 +18,21 @@ class _ConstructiontraiteViewState extends State<ConstructiontraiteView> {
       onModelReady: (model) => model.Gettraite(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('Constructions Traitées'),
+          title: const Text('Ordres traités'),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
           backgroundColor: Colors.transparent,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => technicien()));
-            },
-          ),
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => technicien()));
+              },
+              color: Colors.amberAccent),
+          toolbarHeight: 60,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
       ),

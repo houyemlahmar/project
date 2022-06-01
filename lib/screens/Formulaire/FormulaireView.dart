@@ -17,6 +17,15 @@ class FormulaireView extends StatelessWidget {
             ),
           )
           .toList();
+  final List<DropdownMenuItem<String>> _dropDownCollection1 =
+      FormulaireViewModel.adresses
+          .map(
+            (String val1) => DropdownMenuItem<String>(
+              value: val1,
+              child: Text(val1),
+            ),
+          )
+          .toList();
   final List<DropdownMenuItem<String>> _dropDownCollection =
       FormulaireViewModel.offers
           .map(
@@ -46,7 +55,7 @@ class FormulaireView extends StatelessWidget {
         body: Center(
             child: ListView(children: <Widget>[
           SizedBox(
-              height: 150,
+              height: 90,
               width: 170,
               child: Image.asset(
                 "assets/appbar.jpeg",
@@ -68,21 +77,21 @@ class FormulaireView extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           ListTile(
-            title: const Text('Offre:'),
+            title: const Text('Adresse:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
-              value: model.selectedOffer,
-              onChanged: (String? newVal) {
-                if (newVal != null) {
-                  model.setSelectedOffer(newVal);
+              value: model.selectedAdresse,
+              onChanged: (String? newVal1) {
+                if (newVal1 != null) {
+                  model.setSelectedAdresse(newVal1);
                 }
               },
-              items: _dropDownCollection,
+              items: _dropDownCollection1,
             ),
           ),
           const SizedBox(height: 15),
           ListTile(
-            title: const Text('Adresse:'),
+            title: const Text('Offre:'),
             trailing: DropdownButton<String>(
               // Must be one of items.value.
               value: model.selectedOffer,
@@ -113,7 +122,7 @@ class FormulaireView extends StatelessWidget {
             height: 200,
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
-              initialDateTime: DateTime(2022, 1, 6),
+              initialDateTime: DateTime(2022, 1, 1),
               onDateTimeChanged: (DateTime newDateTime) {
                 // Do something
               },
@@ -132,7 +141,9 @@ class FormulaireView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
               ),
               child: const Text("Enregistrer", textAlign: TextAlign.center),
-              onPressed: model.createDemande,
+              onPressed:
+                model.createDemande,
+             
             ),
           ),
         ])),

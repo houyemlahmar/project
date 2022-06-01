@@ -4,6 +4,7 @@
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'rue_model.dart';
+
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
@@ -19,10 +20,10 @@ RueModel _$RueModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RueModel {
-  String? get id_region => throw _privateConstructorUsedError;
-  set id_region(String? value) => throw _privateConstructorUsedError;
   String? get id_rue => throw _privateConstructorUsedError;
   set id_rue(String? value) => throw _privateConstructorUsedError;
+  String? get id_region => throw _privateConstructorUsedError;
+  set id_region(String? value) => throw _privateConstructorUsedError;
   String? get nom => throw _privateConstructorUsedError;
   set nom(String? value) => throw _privateConstructorUsedError;
 
@@ -36,11 +37,7 @@ mixin _$RueModel {
 abstract class $RueModelCopyWith<$Res> {
   factory $RueModelCopyWith(RueModel value, $Res Function(RueModel) then) =
       _$RueModelCopyWithImpl<$Res>;
-  $Res call({
-    String? id_region,
-    String? id_rue,
-    String? nom,
-  });
+  $Res call({String? id_rue, String? id_region, String? nom});
 }
 
 /// @nodoc
@@ -52,18 +49,19 @@ class _$RueModelCopyWithImpl<$Res> implements $RueModelCopyWith<$Res> {
   final $Res Function(RueModel) _then;
 
   @override
-  $Res call(
-      {Object? id_region = freezed,
-      Object? id_rue = freezed,
-      Object? nom = freezed}) {
+  $Res call({
+    Object? id_rue = freezed,
+    Object? id_region = freezed,
+    Object? nom = freezed,
+  }) {
     return _then(_value.copyWith(
-      id_region: id_region == freezed
-          ? _value.id_region
-          : id_region // ignore: cast_nullable_to_non_nullable
-              as String?,
       id_rue: id_rue == freezed
           ? _value.id_rue
           : id_rue // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_region: id_region == freezed
+          ? _value.id_region
+          : id_region // ignore: cast_nullable_to_non_nullable
               as String?,
       nom: nom == freezed
           ? _value.nom
@@ -79,11 +77,7 @@ abstract class _$$_RueModelCopyWith<$Res> implements $RueModelCopyWith<$Res> {
           _$_RueModel value, $Res Function(_$_RueModel) then) =
       __$$_RueModelCopyWithImpl<$Res>;
   @override
-  $Res call({
-    String? id_region,
-    String? id_rue,
-    String? nom,
-  });
+  $Res call({String? id_rue, String? id_region, String? nom});
 }
 
 /// @nodoc
@@ -97,18 +91,19 @@ class __$$_RueModelCopyWithImpl<$Res> extends _$RueModelCopyWithImpl<$Res>
   _$_RueModel get _value => super._value as _$_RueModel;
 
   @override
-  $Res call(
-      {Object? id_region = freezed,
-      Object? id_rue = freezed,
-      Object? nom = freezed}) {
+  $Res call({
+    Object? id_rue = freezed,
+    Object? id_region = freezed,
+    Object? nom = freezed,
+  }) {
     return _then(_$_RueModel(
+      id_rue: id_rue == freezed
+          ? _value.id_rue
+          : id_rue // ignore: cast_nullable_to_non_nullable
+              as String?,
       id_region: id_region == freezed
           ? _value.id_region
           : id_region // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id_rue: id_region == freezed
-          ? _value.id_rue
-          : id_rue // ignore: cast_nullable_to_non_nullable
               as String?,
       nom: nom == freezed
           ? _value.nom
@@ -121,25 +116,21 @@ class __$$_RueModelCopyWithImpl<$Res> extends _$RueModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RueModel with DiagnosticableTreeMixin implements _RueModel {
-  _$_RueModel({
-    this.id_region,
-    this.id_rue,
-    this.nom,
-  });
+  _$_RueModel({this.id_rue, this.id_region, this.nom});
 
   factory _$_RueModel.fromJson(Map<String, dynamic> json) =>
       _$$_RueModelFromJson(json);
 
   @override
-  String? id_region;
-  @override
   String? id_rue;
+  @override
+  String? id_region;
   @override
   String? nom;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RueModel( id_region: $id_region, nom: $nom, id_rue: $id_rue)';
+    return 'RueModel(id_rue: $id_rue, id_region: $id_region, nom: $nom)';
   }
 
   @override
@@ -147,8 +138,8 @@ class _$_RueModel with DiagnosticableTreeMixin implements _RueModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'RueModel'))
+      ..add(DiagnosticsProperty('id_rue', id_rue))
       ..add(DiagnosticsProperty('id_region', id_region))
-      ..add(DiagnosticsProperty('id_region', id_rue))
       ..add(DiagnosticsProperty('nom', nom));
   }
 
@@ -164,21 +155,17 @@ class _$_RueModel with DiagnosticableTreeMixin implements _RueModel {
 }
 
 abstract class _RueModel implements RueModel {
-  factory _RueModel({
-    String? id_region,
-    String? id_rue,
-    String? nom,
-  }) = _$_RueModel;
+  factory _RueModel({String? id_rue, String? id_region, String? nom}) =
+      _$_RueModel;
 
   factory _RueModel.fromJson(Map<String, dynamic> json) = _$_RueModel.fromJson;
 
   @override
-  String? get id_region => throw _privateConstructorUsedError;
-  @override
   String? get id_rue => throw _privateConstructorUsedError;
   @override
+  String? get id_region => throw _privateConstructorUsedError;
+  @override
   String? get nom => throw _privateConstructorUsedError;
-
   @override
   @JsonKey(ignore: true)
   _$$_RueModelCopyWith<_$_RueModel> get copyWith =>

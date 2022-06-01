@@ -12,7 +12,7 @@ class ConstructionViewModel extends BaseViewModel {
   }
 
   getConstruction() async {
-    final doc = await FirebaseFirestore.instance
+    final doc = await FirebaseFirestore.instance 
         .collection('Technicien')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
@@ -21,7 +21,8 @@ class ConstructionViewModel extends BaseViewModel {
 
     final collection = FirebaseFirestore.instance
         .collection('construction')
-        .where("id_region", isEqualTo: technicien.id_region)
+        .where("id_region", isEqualTo: technicien.region)
+        .orderBy("created_at", descending: true)
         .snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {

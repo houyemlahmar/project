@@ -20,16 +20,16 @@ BoiteModel _$BoiteModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BoiteModel {
+  String? get id_boite => throw _privateConstructorUsedError;
+  set id_boite(String? value) => throw _privateConstructorUsedError;
   String? get id_region => throw _privateConstructorUsedError;
   set id_region(String? value) => throw _privateConstructorUsedError;
   String? get id_rue => throw _privateConstructorUsedError;
   set id_rue(String? value) => throw _privateConstructorUsedError;
-  String? get nbr_max => throw _privateConstructorUsedError;
-  set nbr_max(String? value) => throw _privateConstructorUsedError;
-  String? get nbr_used => throw _privateConstructorUsedError;
-  set nbr_used(String? value) => throw _privateConstructorUsedError;
-  String? get id_boite => throw _privateConstructorUsedError;
-  set id_boite(String? value) => throw _privateConstructorUsedError;
+  int get nbr_max => throw _privateConstructorUsedError;
+  set nbr_max(int value) => throw _privateConstructorUsedError;
+  int get nbr_used => throw _privateConstructorUsedError;
+  set nbr_used(int value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,11 +43,11 @@ abstract class $BoiteModelCopyWith<$Res> {
           BoiteModel value, $Res Function(BoiteModel) then) =
       _$BoiteModelCopyWithImpl<$Res>;
   $Res call(
-      {String? id_region,
+      {String? id_boite,
+      String? id_region,
       String? id_rue,
-      String? nbr_max,
-      String? nbr_used,
-      String? id_boite});
+      int nbr_max,
+      int nbr_used});
 }
 
 /// @nodoc
@@ -60,13 +60,17 @@ class _$BoiteModelCopyWithImpl<$Res> implements $BoiteModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id_boite = freezed,
     Object? id_region = freezed,
     Object? id_rue = freezed,
     Object? nbr_max = freezed,
     Object? nbr_used = freezed,
-    Object? id_boite = freezed,
   }) {
     return _then(_value.copyWith(
+      id_boite: id_boite == freezed
+          ? _value.id_boite
+          : id_boite // ignore: cast_nullable_to_non_nullable
+              as String?,
       id_region: id_region == freezed
           ? _value.id_region
           : id_region // ignore: cast_nullable_to_non_nullable
@@ -78,15 +82,11 @@ class _$BoiteModelCopyWithImpl<$Res> implements $BoiteModelCopyWith<$Res> {
       nbr_max: nbr_max == freezed
           ? _value.nbr_max
           : nbr_max // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       nbr_used: nbr_used == freezed
           ? _value.nbr_used
           : nbr_used // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id_boite: id_boite == freezed
-          ? _value.id_boite
-          : id_boite // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
     ));
   }
 }
@@ -99,11 +99,11 @@ abstract class _$$_BoiteModelCopyWith<$Res>
       __$$_BoiteModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id_region,
+      {String? id_boite,
+      String? id_region,
       String? id_rue,
-      String? nbr_max,
-      String? nbr_used,
-      String? id_boite});
+      int nbr_max,
+      int nbr_used});
 }
 
 /// @nodoc
@@ -118,13 +118,17 @@ class __$$_BoiteModelCopyWithImpl<$Res> extends _$BoiteModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id_boite = freezed,
     Object? id_region = freezed,
     Object? id_rue = freezed,
     Object? nbr_max = freezed,
     Object? nbr_used = freezed,
-    Object? id_boite = freezed,
   }) {
     return _then(_$_BoiteModel(
+      id_boite: id_boite == freezed
+          ? _value.id_boite
+          : id_boite // ignore: cast_nullable_to_non_nullable
+              as String?,
       id_region: id_region == freezed
           ? _value.id_region
           : id_region // ignore: cast_nullable_to_non_nullable
@@ -136,15 +140,11 @@ class __$$_BoiteModelCopyWithImpl<$Res> extends _$BoiteModelCopyWithImpl<$Res>
       nbr_max: nbr_max == freezed
           ? _value.nbr_max
           : nbr_max // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
       nbr_used: nbr_used == freezed
           ? _value.nbr_used
           : nbr_used // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id_boite: id_boite == freezed
-          ? _value.id_boite
-          : id_boite // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
     ));
   }
 }
@@ -153,29 +153,31 @@ class __$$_BoiteModelCopyWithImpl<$Res> extends _$BoiteModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BoiteModel with DiagnosticableTreeMixin implements _BoiteModel {
   _$_BoiteModel(
-      {this.id_region,
+      {this.id_boite,
+      this.id_region,
       this.id_rue,
-      this.nbr_max,
-      this.nbr_used,
-      this.id_boite});
+      this.nbr_max = 0,
+      this.nbr_used = 0});
 
   factory _$_BoiteModel.fromJson(Map<String, dynamic> json) =>
       _$$_BoiteModelFromJson(json);
 
   @override
+  String? id_boite;
+  @override
   String? id_region;
   @override
   String? id_rue;
   @override
-  String? nbr_max;
+  @JsonKey()
+  int nbr_max;
   @override
-  String? nbr_used;
-  @override
-  String? id_boite;
+  @JsonKey()
+  int nbr_used;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BoiteModel( id_region: $id_region, id_rue: $id_rue, nbr_max: $nbr_max, nbr_used: $nbr_used, id_boite: $id_boite)';
+    return 'BoiteModel(id_boite: $id_boite, id_region: $id_region, id_rue: $id_rue, nbr_max: $nbr_max, nbr_used: $nbr_used)';
   }
 
   @override
@@ -183,11 +185,11 @@ class _$_BoiteModel with DiagnosticableTreeMixin implements _BoiteModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'BoiteModel'))
+      ..add(DiagnosticsProperty('id_boite', id_boite))
       ..add(DiagnosticsProperty('id_region', id_region))
       ..add(DiagnosticsProperty('id_rue', id_rue))
       ..add(DiagnosticsProperty('nbr_max', nbr_max))
-      ..add(DiagnosticsProperty('nbr_used', nbr_used))
-      ..add(DiagnosticsProperty('id_boite', id_boite));
+      ..add(DiagnosticsProperty('nbr_used', nbr_used));
   }
 
   @JsonKey(ignore: true)
@@ -203,25 +205,25 @@ class _$_BoiteModel with DiagnosticableTreeMixin implements _BoiteModel {
 
 abstract class _BoiteModel implements BoiteModel {
   factory _BoiteModel(
-      {String? id_region,
+      {String? id_boite,
+      String? id_region,
       String? id_rue,
-      String? nbr_max,
-      String? nbr_used,
-      String? id_boite}) = _$_BoiteModel;
+      int nbr_max,
+      int nbr_used}) = _$_BoiteModel;
 
   factory _BoiteModel.fromJson(Map<String, dynamic> json) =
       _$_BoiteModel.fromJson;
 
   @override
+  String? get id_boite => throw _privateConstructorUsedError;
+  @override
   String? get id_region => throw _privateConstructorUsedError;
   @override
   String? get id_rue => throw _privateConstructorUsedError;
   @override
-  String? get nbr_max => throw _privateConstructorUsedError;
+  int get nbr_max => throw _privateConstructorUsedError;
   @override
-  String? get nbr_used => throw _privateConstructorUsedError;
-  @override
-  String? get id_boite => throw _privateConstructorUsedError;
+  int get nbr_used => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_BoiteModelCopyWith<_$_BoiteModel> get copyWith =>

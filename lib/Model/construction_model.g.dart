@@ -13,8 +13,11 @@ _$_ConstructionModel _$$_ConstructionModelFromJson(Map<String, dynamic> json) =>
       etatDemande: json['etatDemande'] as String?,
       offre: json['offre'] as String?,
       reference: json['reference'] as String?,
-      time: json['time'] as String?,
+      createdAt: _createdAtFromJson(json['created_at'] as Timestamp),
       userId: json['userId'] as String?,
+      id_region: json['id_region'] as String?,
+      id_rue: json['id_rue'] as String?,
+      id_boite: json['id_boite'] as String?,
     );
 
 Map<String, dynamic> _$$_ConstructionModelToJson(
@@ -25,6 +28,9 @@ Map<String, dynamic> _$$_ConstructionModelToJson(
       'etatDemande': instance.etatDemande,
       'offre': instance.offre,
       'reference': instance.reference,
-      'time': instance.time,
+      'created_at': _createdAtToJson(instance.createdAt),
       'userId': instance.userId,
+      'id_region': instance.id_region,
+      'id_rue': instance.id_rue,
+      'id_boite': instance.id_boite,
     };

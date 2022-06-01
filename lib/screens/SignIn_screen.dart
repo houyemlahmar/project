@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:login/screens/Menu/MenuView.dart';
 import 'package:login/screens/Registration_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/premier_screen.dart';
 import 'package:login/screens/registration/registration_view.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -24,31 +26,20 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // email field
-    final emailField = TextFormField(
-        autofocus: false,
-        keyboardType: TextInputType.text,
-        // validator: (){},
-        onSaved: (value) {
-          email = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.mail,
-            color: Color.fromARGB(255, 120, 196, 255),
-          ),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Adresse E-mail",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
-
-    // password field
-
     var centre = MainAxisAlignment.center;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => premierScreen()));
+            },
+            color: Colors.pink),
+        toolbarHeight: 60,
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
@@ -64,17 +55,17 @@ class _SignInScreenState extends State<SignInScreen> {
                         alignment: Alignment.bottomLeft,
                         child: Image.asset(
                           "assets/appbar1.jpeg",
-                          height: 150,
+                          height: 190,
                           fit: BoxFit.scaleDown,
                         )),
-                    const SizedBox(height: 85, width: 70),
+                    const SizedBox(height: 70, width: 70),
                     const SizedBox(
                         width: double.infinity,
                         child: Center(
                           child: Text(
                             'CONNEXION',
                             style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 26,
                                 color: Color.fromARGB(255, 47, 34, 125)),
                           ),
                         )),
@@ -85,11 +76,11 @@ class _SignInScreenState extends State<SignInScreen> {
                           child: Text(
                             'Veuillez entrer vos identifiants ci-dessous',
                             style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 15,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         )),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     TextFormField(
                         autofocus: false,
                         keyboardType: TextInputType.emailAddress,
@@ -212,7 +203,7 @@ class _SignInScreenState extends State<SignInScreen> {
             .signInWithEmailAndPassword(
                 email: email.trim(), password: password);
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MenuScreen()));
+            context, MaterialPageRoute(builder: (context) => MenuView()));
       } on FirebaseAuthException catch (e) {
         showDialog(
             context: context,

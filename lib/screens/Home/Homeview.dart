@@ -22,9 +22,10 @@ class HomeView extends StatelessWidget {
       onModelReady: (model) => model.GetUser(),
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
-            title: const Text("Profile"),
+            title: const Text("Profil"),
+            toolbarHeight: 60,
             centerTitle: true,
-            backgroundColor: Colors.grey[350],
+            backgroundColor: Colors.red[200],
           ),
           backgroundColor: Colors.grey[200],
           body: Container(
@@ -93,7 +94,7 @@ class HomeView extends StatelessWidget {
                           ), // SizedBox
                           Padding(
                             padding: const EdgeInsets.only(right: 120.0),
-                            child: Text("Nome et Prénom"),
+                            child: Text("Nom et Prénom"),
                           ),
                           Obx(
                             () => Padding(

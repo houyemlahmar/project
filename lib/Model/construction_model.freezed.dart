@@ -30,10 +30,24 @@ mixin _$ConstructionModel {
   set offre(String? value) => throw _privateConstructorUsedError;
   String? get reference => throw _privateConstructorUsedError;
   set reference(String? value) => throw _privateConstructorUsedError;
-  String? get time => throw _privateConstructorUsedError;
-  set time(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'created_at',
+      fromJson: _createdAtFromJson,
+      toJson: _createdAtToJson)
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'created_at',
+      fromJson: _createdAtFromJson,
+      toJson: _createdAtToJson)
+  set createdAt(DateTime value) => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   set userId(String? value) => throw _privateConstructorUsedError;
+  String? get id_region => throw _privateConstructorUsedError;
+  set id_region(String? value) => throw _privateConstructorUsedError;
+  String? get id_rue => throw _privateConstructorUsedError;
+  set id_rue(String? value) => throw _privateConstructorUsedError;
+  String? get id_boite => throw _privateConstructorUsedError;
+  set id_boite(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,8 +66,12 @@ abstract class $ConstructionModelCopyWith<$Res> {
       String? etatDemande,
       String? offre,
       String? reference,
-      String? time,
-      String? userId});
+      @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
+          DateTime createdAt,
+      String? userId,
+      String? id_region,
+      String? id_rue,
+      String? id_boite});
 }
 
 /// @nodoc
@@ -72,8 +90,11 @@ class _$ConstructionModelCopyWithImpl<$Res>
     Object? etatDemande = freezed,
     Object? offre = freezed,
     Object? reference = freezed,
-    Object? time = freezed,
+    Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? id_region = freezed,
+    Object? id_rue = freezed,
+    Object? id_boite = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -96,13 +117,25 @@ class _$ConstructionModelCopyWithImpl<$Res>
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
               as String?,
-      time: time == freezed
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as String?,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_region: id_region == freezed
+          ? _value.id_region
+          : id_region // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_rue: id_rue == freezed
+          ? _value.id_rue
+          : id_rue // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_boite: id_boite == freezed
+          ? _value.id_boite
+          : id_boite // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -121,8 +154,12 @@ abstract class _$$_ConstructionModelCopyWith<$Res>
       String? etatDemande,
       String? offre,
       String? reference,
-      String? time,
-      String? userId});
+      @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
+          DateTime createdAt,
+      String? userId,
+      String? id_region,
+      String? id_rue,
+      String? id_boite});
 }
 
 /// @nodoc
@@ -143,8 +180,11 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
     Object? etatDemande = freezed,
     Object? offre = freezed,
     Object? reference = freezed,
-    Object? time = freezed,
+    Object? createdAt = freezed,
     Object? userId = freezed,
+    Object? id_region = freezed,
+    Object? id_rue = freezed,
+    Object? id_boite = freezed,
   }) {
     return _then(_$_ConstructionModel(
       id: id == freezed
@@ -167,13 +207,25 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
               as String?,
-      time: time == freezed
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as String?,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_region: id_region == freezed
+          ? _value.id_region
+          : id_region // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_rue: id_rue == freezed
+          ? _value.id_rue
+          : id_rue // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id_boite: id_boite == freezed
+          ? _value.id_boite
+          : id_boite // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -190,8 +242,12 @@ class _$_ConstructionModel
       this.etatDemande,
       this.offre,
       this.reference,
-      this.time,
-      this.userId});
+      @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
+          required this.createdAt,
+      this.userId,
+      this.id_region,
+      this.id_rue,
+      this.id_boite});
 
   factory _$_ConstructionModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConstructionModelFromJson(json);
@@ -207,13 +263,23 @@ class _$_ConstructionModel
   @override
   String? reference;
   @override
-  String? time;
+  @JsonKey(
+      name: 'created_at',
+      fromJson: _createdAtFromJson,
+      toJson: _createdAtToJson)
+  DateTime createdAt;
   @override
   String? userId;
+  @override
+  String? id_region;
+  @override
+  String? id_rue;
+  @override
+  String? id_boite;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, offre: $offre, reference: $reference, time: $time, userId: $userId)';
+    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, offre: $offre, reference: $reference, createdAt: $createdAt, userId: $userId, id_region: $id_region, id_rue: $id_rue, id_boite: $id_boite)';
   }
 
   @override
@@ -226,8 +292,11 @@ class _$_ConstructionModel
       ..add(DiagnosticsProperty('etatDemande', etatDemande))
       ..add(DiagnosticsProperty('offre', offre))
       ..add(DiagnosticsProperty('reference', reference))
-      ..add(DiagnosticsProperty('time', time))
-      ..add(DiagnosticsProperty('userId', userId));
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('id_region', id_region))
+      ..add(DiagnosticsProperty('id_rue', id_rue))
+      ..add(DiagnosticsProperty('id_boite', id_boite));
   }
 
   @JsonKey(ignore: true)
@@ -249,8 +318,12 @@ abstract class _ConstructionModel implements ConstructionModel {
       String? etatDemande,
       String? offre,
       String? reference,
-      String? time,
-      String? userId}) = _$_ConstructionModel;
+      @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
+          required DateTime createdAt,
+      String? userId,
+      String? id_region,
+      String? id_rue,
+      String? id_boite}) = _$_ConstructionModel;
 
   factory _ConstructionModel.fromJson(Map<String, dynamic> json) =
       _$_ConstructionModel.fromJson;
@@ -266,9 +339,19 @@ abstract class _ConstructionModel implements ConstructionModel {
   @override
   String? get reference => throw _privateConstructorUsedError;
   @override
-  String? get time => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'created_at',
+      fromJson: _createdAtFromJson,
+      toJson: _createdAtToJson)
+  DateTime get createdAt => throw _privateConstructorUsedError;
   @override
   String? get userId => throw _privateConstructorUsedError;
+  @override
+  String? get id_region => throw _privateConstructorUsedError;
+  @override
+  String? get id_rue => throw _privateConstructorUsedError;
+  @override
+  String? get id_boite => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ConstructionModelCopyWith<_$_ConstructionModel> get copyWith =>

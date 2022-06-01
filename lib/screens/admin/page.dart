@@ -14,20 +14,21 @@ class page extends StatelessWidget {
     var _signOut;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ADMINISTRATEUR'),
+          title: const Text('Admin'),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
           backgroundColor: Colors.transparent,
-          toolbarHeight: 100,
+          toolbarHeight: 60,
+          centerTitle: true,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => signinadmin()));
               },
-              color: Colors.grey),
+              color: Colors.pink),
         ),
         backgroundColor: Colors.indigo[50],
         body: Center(

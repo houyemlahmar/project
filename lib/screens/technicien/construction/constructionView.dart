@@ -19,7 +19,7 @@ class _ConstructionViewState extends State<ConstructionView> {
       onModelReady: (viewmodel) => viewmodel.init(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('ORDRES DES TRAVAUX'),
+          title: const Text('Ordres de travaux'),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
@@ -31,14 +31,13 @@ class _ConstructionViewState extends State<ConstructionView> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => technicien()));
               },
-              color: Colors.grey),
-          toolbarHeight: 100,
+              color: Colors.amberAccent),
+          toolbarHeight: 60,
+          centerTitle: true,
         ),
         backgroundColor: Colors.indigo[50],
         body: Container(
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+          child: ListView(
               children: <Widget>[
                 StreamBuilder(
                     stream: viewmodel.consts,

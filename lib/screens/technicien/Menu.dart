@@ -15,13 +15,14 @@ class technicien extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('TECHNICIEN'),
+          title: const Text('Technicien'),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
           backgroundColor: Colors.transparent,
-          toolbarHeight: 100,
+          toolbarHeight: 60,
+          centerTitle: true,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -30,7 +31,7 @@ class technicien extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => signintechnicien()));
               },
-              color: Colors.grey),
+              color: Colors.pink),
         ),
         backgroundColor: Colors.indigo[50],
         body: Center(
@@ -55,7 +56,7 @@ class technicien extends StatelessWidget {
                   const SizedBox(height: 10),
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
-                      title: "Constructions traitées",
+                      title: "Ordres traités",
                       onPressed: () {
                         Navigator.push(
                             context,

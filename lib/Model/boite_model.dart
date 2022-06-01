@@ -11,8 +11,8 @@ class BoiteModel with _$BoiteModel {
       {String? id_boite,
       String? id_region,
       String? id_rue,
-      String? nbr_max,
-      String? nbr_used}) = _BoiteModel;
+      @Default(0) int nbr_max,
+      @Default(0) int nbr_used}) = _BoiteModel;
   factory BoiteModel.fromDocument(DocumentSnapshot doc) =>
       BoiteModel.fromJson(doc.data() as Map<String, dynamic>)
           .copyWith(id_boite: doc.id);

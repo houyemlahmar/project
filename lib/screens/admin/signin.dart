@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:login/screens/admin/page.dart';
 
 import 'package:login/screens/menu-screen.dart';
+import 'package:login/screens/premier_screen.dart';
 
 class signinadmin extends StatefulWidget {
   const signinadmin({Key? key}) : super(key: key);
@@ -17,38 +18,27 @@ class _signinadminState extends State<signinadmin> {
   var _formKey = GlobalKey<FormState>();
 
   // textform fields value
-  var email, password;
+  var e_mail, mp;
 
   // firebase
   final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
-    // email field
-    final emailField = TextFormField(
-        autofocus: false,
-        keyboardType: TextInputType.text,
-        // validator: (){},
-        onSaved: (value) {
-          email = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.mail,
-            color: Color.fromARGB(255, 120, 196, 255),
-          ),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Adresse E-mail",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
-
-    // password field
-
     var centre = MainAxisAlignment.center;
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => premierScreen()));
+              },
+              color: Colors.pink),
+          toolbarHeight: 60,
+          centerTitle: true,
+        ),
         backgroundColor: Colors.white,
         body: Center(
           child: SingleChildScrollView(
@@ -104,7 +94,7 @@ class _signinadminState extends State<signinadmin> {
                           return null;
                         },
                         onSaved: (value) {
-                          email = value!;
+                          e_mail = value!;
                         },
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
@@ -136,7 +126,7 @@ class _signinadminState extends State<signinadmin> {
                           }
                         },
                         onSaved: (value) {
-                          password = value!;
+                          mp = value!;
                         },
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
@@ -189,7 +179,7 @@ class _signinadminState extends State<signinadmin> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
-                email: email.trim(), password: password);
+                email: e_mail.trim(), password: mp);
 
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => page()));
