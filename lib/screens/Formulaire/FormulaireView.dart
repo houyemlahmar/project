@@ -70,6 +70,7 @@ class FormulaireView extends StatelessWidget {
               onChanged: (String? newValue) {
                 if (newValue != null) {
                   model.setSelectedRegion(newValue);
+                  
                 }
               },
               items: _dropDownMenuItems,

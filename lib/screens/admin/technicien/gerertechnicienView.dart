@@ -18,7 +18,6 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<geretechnicienVieModel>.reactive(
-      onModelReady: (viewmodel) => viewmodel.gere(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Liste des Techniciens'),
@@ -38,11 +37,12 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
               color: Colors.blue[900]),
         ),
         backgroundColor: Colors.indigo[50],
+
         body: Column(
-          children: [ 
+          children: [
             SizedBox(height: 15),
             StreamBuilder(
-              stream: viewmodel.consts,
+              stream: viewmodel.getgere(),
               builder: (context, AsyncSnapshot<List<techModel>> snapshots) {
                 if (snapshots.hasData) {
                   return ListView.builder(
@@ -71,35 +71,55 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                       vertical: 8.0,
                                     ),
                                     child: Text(
-                                        "Nom :${model.Nom}    Prénom :${model.Prenom}                         Zone :${model.region}                                                               CIN :${model.CIN}                                                           Numéro de téléphone :${model.Numtele}   "),
+                                        "Nom :${model.Nom} ,Prénom :${model.Prenom}, Region :${model.region} ,CIN :${model.CIN}, Numero_téléphone :${model.Numtele} }  "),
                                   )),
                               ButtonBar(
-                                alignment: MainAxisAlignment.spaceAround,
-                                buttonHeight: 52.0,
-                                buttonMinWidth: 90.0,
-                                children: <Widget>[
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4.0)),
+                                  alignment: MainAxisAlignment.spaceAround,
+                                  buttonHeight: 52.0,
+                                  buttonMinWidth: 90.0,
+                                  children: <Widget>[
+                                    const Divider(
+                                      thickness: 1.0,
+                                      height: 1.0,
                                     ),
-                                    onPressed: () {
-                                      cardA.currentState?.collapse();
-                                    },
-                                    child: Column(
-                                      children: const <Widget>[
-                                        Icon(Icons.arrow_upward),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 2.0),
+                                    Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 20.0,
+                                            vertical: 8.0,
+                                          ),
+                                          child: Text(
+                                              "Nom :${model.Nom}    Prénom :${model.Prenom}                         Zone :${model.region}                                                               CIN :${model.CIN}                                                           Numéro de téléphone :${model.Numtele}   "),
+                                        )),
+                                    ButtonBar(
+                                      alignment: MainAxisAlignment.spaceAround,
+                                      buttonHeight: 52.0,
+                                      buttonMinWidth: 90.0,
+                                      children: <Widget>[
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0)),
+                                          ),
+                                          onPressed: () {
+                                            cardA.currentState?.collapse();
+                                          },
+                                          child: Column(
+                                            children: const <Widget>[
+                                              Icon(Icons.arrow_upward),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 2.0),
+                                              ),
+                                              Text('Fermer'),
+                                            ],
+                                          ),
                                         ),
-                                        Text('Fermer'),
                                       ],
-                                    ),
-                                  ),
-                                ],
-                              )
+                                    )
+                                  ])
                             ]);
                       });
                 }
