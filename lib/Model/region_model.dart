@@ -10,7 +10,7 @@ class RegionModel with _$RegionModel {
       {String? id_region,
       String? nom,
       String? rue,
-      String? code_postal}) = _RegionModel;
+      int? code_postal}) = _RegionModel;
 
   factory RegionModel.fromJson(Map<String, dynamic> json) =>
       _$RegionModelFromJson(json);

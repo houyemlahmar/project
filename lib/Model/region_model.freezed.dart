@@ -23,7 +23,7 @@ mixin _$RegionModel {
   String? get id_region => throw _privateConstructorUsedError;
   String? get nom => throw _privateConstructorUsedError;
   String? get rue => throw _privateConstructorUsedError;
-  String? get code_postal => throw _privateConstructorUsedError;
+  int? get code_postal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $RegionModelCopyWith<$Res> {
   factory $RegionModelCopyWith(
           RegionModel value, $Res Function(RegionModel) then) =
       _$RegionModelCopyWithImpl<$Res>;
-  $Res call({String? id_region, String? nom, String? rue, String? code_postal});
+  $Res call({String? id_region, String? nom, String? rue, int? code_postal});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$RegionModelCopyWithImpl<$Res> implements $RegionModelCopyWith<$Res> {
       code_postal: code_postal == freezed
           ? _value.code_postal
           : code_postal // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$_RegionModelCopyWith<$Res>
           _$_RegionModel value, $Res Function(_$_RegionModel) then) =
       __$$_RegionModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? id_region, String? nom, String? rue, String? code_postal});
+  $Res call({String? id_region, String? nom, String? rue, int? code_postal});
 }
 
 /// @nodoc
@@ -118,7 +118,7 @@ class __$$_RegionModelCopyWithImpl<$Res> extends _$RegionModelCopyWithImpl<$Res>
       code_postal: code_postal == freezed
           ? _value.code_postal
           : code_postal // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
@@ -138,7 +138,7 @@ class _$_RegionModel with DiagnosticableTreeMixin implements _RegionModel {
   @override
   final String? rue;
   @override
-  final String? code_postal;
+  final int? code_postal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -193,7 +193,7 @@ abstract class _RegionModel implements RegionModel {
       {final String? id_region,
       final String? nom,
       final String? rue,
-      final String? code_postal}) = _$_RegionModel;
+      final int? code_postal}) = _$_RegionModel;
 
   factory _RegionModel.fromJson(Map<String, dynamic> json) =
       _$_RegionModel.fromJson;
@@ -205,7 +205,7 @@ abstract class _RegionModel implements RegionModel {
   @override
   String? get rue => throw _privateConstructorUsedError;
   @override
-  String? get code_postal => throw _privateConstructorUsedError;
+  int? get code_postal => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_RegionModelCopyWith<_$_RegionModel> get copyWith =>

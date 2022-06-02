@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:login/Model/region_model.dart';
 import 'package:login/Model/technicien_model.dart';
 import 'package:login/screens/admin/technicien/ajoutertechnicienViewModel.dart';
 import 'package:stacked/stacked.dart';
@@ -20,6 +22,7 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
   final controlleremail = TextEditingController();
   final controllerpassword = TextEditingController();
   techModel user = techModel(id: "");
+  
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AjouterTechnicienViewModel>.reactive(
@@ -46,9 +49,36 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
             decoration: InputDecoration(labelText: 'Prénom'),
           ),
           const SizedBox(height: 20),
-          TextField(
-            controller: controllerRegion,
-            decoration: InputDecoration(labelText: 'Région'),
+          StreamBuilder<List<RegionModel>>(
+            stream:
+                model.getRegions(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<RegionModel>> snapshot) {
+              // Safety check to ensure that snapshot contains data
+              // without this safety check, StreamBuilder dirty state warnings will be thrown
+              if (!snapshot.hasData) return Container();
+              // Set this value for default,
+              // setDefault will change if an item was selected
+              // First item from the List will be displayed
+
+              return Row(
+                children: [
+                  Text('Region'),
+                  const SizedBox(width: 20),
+                  DropdownButton<RegionModel>(
+                    isExpanded: false,
+                    value: model.selectedRegion,
+                    items: snapshot.data!.map((region) {
+                      return DropdownMenuItem<RegionModel>(
+                        value:region ,
+                        child: Text('${region.nom}'),
+                      );
+                    }).toList(),
+                    onChanged: model.setSelectedRegion,
+                  ),
+                ],
+              );
+            },
           ),
           const SizedBox(height: 20),
           TextField(
@@ -90,10 +120,9 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
               tech.region = controllerRegion.text;
               tech.CIN = controllerCIN.text;
               tech.Numtele = controllerNumtele.text;
-              tech.e_mail = controlleremail.text;
-              tech.mp = controllerpassword.text;
 
-              model.createjoute(tech);
+              model.createjoute(
+                  tech, context, controlleremail.text, controllerpassword.text);
               Navigator.pop(context);
             },
           ), // ElevatedButton

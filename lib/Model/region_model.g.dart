@@ -11,7 +11,7 @@ _$_RegionModel _$$_RegionModelFromJson(Map<String, dynamic> json) =>
       id_region: json['id_region'] as String?,
       nom: json['nom'] as String?,
       rue: json['rue'] as String?,
-      code_postal: json['code_postal'] as String?,
+      code_postal: json['code_postal'] as int?,
     );
 
 Map<String, dynamic> _$$_RegionModelToJson(_$_RegionModel instance) =>

@@ -15,8 +15,6 @@ class techModel with _$techModel {
     String? region,
     String? CIN,
     String? Numtele,
-    String? e_mail,
-    String? mp,
   }) = _techModel;
 
   factory techModel.fromDocument(DocumentSnapshot doc) => techModel

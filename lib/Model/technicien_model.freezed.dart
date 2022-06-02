@@ -34,10 +34,6 @@ mixin _$techModel {
   set CIN(String? value) => throw _privateConstructorUsedError;
   String? get Numtele => throw _privateConstructorUsedError;
   set Numtele(String? value) => throw _privateConstructorUsedError;
-  String? get e_mail => throw _privateConstructorUsedError;
-  set e_mail(String? value) => throw _privateConstructorUsedError;
-  String? get mp => throw _privateConstructorUsedError;
-  set mp(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,9 +52,7 @@ abstract class $techModelCopyWith<$Res> {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele,
-      String? e_mail,
-      String? mp});
+      String? Numtele});
 }
 
 /// @nodoc
@@ -78,8 +72,6 @@ class _$techModelCopyWithImpl<$Res> implements $techModelCopyWith<$Res> {
     Object? region = freezed,
     Object? CIN = freezed,
     Object? Numtele = freezed,
-    Object? e_mail = freezed,
-    Object? mp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -110,14 +102,6 @@ class _$techModelCopyWithImpl<$Res> implements $techModelCopyWith<$Res> {
           ? _value.Numtele
           : Numtele // ignore: cast_nullable_to_non_nullable
               as String?,
-      e_mail: e_mail == freezed
-          ? _value.e_mail
-          : e_mail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mp: mp == freezed
-          ? _value.mp
-          : mp // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -135,9 +119,7 @@ abstract class _$$_techModelCopyWith<$Res> implements $techModelCopyWith<$Res> {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele,
-      String? e_mail,
-      String? mp});
+      String? Numtele});
 }
 
 /// @nodoc
@@ -159,8 +141,6 @@ class __$$_techModelCopyWithImpl<$Res> extends _$techModelCopyWithImpl<$Res>
     Object? region = freezed,
     Object? CIN = freezed,
     Object? Numtele = freezed,
-    Object? e_mail = freezed,
-    Object? mp = freezed,
   }) {
     return _then(_$_techModel(
       id: id == freezed
@@ -191,14 +171,6 @@ class __$$_techModelCopyWithImpl<$Res> extends _$techModelCopyWithImpl<$Res>
           ? _value.Numtele
           : Numtele // ignore: cast_nullable_to_non_nullable
               as String?,
-      e_mail: e_mail == freezed
-          ? _value.e_mail
-          : e_mail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mp: mp == freezed
-          ? _value.mp
-          : mp // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -213,9 +185,7 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
       this.Prenom,
       this.region,
       this.CIN,
-      this.Numtele,
-      this.e_mail,
-      this.mp});
+      this.Numtele});
 
   factory _$_techModel.fromJson(Map<String, dynamic> json) =>
       _$$_techModelFromJson(json);
@@ -234,14 +204,10 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
   String? CIN;
   @override
   String? Numtele;
-  @override
-  String? e_mail;
-  @override
-  String? mp;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'techModel(id: $id, id_region: $id_region, Nom: $Nom, Prenom: $Prenom, region: $region, CIN: $CIN, Numtele: $Numtele, e_mail: $e_mail, mp: $mp)';
+    return 'techModel(id: $id, id_region: $id_region, Nom: $Nom, Prenom: $Prenom, region: $region, CIN: $CIN, Numtele: $Numtele)';
   }
 
   @override
@@ -255,9 +221,7 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
       ..add(DiagnosticsProperty('Prenom', Prenom))
       ..add(DiagnosticsProperty('region', region))
       ..add(DiagnosticsProperty('CIN', CIN))
-      ..add(DiagnosticsProperty('Numtele', Numtele))
-      ..add(DiagnosticsProperty('e_mail', e_mail))
-      ..add(DiagnosticsProperty('mp', mp));
+      ..add(DiagnosticsProperty('Numtele', Numtele));
   }
 
   @JsonKey(ignore: true)
@@ -279,9 +243,7 @@ abstract class _techModel implements techModel {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele,
-      String? e_mail,
-      String? mp}) = _$_techModel;
+      String? Numtele}) = _$_techModel;
 
   factory _techModel.fromJson(Map<String, dynamic> json) =
       _$_techModel.fromJson;
@@ -300,10 +262,6 @@ abstract class _techModel implements techModel {
   String? get CIN => throw _privateConstructorUsedError;
   @override
   String? get Numtele => throw _privateConstructorUsedError;
-  @override
-  String? get e_mail => throw _privateConstructorUsedError;
-  @override
-  String? get mp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_techModelCopyWith<_$_techModel> get copyWith =>

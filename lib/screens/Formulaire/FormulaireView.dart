@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Model/region_model.dart';
+import 'package:login/Model/rue_model.dart';
 import 'package:login/screens/Formulaire/FormulaireViewModel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -8,15 +10,6 @@ class FormulaireView extends StatelessWidget {
 
   String? selectedValue;
 
-  final List<DropdownMenuItem<String>> _dropDownMenuItems =
-      FormulaireViewModel.regions
-          .map(
-            (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
-          )
-          .toList();
   final List<DropdownMenuItem<String>> _dropDownCollection1 =
       FormulaireViewModel.adresses
           .map(
@@ -62,21 +55,64 @@ class FormulaireView extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               )),
           const SizedBox(height: 80),
-          ListTile(
-            title: const Text('Région:'),
-            trailing: DropdownButton<String>(
-              // Must be one of items.value.
-              value: model.selectedRegion,
-              onChanged: (String? newValue) {
-                if (newValue != null) {
-                  model.setSelectedRegion(newValue);
-                  
-                }
-              },
-              items: _dropDownMenuItems,
-            ),
+             StreamBuilder<List<RegionModel>>(
+            stream:
+                model.getRegions(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<RegionModel>> snapshot) {
+              // Safety check to ensure that snapshot contains data
+              // without this safety check, StreamBuilder dirty state warnings will be thrown
+              if (!snapshot.hasData) return Container();
+              // Set this value for default,
+              // setDefault will change if an item was selected
+              // First item from the List will be displayed
+
+              return   ListTile(
+            title: const Text('Region:'),
+            trailing :
+                  DropdownButton<RegionModel>(
+                    isExpanded: false,
+                    value: model.selectedRegion,
+                    items: snapshot.data!.map((region) {
+                      return DropdownMenuItem<RegionModel>(
+                        value:region ,
+                        child: Text('${region.nom}'),
+                      );
+                    }).toList(),
+                    onChanged: model.setSelectedRegion,
+                  ),
+                
+              );
+            },
           ),
           const SizedBox(height: 15),
+                StreamBuilder<List<RueModel>>(
+            stream: model.rues,
+            builder: (BuildContext context,
+                AsyncSnapshot<List<RueModel>> snapshot) {
+              // Safety check to ensure that snapshot contains data
+              // without this safety check, StreamBuilder dirty state warnings will be thrown
+              if (!snapshot.hasData) return Container();
+              // Set this value for default,
+              // setDefault will change if an item was selected
+              // First item from the List will be displayed
+
+              return ListTile(
+                title: const Text('Region:'),
+                trailing: DropdownButton<RueModel>(
+                  isExpanded: false,
+                  value: model.selectedRue,
+                  items: snapshot.data!.map((rue) {
+                    return DropdownMenuItem<RueModel>(
+                      value: rue,
+                      child: Text('${rue.nom}'),
+                    );
+                  }).toList(),
+                  onChanged: model.setSelectedRue,
+                ),
+              );
+            },
+          ),
           ListTile(
             title: const Text('Adresse:'),
             trailing: DropdownButton<String>(

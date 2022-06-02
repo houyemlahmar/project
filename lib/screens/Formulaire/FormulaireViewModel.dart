@@ -7,18 +7,13 @@ import 'package:login/Model/rue_model.dart';
 import 'package:stacked/stacked.dart';
 
 class FormulaireViewModel extends BaseViewModel {
-  String selectedRegion = 'Sahloul ';
+  RegionModel? selectedRegion;
+  RueModel? selectedRue;
   String selectedAdresse = 'Rue Tataouin';
   String selectedOffer = 'WAFFI';
   String selectedDebit = '8';
 
-  static const regions = <String>[
-    'Sahloul ',
-    'Hammam Sousse 4011',
-    'Kalaa Kbira 4060',
-    'Akouda 4022'
-        'Khzama 4051'
-  ];
+
   static const adresses = <String>['Rue Tataouin', 'Rue Soudan'];
   static const offers = <String>[
     'WAFFI',
@@ -39,8 +34,14 @@ class FormulaireViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  setSelectedRegion(String regions) {
-    selectedRegion = regions;
+  setSelectedRegion(RegionModel? region) {
+    selectedRegion = region;
+    getRues();
+    notifyListeners();
+  }
+
+  setSelectedRue(RueModel? rue) {
+    selectedRue = rue;
     notifyListeners();
   }
 
@@ -58,7 +59,7 @@ class FormulaireViewModel extends BaseViewModel {
     var demande = ConstructionModel(
         debit: int.parse(selectedDebit),
         offre: selectedOffer,
-        id_region: selectedRegion,
+        id_region: selectedRegion?.id_region,
         id_rue: selectedAdresse,
         userId: FirebaseAuth.instance.currentUser?.uid,
         reference: FirebaseAuth.instance.currentUser?.uid,
@@ -93,5 +94,28 @@ class FormulaireViewModel extends BaseViewModel {
   updateBoite(String? idBoite, int used) {
     final doc = FirebaseFirestore.instance.collection('Boite').doc(idBoite);
     doc.update({"nbr_used": used + 1});
+  }
+
+  Stream<List<RegionModel>> getRegions() {
+    final collection =
+        FirebaseFirestore.instance.collection('regions').snapshots();
+
+    return collection.map((QuerySnapshot snapshots) {
+      return snapshots.docs.map((e) => RegionModel.fromDocument(e)).toList();
+    });
+  }
+
+  Stream<List<RueModel>> rues = Stream.empty();
+  getRues() {
+    final collection = selectedRegion == null
+        ? FirebaseFirestore.instance.collection('rues').snapshots()
+        : FirebaseFirestore.instance
+            .collection('rues')
+            .where("id_region", isEqualTo: selectedRegion?.id_region)
+            .snapshots();
+
+    rues = collection.map((QuerySnapshot snapshots) {
+      return snapshots.docs.map((e) => RueModel.fromDocument(e)).toList();
+    });
   }
 }
