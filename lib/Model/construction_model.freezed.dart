@@ -48,6 +48,8 @@ mixin _$ConstructionModel {
   set id_rue(String? value) => throw _privateConstructorUsedError;
   String? get id_boite => throw _privateConstructorUsedError;
   set id_boite(String? value) => throw _privateConstructorUsedError;
+  String? get code_postal => throw _privateConstructorUsedError;
+  set code_postal(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,7 +73,8 @@ abstract class $ConstructionModelCopyWith<$Res> {
       String? userId,
       String? id_region,
       String? id_rue,
-      String? id_boite});
+      String? id_boite,
+      String? code_postal});
 }
 
 /// @nodoc
@@ -95,6 +98,7 @@ class _$ConstructionModelCopyWithImpl<$Res>
     Object? id_region = freezed,
     Object? id_rue = freezed,
     Object? id_boite = freezed,
+    Object? code_postal = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -137,6 +141,10 @@ class _$ConstructionModelCopyWithImpl<$Res>
           ? _value.id_boite
           : id_boite // ignore: cast_nullable_to_non_nullable
               as String?,
+      code_postal: code_postal == freezed
+          ? _value.code_postal
+          : code_postal // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -159,7 +167,8 @@ abstract class _$$_ConstructionModelCopyWith<$Res>
       String? userId,
       String? id_region,
       String? id_rue,
-      String? id_boite});
+      String? id_boite,
+      String? code_postal});
 }
 
 /// @nodoc
@@ -185,6 +194,7 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
     Object? id_region = freezed,
     Object? id_rue = freezed,
     Object? id_boite = freezed,
+    Object? code_postal = freezed,
   }) {
     return _then(_$_ConstructionModel(
       id: id == freezed
@@ -227,6 +237,10 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
           ? _value.id_boite
           : id_boite // ignore: cast_nullable_to_non_nullable
               as String?,
+      code_postal: code_postal == freezed
+          ? _value.code_postal
+          : code_postal // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -247,7 +261,8 @@ class _$_ConstructionModel
       this.userId,
       this.id_region,
       this.id_rue,
-      this.id_boite});
+      this.id_boite,
+      this.code_postal});
 
   factory _$_ConstructionModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConstructionModelFromJson(json);
@@ -276,10 +291,12 @@ class _$_ConstructionModel
   String? id_rue;
   @override
   String? id_boite;
+  @override
+  String? code_postal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, offre: $offre, reference: $reference, createdAt: $createdAt, userId: $userId, id_region: $id_region, id_rue: $id_rue, id_boite: $id_boite)';
+    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, offre: $offre, reference: $reference, createdAt: $createdAt, userId: $userId, id_region: $id_region, id_rue: $id_rue, id_boite: $id_boite, code_postal: $code_postal)';
   }
 
   @override
@@ -296,7 +313,8 @@ class _$_ConstructionModel
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('id_region', id_region))
       ..add(DiagnosticsProperty('id_rue', id_rue))
-      ..add(DiagnosticsProperty('id_boite', id_boite));
+      ..add(DiagnosticsProperty('id_boite', id_boite))
+      ..add(DiagnosticsProperty('code_postal', code_postal));
   }
 
   @JsonKey(ignore: true)
@@ -323,7 +341,8 @@ abstract class _ConstructionModel implements ConstructionModel {
       String? userId,
       String? id_region,
       String? id_rue,
-      String? id_boite}) = _$_ConstructionModel;
+      String? id_boite,
+      String? code_postal}) = _$_ConstructionModel;
 
   factory _ConstructionModel.fromJson(Map<String, dynamic> json) =
       _$_ConstructionModel.fromJson;
@@ -352,6 +371,8 @@ abstract class _ConstructionModel implements ConstructionModel {
   String? get id_rue => throw _privateConstructorUsedError;
   @override
   String? get id_boite => throw _privateConstructorUsedError;
+  @override
+  String? get code_postal => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ConstructionModelCopyWith<_$_ConstructionModel> get copyWith =>

@@ -22,7 +22,7 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
   final controlleremail = TextEditingController();
   final controllerpassword = TextEditingController();
   techModel user = techModel(id: "");
-  
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AjouterTechnicienViewModel>.reactive(
@@ -50,10 +50,9 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
           ),
           const SizedBox(height: 20),
           StreamBuilder<List<RegionModel>>(
-            stream:
-                model.getRegions(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<RegionModel>> snapshot) {
+            stream: model.getRegions(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<RegionModel>> snapshot) {
               // Safety check to ensure that snapshot contains data
               // without this safety check, StreamBuilder dirty state warnings will be thrown
               if (!snapshot.hasData) return Container();
@@ -63,14 +62,14 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
 
               return Row(
                 children: [
-                  Text('Region'),
+                  Text('Région'),
                   const SizedBox(width: 20),
                   DropdownButton<RegionModel>(
                     isExpanded: false,
                     value: model.selectedRegion,
                     items: snapshot.data!.map((region) {
                       return DropdownMenuItem<RegionModel>(
-                        value:region ,
+                        value: region,
                         child: Text('${region.nom}'),
                       );
                     }).toList(),

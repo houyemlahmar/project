@@ -28,8 +28,19 @@ class premierScreen extends StatelessWidget {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          const SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  'Bienvenue chez Tunisie Télécom',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      color: Color.fromARGB(255, 17, 67, 107)),
+                                ),
+                              )),
+                          const SizedBox(height: 60),
                           Container(
-                            margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            margin: const EdgeInsets.fromLTRB(60, 15, 60, 15),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary:
@@ -54,7 +65,7 @@ class premierScreen extends StatelessWidget {
                                 }),
                           ),
                           Container(
-                            margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            margin: const EdgeInsets.fromLTRB(60, 15, 60, 15),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary:
@@ -78,7 +89,7 @@ class premierScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            margin: const EdgeInsets.fromLTRB(60, 15, 60, 15),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary:

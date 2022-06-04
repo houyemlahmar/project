@@ -10,15 +10,6 @@ class FormulaireView extends StatelessWidget {
 
   String? selectedValue;
 
-  final List<DropdownMenuItem<String>> _dropDownCollection1 =
-      FormulaireViewModel.adresses
-          .map(
-            (String val1) => DropdownMenuItem<String>(
-              value: val1,
-              child: Text(val1),
-            ),
-          )
-          .toList();
   final List<DropdownMenuItem<String>> _dropDownCollection =
       FormulaireViewModel.offers
           .map(
@@ -55,41 +46,10 @@ class FormulaireView extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               )),
           const SizedBox(height: 80),
-             StreamBuilder<List<RegionModel>>(
-            stream:
-                model.getRegions(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<RegionModel>> snapshot) {
-              // Safety check to ensure that snapshot contains data
-              // without this safety check, StreamBuilder dirty state warnings will be thrown
-              if (!snapshot.hasData) return Container();
-              // Set this value for default,
-              // setDefault will change if an item was selected
-              // First item from the List will be displayed
-
-              return   ListTile(
-            title: const Text('Region:'),
-            trailing :
-                  DropdownButton<RegionModel>(
-                    isExpanded: false,
-                    value: model.selectedRegion,
-                    items: snapshot.data!.map((region) {
-                      return DropdownMenuItem<RegionModel>(
-                        value:region ,
-                        child: Text('${region.nom}'),
-                      );
-                    }).toList(),
-                    onChanged: model.setSelectedRegion,
-                  ),
-                
-              );
-            },
-          ),
-          const SizedBox(height: 15),
-                StreamBuilder<List<RueModel>>(
-            stream: model.rues,
+          StreamBuilder<List<RegionModel>>(
+            stream: model.getRegions(),
             builder: (BuildContext context,
-                AsyncSnapshot<List<RueModel>> snapshot) {
+                AsyncSnapshot<List<RegionModel>> snapshot) {
               // Safety check to ensure that snapshot contains data
               // without this safety check, StreamBuilder dirty state warnings will be thrown
               if (!snapshot.hasData) return Container();
@@ -98,7 +58,63 @@ class FormulaireView extends StatelessWidget {
               // First item from the List will be displayed
 
               return ListTile(
-                title: const Text('Region:'),
+                title: const Text('Région:'),
+                trailing: DropdownButton<RegionModel>(
+                  isExpanded: false,
+                  value: model.selectedRegion,
+                  items: snapshot.data!.map((region) {
+                    return DropdownMenuItem<RegionModel>(
+                      value: region,
+                      child: Text('${region.nom}'),
+                    );
+                  }).toList(),
+                  onChanged: model.setSelectedRegion,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 15),
+          StreamBuilder<List<RegionModel>>(
+            stream: model.codepostal,
+            builder: (BuildContext context,
+                AsyncSnapshot<List<RegionModel>> snapshot) {
+              // Safety check to ensure that snapshot contains data
+              // without this safety check, StreamBuilder dirty state warnings will be thrown
+              if (!snapshot.hasData) return Container();
+              // Set this value for default,
+              // setDefault will change if an item was selected
+              // First item from the List will be displayed
+
+              return ListTile(
+                title: const Text('Code postal:'),
+                trailing: DropdownButton<RegionModel>(
+                  isExpanded: false,
+                  value: model.selectedCodepostal,
+                  items: snapshot.data!.map((codepostal) {
+                    return DropdownMenuItem<RegionModel>(
+                      value: codepostal,
+                      child: Text('${codepostal.nom}'),
+                    );
+                  }).toList(),
+                  onChanged: model.setSelectedCodepostal,
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 15),
+          StreamBuilder<List<RueModel>>(
+            stream: model.rues,
+            builder:
+                (BuildContext context, AsyncSnapshot<List<RueModel>> snapshot) {
+              // Safety check to ensure that snapshot contains data
+              // without this safety check, StreamBuilder dirty state warnings will be thrown
+              if (!snapshot.hasData) return Container();
+              // Set this value for default,
+              // setDefault will change if an item was selected
+              // First item from the List will be displayed
+
+              return ListTile(
+                title: const Text('Rue:'),
                 trailing: DropdownButton<RueModel>(
                   isExpanded: false,
                   value: model.selectedRue,
@@ -112,19 +128,6 @@ class FormulaireView extends StatelessWidget {
                 ),
               );
             },
-          ),
-          ListTile(
-            title: const Text('Adresse:'),
-            trailing: DropdownButton<String>(
-              // Must be one of items.value.
-              value: model.selectedAdresse,
-              onChanged: (String? newVal1) {
-                if (newVal1 != null) {
-                  model.setSelectedAdresse(newVal1);
-                }
-              },
-              items: _dropDownCollection1,
-            ),
           ),
           const SizedBox(height: 15),
           ListTile(
@@ -156,17 +159,6 @@ class FormulaireView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Container(
-            height: 200,
-            child: CupertinoDatePicker(
-              mode: CupertinoDatePickerMode.date,
-              initialDateTime: DateTime(2022, 1, 1),
-              onDateTimeChanged: (DateTime newDateTime) {
-                // Do something
-              },
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
             margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -178,9 +170,7 @@ class FormulaireView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
               ),
               child: const Text("Enregistrer", textAlign: TextAlign.center),
-              onPressed:
-                model.createDemande,
-             
+              onPressed: model.createDemande,
             ),
           ),
         ])),

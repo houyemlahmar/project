@@ -8,11 +8,11 @@ import 'package:stacked/stacked.dart';
 
 class FormulaireViewModel extends BaseViewModel {
   RegionModel? selectedRegion;
+  RegionModel? selectedCodepostal;
   RueModel? selectedRue;
   String selectedAdresse = 'Rue Tataouin';
   String selectedOffer = 'WAFFI';
   String selectedDebit = '8';
-
 
   static const adresses = <String>['Rue Tataouin', 'Rue Soudan'];
   static const offers = <String>[
@@ -37,11 +37,17 @@ class FormulaireViewModel extends BaseViewModel {
   setSelectedRegion(RegionModel? region) {
     selectedRegion = region;
     getRues();
+    getCodepostal();
     notifyListeners();
   }
 
   setSelectedRue(RueModel? rue) {
     selectedRue = rue;
+    notifyListeners();
+  }
+
+  setSelectedCodepostal(RegionModel? codepostal) {
+    selectedCodepostal = codepostal;
     notifyListeners();
   }
 
@@ -61,6 +67,7 @@ class FormulaireViewModel extends BaseViewModel {
         offre: selectedOffer,
         id_region: selectedRegion?.id_region,
         id_rue: selectedAdresse,
+        code_postal: selectedCodepostal?.id_region,
         userId: FirebaseAuth.instance.currentUser?.uid,
         reference: FirebaseAuth.instance.currentUser?.uid,
         createdAt: DateTime.now());
@@ -116,6 +123,20 @@ class FormulaireViewModel extends BaseViewModel {
 
     rues = collection.map((QuerySnapshot snapshots) {
       return snapshots.docs.map((e) => RueModel.fromDocument(e)).toList();
+    });
+  }
+
+  Stream<List<RegionModel>> codepostal = Stream.empty();
+  getCodepostal() {
+    final collection = selectedRegion == null
+        ? FirebaseFirestore.instance.collection('regions').snapshots()
+        : FirebaseFirestore.instance
+            .collection('regions')
+            .where("id_region", isEqualTo: selectedRegion?.code_postal)
+            .snapshots();
+
+    codepostal = collection.map((QuerySnapshot snapshots) {
+      return snapshots.docs.map((e) => RegionModel.fromDocument(e)).toList();
     });
   }
 }

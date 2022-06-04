@@ -18,6 +18,7 @@ _$_ConstructionModel _$$_ConstructionModelFromJson(Map<String, dynamic> json) =>
       id_region: json['id_region'] as String?,
       id_rue: json['id_rue'] as String?,
       id_boite: json['id_boite'] as String?,
+      code_postal: json['code_postal'] as String?,
     );
 
 Map<String, dynamic> _$$_ConstructionModelToJson(
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$_ConstructionModelToJson(
       'id_region': instance.id_region,
       'id_rue': instance.id_rue,
       'id_boite': instance.id_boite,
+      'code_postal': instance.code_postal,
     };

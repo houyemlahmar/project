@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:login/Model/region_model.dart';
 
 part 'construction_model.freezed.dart';
 part 'construction_model.g.dart';
@@ -22,6 +23,7 @@ class ConstructionModel with _$ConstructionModel {
     String? id_region,
     String? id_rue,
     String? id_boite,
+    String? code_postal,
   }) = _ConstructionModel;
   factory ConstructionModel.fromDocument(DocumentSnapshot doc) =>
       ConstructionModel.fromJson(doc.data() as Map<String, dynamic>)
