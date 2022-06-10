@@ -25,7 +25,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.blue.shade200,
+          backgroundColor: Colors.blue[300],
           toolbarHeight: 60,
           centerTitle: true,
           leading: IconButton(
@@ -34,7 +34,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page()));
               },
-              color: Colors.blue[900]),
+              color: Colors.white),
         ),
         backgroundColor: Colors.indigo[50],
 
@@ -53,7 +53,6 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                         return ExpansionTileCard(
                             baseColor: Colors.cyan[50],
                             expandedColor: Colors.red[50],
-                            leading: CircleAvatar(),
                             title: const Text(
                               "Technicien",
                               style: TextStyle(fontSize: 20),
@@ -71,7 +70,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                       vertical: 8.0,
                                     ),
                                     child: Text(
-                                        "Nom :${model.Nom} ,Prénom :${model.Prenom}, Region :${model.region} ,CIN :${model.CIN}, Numero_téléphone :${model.Numtele} }  "),
+                                        "Nom : ${model.Nom}   Prénom : ${model.Prenom}                        Zone : Hammam Sousse   CIN : ${model.CIN}                    Numéro tél : ${model.Numtele}   "),
                                   )),
                               ButtonBar(
                                 alignment: MainAxisAlignment.spaceAround,
@@ -87,14 +86,29 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                     onPressed: () {
                                       cardA.currentState?.collapse();
                                     },
-                                    child: Column(
-                                      children: const <Widget>[
-                                        Icon(Icons.arrow_upward),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 2.0),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          children: const <Widget>[
+                                            Icon(Icons.edit),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 2.0),
+                                            ),
+                                            Text('Modifier'),
+                                          ],
                                         ),
-                                        Text('Fermer'),
+                                        SizedBox(width: 50),
+                                        Column(
+                                          children: const <Widget>[
+                                            Icon(Icons.delete_outline),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 2.0),
+                                            ),
+                                            Text('Supprimer'),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),

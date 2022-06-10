@@ -17,15 +17,19 @@ class DemandeView extends StatelessWidget {
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Liste des demandes',
-              style: TextStyle(fontSize: 25, color: Colors.white)),
-          backgroundColor: Colors.red[200],
+              style: TextStyle(fontSize: 23, color: Colors.white)),
+          flexibleSpace: const Image(
+            image: AssetImage('assets/TT2.png'),
+            fit: BoxFit.cover,
+          ),
+          backgroundColor: Color.fromARGB(255, 245, 207, 70),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => MenuView()));
               },
-              color: Colors.pink),
+              color: Colors.white),
           toolbarHeight: 60,
           centerTitle: true,
         ),
@@ -35,10 +39,10 @@ class DemandeView extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               textStyle: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
+                  fontSize: 50,
+                  fontWeight: FontWeight.w500,
                   color: Colors.black),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -63,8 +67,7 @@ class DemandeView extends StatelessWidget {
                       var model = snapshots.data![index];
                       return ExpansionTileCard(
                           baseColor: Colors.cyan[50],
-                          expandedColor: Colors.red[50],
-                          leading: CircleAvatar(),
+                          expandedColor: Colors.cyan[50],
                           title: Text(
                             "Demande",
                             style: TextStyle(fontSize: 20),

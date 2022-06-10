@@ -29,6 +29,9 @@ class _SignInScreenState extends State<SignInScreen> {
     var centre = MainAxisAlignment.center;
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Tunisie Télécom',
+            style: TextStyle(
+                fontSize: 24, color: Color.fromARGB(255, 35, 52, 240))),
         backgroundColor: Colors.white,
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -54,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Image.asset(
-                          "assets/appbar1.jpeg",
+                          "assets/CaptureTT.PNG",
                           height: 190,
                           fit: BoxFit.scaleDown,
                         )),
@@ -132,6 +135,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.visibility_off),
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Color.fromARGB(255, 120, 196, 255),

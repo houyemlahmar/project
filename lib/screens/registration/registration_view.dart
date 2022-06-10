@@ -23,7 +23,7 @@ class RegistrationView extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: Column(children: <Widget>[
                           SizedBox(
-                              height: 150,
+                              height: 140,
                               width: 170,
                               child: Image.asset(
                                 "assets/LOGO_TT.jpg",
@@ -192,7 +192,8 @@ class RegistrationView extends StatelessWidget {
                                           prefixIcon: const Icon(Icons.vpn_key),
                                           suffixIcon: InkWell(
                                               onTap: _togglePasswordView,
-                                              child: Icon(Icons.visibility)),
+                                              child:
+                                                  Icon(Icons.visibility_off)),
                                           contentPadding:
                                               const EdgeInsets.fromLTRB(
                                                   20, 15, 20, 15),
@@ -216,7 +217,8 @@ class RegistrationView extends StatelessWidget {
                                           prefixIcon: const Icon(Icons.vpn_key),
                                           suffixIcon: InkWell(
                                               onTap: _togglePasswordView,
-                                              child: Icon(Icons.visibility)),
+                                              child:
+                                                  Icon(Icons.visibility_off)),
                                           contentPadding:
                                               const EdgeInsets.fromLTRB(
                                                   20, 15, 20, 15),

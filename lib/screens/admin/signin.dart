@@ -130,6 +130,7 @@ class _signinadminState extends State<signinadmin> {
                         },
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.visibility_off),
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Color.fromARGB(255, 120, 196, 255),
@@ -178,8 +179,7 @@ class _signinadminState extends State<signinadmin> {
       _formKey.currentState!.save();
       try {
         UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: e_mail.trim(), password: mp);
+            .signInWithEmailAndPassword(email: e_mail.trim(), password: mp);
 
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => page()));

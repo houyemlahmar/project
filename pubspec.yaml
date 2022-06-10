@@ -63,6 +63,7 @@ dependencies:
   text_form_validator: ^1.0.2
   url_launcher: ^6.1.0
   uuid: ^3.0.6
+  shared_preferences: ^2.0.15
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
@@ -92,9 +93,12 @@ flutter:
     - assets/TT.png
     - assets/TT2.png
     - assets/font1.jpeg
+    - assets/font2.jpg
     - assets/font.jpeg
     - assets/Bienvenue.jpg
     - assets/download.jpg
+    - assets/TELECOM1.jpg
+    - assets/CaptureTT.PNG
     - assets/technicien.jpg
     - assets/2048px-Circle-icons-profile.svg.png
     - assets/abstract-blue-papercut-background-free-vector.jpg

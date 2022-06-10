@@ -19,19 +19,19 @@ class MenuView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Client',
-              style: TextStyle(fontSize: 30, color: Colors.white)),
+              style: TextStyle(fontSize: 28, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.red[200],
+          backgroundColor: Color.fromARGB(255, 245, 207, 70),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SignInScreen()));
               },
-              color: Colors.pink),
+              color: Colors.white),
           toolbarHeight: 60,
           centerTitle: true,
         ),

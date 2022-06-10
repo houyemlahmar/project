@@ -1,5 +1,6 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:login/screens/Menu/MenuView.dart';
 import 'package:login/screens/Message/MessageViewModel.dart';
 import 'package:login/screens/menu-screen.dart';
 import 'package:stacked/stacked.dart';
@@ -14,19 +15,20 @@ class MessageView extends StatelessWidget {
       onModelReady: (model) => model.Getmessage(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('Messages'),
+          title: const Text('Messages',
+              style: TextStyle(fontSize: 24, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.blue.shade200,
+          backgroundColor: Color.fromARGB(255, 245, 207, 70),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MenuScreen()));
+                    MaterialPageRoute(builder: (context) => MenuView()));
               },
-              color: Colors.pink),
+              color: Colors.white),
           toolbarHeight: 60,
           centerTitle: true,
         ),
@@ -42,7 +44,7 @@ class MessageView extends StatelessWidget {
                     "Tunisie Télécom",
                     style: TextStyle(fontSize: 20),
                   ),
-                  subtitle: Text("12/05/2022  13:50"),
+                  subtitle: Text("2022-06-05  12:14:21.576554"),
                   children: <Widget>[
                     Divider(
                       thickness: 1.0,
@@ -56,7 +58,7 @@ class MessageView extends StatelessWidget {
                             vertical: 8.0,
                           ),
                           child: Text(
-                              "Félicitation cher client !                                  Votre demande a été acceptée.                      Votre numéro est: 73360002."),
+                              "Félicitation cher client !                                           Votre demande a été acceptée.                           Votre numéro est: 73360002."),
                         )),
                     ButtonBar(
                       alignment: MainAxisAlignment.spaceAround,

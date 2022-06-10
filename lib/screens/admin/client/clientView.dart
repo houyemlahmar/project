@@ -16,12 +16,13 @@ class consulterclientView extends StatelessWidget {
       onModelReady: (viewmodel) => viewmodel.client(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('Consulter Client'),
+          title: const Text('Consulter Client',
+              style: TextStyle(fontSize: 24, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.blue.shade200,
+          backgroundColor: Colors.blue[300],
           toolbarHeight: 60,
           centerTitle: true,
           leading: IconButton(
@@ -30,7 +31,7 @@ class consulterclientView extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page()));
               },
-              color: Colors.blue[900]),
+              color: Colors.white),
         ),
         backgroundColor: Colors.indigo[50],
         body: StreamBuilder(
@@ -45,7 +46,6 @@ class consulterclientView extends StatelessWidget {
                     return ExpansionTileCard(
                         baseColor: Colors.cyan[50],
                         expandedColor: Colors.red[50],
-                        leading: CircleAvatar(),
                         title: const Text(
                           "Client",
                           style: TextStyle(fontSize: 20),
@@ -63,7 +63,7 @@ class consulterclientView extends StatelessWidget {
                                   vertical: 8.0,
                                 ),
                                 child: Text(
-                                    "Nom :${model.lastname}   Prénom :${model.firstname} "),
+                                    "Nom : ${model.lastname}   Prénom : ${model.firstname}                       Numéro tél : ${model.phonenumber}    CIN : ${model.cin}                   E-mail : ${model.email}  "),
                               )),
                           ButtonBar(
                             alignment: MainAxisAlignment.spaceAround,

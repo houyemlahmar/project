@@ -14,12 +14,13 @@ class page extends StatelessWidget {
     var _signOut;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Admin'),
+          title: const Text('Admin',
+              style: TextStyle(fontSize: 24, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.blue[300],
           toolbarHeight: 60,
           centerTitle: true,
           leading: IconButton(
@@ -28,19 +29,19 @@ class page extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => signinadmin()));
               },
-              color: Colors.pink),
+              color: Colors.white),
         ),
         backgroundColor: Colors.indigo[50],
-        body: Center(
-          child: SingleChildScrollView(
+        body: ListView(children: [
+          SingleChildScrollView(
             child: Container(
               color: Colors.indigo[50],
               child: Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: Column(children: [
-                  Image.asset("assets/download.jpg",
+                  Image.asset("assets/TELECOM1.jpg",
                       height: 250, width: 350, fit: BoxFit.fitWidth),
-                  const SizedBox(height: 0),
+                  const SizedBox(height: 10),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     child: ElevatedButton(
@@ -78,7 +79,7 @@ class page extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     child: ElevatedButton(
@@ -116,38 +117,7 @@ class page extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 30),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        textStyle: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        minimumSize: const Size.fromHeight(70),
-                      ),
-                      child: Row(
-                        children: const <Widget>[
-                          Icon(
-                            Icons.message,
-                            color: Colors.pink,
-                            size: 30,
-                          ),
-                          SizedBox(width: 3),
-                          Text("Consulter statistiques",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.black)),
-                        ],
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     child: ElevatedButton(
@@ -188,6 +158,6 @@ class page extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        ]));
   }
 }

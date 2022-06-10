@@ -132,6 +132,7 @@ class _signintechnicienState extends State<signintechnicien> {
                         },
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.visibility_off),
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Color.fromARGB(255, 120, 196, 255),

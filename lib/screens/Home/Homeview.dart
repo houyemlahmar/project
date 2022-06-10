@@ -22,10 +22,11 @@ class HomeView extends StatelessWidget {
       onModelReady: (model) => model.GetUser(),
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
-            title: const Text("Profil"),
+            title: const Text("Profil",
+                style: TextStyle(fontSize: 24, color: Colors.white)),
             toolbarHeight: 60,
             centerTitle: true,
-            backgroundColor: Colors.red[200],
+            backgroundColor: Color.fromARGB(255, 245, 207, 70),
           ),
           backgroundColor: Colors.grey[200],
           body: Container(
@@ -36,7 +37,7 @@ class HomeView extends StatelessWidget {
                     height: 100,
                     width: double.maxFinite,
                     decoration: BoxDecoration(
-                      color: Colors.grey[350],
+                      color: Color.fromARGB(255, 240, 227, 179),
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(30),
                         bottomLeft: Radius.circular(30),
@@ -237,44 +238,44 @@ class HomeView extends StatelessWidget {
                             child: Text("Adresse"),
                           ),
 
-                          Obx(
-                            () => Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                ),
-                                child: TextFormField(
-                                    readOnly:
-                                        ProfileController.instance.isEdit.value,
-                                    initialValue: adresse,
-                                    decoration: InputDecoration(
-                                        border: const OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        prefixIcon: Container(
-                                          height: 25,
-                                          width: 25,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            color: Colors.white,
-                                          ),
-                                          child: const Icon(
-                                            Icons.home,
-                                            color: Colors.blueGrey,
-                                          ), // Icon
-                                        ), // Contalner
-                                        // InputDecoration
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      label: Text(
+                                          '  ${model.loggedInConstruction.offre}',
+                                          style: const TextStyle(
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w500)),
+                                      border: const OutlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      prefixIcon: Container(
+                                        height: 25,
+                                        width: 25,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white,
+                                        ),
+                                        child: const Icon(
+                                          Icons.home,
+                                          color: Colors.blueGrey,
+                                        ), // Icon
+                                      ), // Contalner
+                                      // InputDecoration
 
-                                        suffixIcon: GestureDetector(
-                                            onTap: () {
-                                              ProfileController.instance
-                                                  .toggleedit();
-                                            },
-                                            child: const Padding(
-                                                padding: EdgeInsets.all(4.0),
-                                                child: Icon(Icons.edit_outlined,
-                                                    color:
-                                                        Colors.blueGrey)))))),
-                          ),
+                                      suffixIcon: GestureDetector(
+                                          onTap: () {
+                                            ProfileController.instance
+                                                .toggleedit();
+                                          },
+                                          child: const Padding(
+                                              padding: EdgeInsets.all(4.0),
+                                              child: Icon(Icons.edit_outlined,
+                                                  color: Colors.blueGrey)))))),
+
                           TextButton.icon(
                               onPressed: () {},
                               icon: Icon(

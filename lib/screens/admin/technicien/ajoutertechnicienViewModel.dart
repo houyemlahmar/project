@@ -10,6 +10,7 @@ class AjouterTechnicienViewModel extends BaseViewModel {
   RegionModel? selectedRegion;
 
   createjoute(techModel model, context, email, password) async {
+    model.region = selectedRegion?.nom;
     model.id_region = selectedRegion?.id_region;
     model.id = FirebaseAuth.instance.currentUser?.uid;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/region_model.dart';
 import 'package:login/Model/rue_model.dart';
 import 'package:login/screens/Formulaire/FormulaireViewModel.dart';
@@ -9,7 +10,7 @@ class FormulaireView extends StatelessWidget {
   FormulaireView({Key? key}) : super(key: key);
 
   String? selectedValue;
-
+  final controllerNumlot = TextEditingController();
   final List<DropdownMenuItem<String>> _dropDownCollection =
       FormulaireViewModel.offers
           .map(
@@ -65,38 +66,10 @@ class FormulaireView extends StatelessWidget {
                   items: snapshot.data!.map((region) {
                     return DropdownMenuItem<RegionModel>(
                       value: region,
-                      child: Text('${region.nom}'),
+                      child: Text('${region.nom} ${region.code_postal}'),
                     );
                   }).toList(),
                   onChanged: model.setSelectedRegion,
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 15),
-          StreamBuilder<List<RegionModel>>(
-            stream: model.codepostal,
-            builder: (BuildContext context,
-                AsyncSnapshot<List<RegionModel>> snapshot) {
-              // Safety check to ensure that snapshot contains data
-              // without this safety check, StreamBuilder dirty state warnings will be thrown
-              if (!snapshot.hasData) return Container();
-              // Set this value for default,
-              // setDefault will change if an item was selected
-              // First item from the List will be displayed
-
-              return ListTile(
-                title: const Text('Code postal:'),
-                trailing: DropdownButton<RegionModel>(
-                  isExpanded: false,
-                  value: model.selectedCodepostal,
-                  items: snapshot.data!.map((codepostal) {
-                    return DropdownMenuItem<RegionModel>(
-                      value: codepostal,
-                      child: Text('${codepostal.nom}'),
-                    );
-                  }).toList(),
-                  onChanged: model.setSelectedCodepostal,
                 ),
               );
             },
@@ -130,6 +103,19 @@ class FormulaireView extends StatelessWidget {
             },
           ),
           const SizedBox(height: 15),
+          TextField(
+            controller: controllerNumlot,
+            decoration: InputDecoration(
+              labelText: '     Numéro de lot',
+              labelStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+              hintMaxLines: 10,
+            ),
+            keyboardType: TextInputType.number,
+          ),
+          const SizedBox(height: 15),
           ListTile(
             title: const Text('Offre:'),
             trailing: DropdownButton<String>(
@@ -161,17 +147,26 @@ class FormulaireView extends StatelessWidget {
           Container(
             margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.amber,
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                textStyle:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-              child: const Text("Enregistrer", textAlign: TextAlign.center),
-              onPressed: model.createDemande,
-            ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amber,
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  textStyle: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w400),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                child: const Text("Enregistrer", textAlign: TextAlign.center),
+                onPressed: () {
+                  ConstructionModel construction = ConstructionModel(
+                    createdAt: DateTime.now(),
+                  );
+
+                  model.createDemande(
+                    construction,
+                    context,
+                  );
+                  Navigator.pop(context);
+                }),
           ),
         ])),
       ),

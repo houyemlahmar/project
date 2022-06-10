@@ -33,10 +33,13 @@ class ConstructionView extends StatelessWidget {
         backgroundColor: Colors.indigo[50],
         body: Container(
           child: ListView(children: <Widget>[
+            SizedBox(height: 10),
             StreamBuilder(
                 stream: viewmodel.consts,
                 builder: (context,
-                    AsyncSnapshot<List<ConstructionModel>> snapshots) {
+                
+    AsyncSnapshot<List<ConstructionModel >> snapshots) {
+                 
                   if (snapshots.hasData) {
                     return ListView.builder(
                         shrinkWrap: true,
@@ -46,7 +49,6 @@ class ConstructionView extends StatelessWidget {
                           return ExpansionTileCard(
                               baseColor: Colors.cyan[50],
                               expandedColor: Colors.red[50],
-                              leading: CircleAvatar(),
                               title: Text(
                                 "Demande",
                                 style: TextStyle(fontSize: 20),
@@ -65,8 +67,8 @@ class ConstructionView extends StatelessWidget {
                                         vertical: 8.0,
                                       ),
                                       child: Text(
-                                          "Offre : ${model.offre}    Débit : ${model.debit}                                               Référence : ${model.reference}         "),
-                                    )),
+                                          "     Offre : ${model.offre}                                                                    Débit : ${model.debit}                                                                 Référence : ${model.reference}         "),
+                                 )),
                                 ButtonBar(
                                   alignment: MainAxisAlignment.spaceAround,
                                   buttonHeight: 52.0,
@@ -83,12 +85,22 @@ class ConstructionView extends StatelessWidget {
                                       },
                                       child: Column(
                                         children: <Widget>[
-                                          Icon(Icons.arrow_upward),
+                                          Icon(
+                                            Icons.task_alt_outlined,
+                                            color: Color.fromARGB(
+                                                255, 63, 209, 68),
+                                          ),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 2.0),
                                           ),
-                                          Text('Fermer'),
+                                          Text(
+                                            'Valider',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 63, 209, 68),
+                                                fontSize: 16),
+                                          ),
                                         ],
                                       ),
                                     ),

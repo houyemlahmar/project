@@ -29,24 +29,36 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Ajouter technicien'),
-          backgroundColor: Colors.blue.shade200,
+          flexibleSpace: const Image(
+            image: AssetImage('assets/TT2.png'),
+            fit: BoxFit.cover,
+          ),
+          backgroundColor: Colors.blue.shade300,
           toolbarHeight: 60,
           centerTitle: true,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {},
-              color: Colors.blue.shade200),
+              color: Colors.white),
         ),
         body: ListView(padding: EdgeInsets.all(16), children: <Widget>[
           TextField(
             controller: controllerNom,
-            decoration: InputDecoration(labelText: 'Nom '),
+            decoration: InputDecoration(
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'Nom '),
           ),
 
           const SizedBox(height: 20),
           TextField(
             controller: controllerPrenom,
-            decoration: InputDecoration(labelText: 'Prénom'),
+            decoration: InputDecoration(
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'Prénom'),
           ),
           const SizedBox(height: 20),
           StreamBuilder<List<RegionModel>>(
@@ -65,6 +77,10 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
                   Text('Région'),
                   const SizedBox(width: 20),
                   DropdownButton<RegionModel>(
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    iconSize: 15,
+                    elevation: 16,
+                    style: TextStyle(color: Colors.black),
                     isExpanded: false,
                     value: model.selectedRegion,
                     items: snapshot.data!.map((region) {
@@ -82,7 +98,11 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
           const SizedBox(height: 20),
           TextField(
             controller: controllerNumtele,
-            decoration: InputDecoration(labelText: 'Numéro téléphone'),
+            decoration: InputDecoration(
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'Numéro téléphone'),
             keyboardType: TextInputType.number,
             maxLength: 8,
           ), // TextField// TextField// TextField// TextField
@@ -90,20 +110,34 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
 
           TextField(
             controller: controllerCIN,
-            decoration: InputDecoration(labelText: 'CIN'),
+            decoration: InputDecoration(
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'CIN'),
             keyboardType: TextInputType.number,
             maxLength: 8,
           ),
           const SizedBox(height: 20),
           TextField(
             controller: controlleremail,
-            decoration: InputDecoration(labelText: 'Adresse e-mail'),
+            decoration: InputDecoration(
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'Adresse e-mail'),
             keyboardType: TextInputType.text,
           ),
           const SizedBox(height: 20),
           TextField(
             controller: controllerpassword,
-            decoration: InputDecoration(labelText: 'Mot de passe'),
+            obscureText: true,
+            decoration: InputDecoration(
+                suffixIcon: Icon(Icons.visibility_off),
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(),
+                labelText: 'Mot de passe'),
             keyboardType: TextInputType.text,
           ),
 
@@ -111,7 +145,7 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 8, 82, 143)),
-            child: Text('Enregistre'),
+            child: Text('Enregistrer'),
             onPressed: () {
               techModel tech = techModel();
               tech.Nom = controllerNom.text;

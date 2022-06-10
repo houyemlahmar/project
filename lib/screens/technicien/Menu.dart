@@ -15,12 +15,13 @@ class technicien extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Technicien'),
+          title: const Text('Technicien',
+              style: TextStyle(fontSize: 24, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
             fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.blue[100],
           toolbarHeight: 60,
           centerTitle: true,
           leading: IconButton(
@@ -31,11 +32,11 @@ class technicien extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => signintechnicien()));
               },
-              color: Colors.pink),
+              color: Colors.blue),
         ),
         backgroundColor: Colors.indigo[50],
-        body: Center(
-          child: SingleChildScrollView(
+        body: ListView(children: [
+          SingleChildScrollView(
             child: Container(
               color: Colors.indigo[50],
               child: Padding(
@@ -43,17 +44,17 @@ class technicien extends StatelessWidget {
                 child: Column(children: [
                   Image.asset("assets/technicien.jpg",
                       height: 250, width: 350, fit: BoxFit.fitWidth),
-                  const SizedBox(height: 0),
+                  const SizedBox(height: 30),
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
-                      title: "Orders de travaux",
+                      title: "Orders des travaux",
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ConstructionView()));
                       }),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   PrimaryButton(
                       iconData: Icons.perm_contact_calendar_rounded,
                       title: "Ordres traités",
@@ -64,7 +65,7 @@ class technicien extends StatelessWidget {
                                 builder: (context) =>
                                     ConstructiontraiteView()));
                       }),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   PrimaryButton(
                       iconData: Icons.logout_rounded,
                       title: "Déconnexion",
@@ -80,6 +81,6 @@ class technicien extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        ]));
   }
 }

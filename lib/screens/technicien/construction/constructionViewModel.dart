@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/technicien_model.dart';
+import 'package:login/Model/user_model.dart';
 import 'package:stacked/stacked.dart';
 
 class ConstructionViewModel extends BaseViewModel {
@@ -10,7 +11,7 @@ class ConstructionViewModel extends BaseViewModel {
   init() {
     runBusyFuture(getConstruction());
   }
-
+   
   getConstruction() async {
     final doc = await FirebaseFirestore.instance
         .collection('Technicien')

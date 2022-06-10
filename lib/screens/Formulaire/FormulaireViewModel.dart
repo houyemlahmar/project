@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:login/Model/boite_model.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/region_model.dart';
@@ -8,7 +9,7 @@ import 'package:stacked/stacked.dart';
 
 class FormulaireViewModel extends BaseViewModel {
   RegionModel? selectedRegion;
-  RegionModel? selectedCodepostal;
+  
   RueModel? selectedRue;
   String selectedAdresse = 'Rue Tataouin';
   String selectedOffer = 'WAFFI';
@@ -29,6 +30,8 @@ class FormulaireViewModel extends BaseViewModel {
     '100',
   ];
 
+  
+
   setSelectedOffer(String offers) {
     selectedOffer = offers;
     notifyListeners();
@@ -37,7 +40,7 @@ class FormulaireViewModel extends BaseViewModel {
   setSelectedRegion(RegionModel? region) {
     selectedRegion = region;
     getRues();
-    getCodepostal();
+  
     notifyListeners();
   }
 
@@ -46,10 +49,6 @@ class FormulaireViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  setSelectedCodepostal(RegionModel? codepostal) {
-    selectedCodepostal = codepostal;
-    notifyListeners();
-  }
 
   setSelectedDebit(String debits) {
     selectedDebit = debits;
@@ -60,14 +59,15 @@ class FormulaireViewModel extends BaseViewModel {
     selectedAdresse = adresses;
     notifyListeners();
   }
+   
 
-  createDemande() async {
+  createDemande(ConstructionModel construction, BuildContext context) async {
     var demande = ConstructionModel(
         debit: int.parse(selectedDebit),
         offre: selectedOffer,
         id_region: selectedRegion?.id_region,
         id_rue: selectedAdresse,
-        code_postal: selectedCodepostal?.id_region,
+     
         userId: FirebaseAuth.instance.currentUser?.uid,
         reference: FirebaseAuth.instance.currentUser?.uid,
         createdAt: DateTime.now());
@@ -126,17 +126,6 @@ class FormulaireViewModel extends BaseViewModel {
     });
   }
 
-  Stream<List<RegionModel>> codepostal = Stream.empty();
-  getCodepostal() {
-    final collection = selectedRegion == null
-        ? FirebaseFirestore.instance.collection('regions').snapshots()
-        : FirebaseFirestore.instance
-            .collection('regions')
-            .where("id_region", isEqualTo: selectedRegion?.code_postal)
-            .snapshots();
+  
 
-    codepostal = collection.map((QuerySnapshot snapshots) {
-      return snapshots.docs.map((e) => RegionModel.fromDocument(e)).toList();
-    });
-  }
 }

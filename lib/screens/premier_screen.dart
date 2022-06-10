@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:login/screens/SignIn_screen.dart';
 import 'package:login/screens/admin/signin.dart';
 import 'package:login/screens/technicien/signin.dart';
@@ -21,7 +20,7 @@ class premierScreen extends StatelessWidget {
                 child: DecoratedBox(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/font.jpeg"),
+                        image: AssetImage("assets/font2.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
