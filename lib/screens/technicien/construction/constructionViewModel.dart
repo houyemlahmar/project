@@ -7,11 +7,13 @@ import 'package:stacked/stacked.dart';
 
 class ConstructionViewModel extends BaseViewModel {
   Stream<List<ConstructionModel>> consts = const Stream.empty();
+  List<UserModel> users = [];
 
-  init() {
+  init()  {
+     getUsers();
     runBusyFuture(getConstruction());
   }
-   
+
   getConstruction() async {
     final doc = await FirebaseFirestore.instance
         .collection('Technicien')
@@ -31,5 +33,14 @@ class ConstructionViewModel extends BaseViewModel {
           .map((e) => ConstructionModel.fromDocument(e))
           .toList();
     });
+  }
+
+  getUsers() async {
+    final collection =
+        await FirebaseFirestore.instance.collection('users').get();
+
+    users = collection.docs
+        .map((doc) => UserModel.fromDocument(doc).copyWith(id: doc.id))
+        .toList();
   }
 }

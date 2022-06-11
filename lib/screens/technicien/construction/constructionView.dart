@@ -47,6 +47,9 @@ class ConstructionView extends StatelessWidget {
                         itemCount: snapshots.data?.length ?? 0,
                         itemBuilder: (context, index) {
                           var model = snapshots.data![index];
+
+                          var user = viewmodel.users.firstWhere((element) => element.id == model.userId) ;
+                          
                           return ExpansionTileCard(
                               baseColor: Colors.cyan[50],
                               expandedColor: Colors.red[50],
@@ -86,7 +89,7 @@ class ConstructionView extends StatelessWidget {
                                       },
                                       child: Row(
                                         children: [
-
+                                          Text ("${user.firstname}"),
                                           IconButton(icon: const Icon(Icons.details_rounded),
                                           onPressed: (){
                                               Navigator.push(
