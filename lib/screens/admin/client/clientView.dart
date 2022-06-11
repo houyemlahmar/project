@@ -1,8 +1,10 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/Model/user_model.dart';
 
 import 'package:login/screens/admin//client/clientViewModel.dart';
+import 'package:login/screens/admin/client/demandeclientview.dart';
 import 'package:login/screens/admin/page.dart';
 import 'package:stacked/stacked.dart';
 
@@ -78,17 +80,30 @@ class consulterclientView extends StatelessWidget {
                                 onPressed: () {
                                   cardA.currentState?.collapse();
                                 },
-                                child: Column(
-                                  children: const <Widget>[
-                                    Icon(Icons.arrow_upward),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 2.0),
-                                    ),
-                                    Text('Fermer'),
-                                  ],
-                                ),
-                              ),
+                                child: Row(children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.details_rounded),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  demandeclientview(
+                                                      users: model)));
+                                    },
+                                  ),
+                                  Column(
+                                    children: const <Widget>[
+                                      Icon(Icons.arrow_upward),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 2.0),
+                                      ),
+                                      Text('Fermer'),
+                                    ],
+                                  ),
+                                ]),
+                              )
                             ],
                           )
                         ]);
