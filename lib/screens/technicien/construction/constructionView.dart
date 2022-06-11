@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:login/screens/technicien/Menu.dart';
 import 'package:login/screens/technicien/construction/constructionViewModel.dart';
+import 'package:login/screens/technicien/construction/construction_detail.dart';
 import 'package:stacked/stacked.dart';
 
 class ConstructionView extends StatelessWidget {
@@ -83,23 +84,36 @@ class ConstructionView extends StatelessWidget {
                                       onPressed: () {
                                         cardA.currentState?.collapse();
                                       },
-                                      child: Column(
-                                        children: <Widget>[
-                                          Icon(
-                                            Icons.task_alt_outlined,
-                                            color: Color.fromARGB(
-                                                255, 63, 209, 68),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 2.0),
-                                          ),
-                                          Text(
-                                            'Valider',
-                                            style: TextStyle(
+                                      child: Row(
+                                        children: [
+
+                                          IconButton(icon: const Icon(Icons.details_rounded),
+                                          onPressed: (){
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ConstructionDetailView(construction: model,)));
+                                          },),
+                                          Column(
+                                            children: const [
+                                              Icon(
+                                                Icons.task_alt_outlined,
                                                 color: Color.fromARGB(
                                                     255, 63, 209, 68),
-                                                fontSize: 16),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(
+                                                    vertical: 2.0),
+                                              ),
+                                              Text(
+                                                'Valider',
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 63, 209, 68),
+                                                    fontSize: 16),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
