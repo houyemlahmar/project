@@ -5,6 +5,7 @@ import 'package:login/screens/admin/technicien/gerertechnicienView.dart';
 
 import 'package:login/screens/admin//client/clientView.dart';
 import 'package:login/screens/admin/signin.dart';
+import 'package:login/screens/premier_screen.dart';
 
 class page extends StatelessWidget {
   const page({Key? key}) : super(key: key);
@@ -151,7 +152,7 @@ class page extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignInScreen()));
+                                  builder: (context) => premierScreen()));
                         }),
                   ),
                 ]),

@@ -19,6 +19,8 @@ class ConstructionModel with _$ConstructionModel {
     String? id,
     int? debit,
     String? etatDemande,
+    String? message,
+    int? num,
     String? offre,
     String? reference,
     @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)

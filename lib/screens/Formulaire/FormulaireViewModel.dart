@@ -9,7 +9,7 @@ import 'package:stacked/stacked.dart';
 
 class FormulaireViewModel extends BaseViewModel {
   RegionModel? selectedRegion;
-  
+
   RueModel? selectedRue;
   String selectedAdresse = 'Rue Tataouin';
   String selectedOffer = 'WAFFI';
@@ -30,8 +30,6 @@ class FormulaireViewModel extends BaseViewModel {
     '100',
   ];
 
-  
-
   setSelectedOffer(String offers) {
     selectedOffer = offers;
     notifyListeners();
@@ -40,7 +38,7 @@ class FormulaireViewModel extends BaseViewModel {
   setSelectedRegion(RegionModel? region) {
     selectedRegion = region;
     getRues();
-  
+
     notifyListeners();
   }
 
@@ -48,7 +46,6 @@ class FormulaireViewModel extends BaseViewModel {
     selectedRue = rue;
     notifyListeners();
   }
-
 
   setSelectedDebit(String debits) {
     selectedDebit = debits;
@@ -59,7 +56,6 @@ class FormulaireViewModel extends BaseViewModel {
     selectedAdresse = adresses;
     notifyListeners();
   }
-   
 
   createDemande(ConstructionModel construction, BuildContext context) async {
     var demande = ConstructionModel(
@@ -67,7 +63,6 @@ class FormulaireViewModel extends BaseViewModel {
         offre: selectedOffer,
         id_region: selectedRegion?.id_region,
         id_rue: selectedAdresse,
-     
         userId: FirebaseAuth.instance.currentUser?.uid,
         reference: FirebaseAuth.instance.currentUser?.uid,
         createdAt: DateTime.now());
@@ -77,10 +72,14 @@ class FormulaireViewModel extends BaseViewModel {
     final validboite = boites.firstWhere(
         (element) => element.nbr_used < element.nbr_max, orElse: (() {
       demande.etatDemande = "Accepté";
+      demande.message =
+          "Félicitation cher client !   Votre demande a été acceptée.  ";
       return BoiteModel(nbr_max: -1, nbr_used: -1);
     }));
     if (validboite.nbr_max != -1) {
-      demande.etatDemande = "En attente";
+      demande.etatDemande = "Refusé";
+      demande.message =
+          "Désolé cher client!                                                        Votre demande a été refusé ";
       demande.id_boite = validboite.id_boite;
       updateBoite(validboite.id_boite, validboite.nbr_used);
     }
@@ -125,7 +124,4 @@ class FormulaireViewModel extends BaseViewModel {
       return snapshots.docs.map((e) => RueModel.fromDocument(e)).toList();
     });
   }
-
-  
-
 }

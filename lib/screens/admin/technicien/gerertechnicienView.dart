@@ -4,6 +4,7 @@ import 'package:login/Model/technicien_model.dart';
 import 'package:login/screens/admin/page.dart';
 import 'package:login/screens/admin/technicien/ajoutetechnicienView.dart';
 import 'package:login/screens/admin/technicien/gerertechnicienViewModel.dart';
+import 'package:login/screens/technicien/Menu.dart';
 import 'package:stacked/stacked.dart';
 
 class GerertechnicienView extends StatefulWidget {
@@ -99,15 +100,11 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                           ],
                                         ),
                                         SizedBox(width: 50),
-                                        Column(
-                                          children: const <Widget>[
-                                            Icon(Icons.delete_outline),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 2.0),
-                                            ),
-                                            Text('Supprimer'),
-                                          ],
+                                        IconButton(
+                                          icon: const Icon(Icons.delete),
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 6.0),
+                                          onPressed: () {},
                                         ),
                                       ],
                                     ),

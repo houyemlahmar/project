@@ -26,6 +26,10 @@ mixin _$ConstructionModel {
   set debit(int? value) => throw _privateConstructorUsedError;
   String? get etatDemande => throw _privateConstructorUsedError;
   set etatDemande(String? value) => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  set message(String? value) => throw _privateConstructorUsedError;
+  int? get num => throw _privateConstructorUsedError;
+  set num(int? value) => throw _privateConstructorUsedError;
   String? get offre => throw _privateConstructorUsedError;
   set offre(String? value) => throw _privateConstructorUsedError;
   String? get reference => throw _privateConstructorUsedError;
@@ -68,6 +72,8 @@ abstract class $ConstructionModelCopyWith<$Res> {
       {String? id,
       int? debit,
       String? etatDemande,
+      String? message,
+      int? num,
       String? offre,
       String? reference,
       @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
@@ -94,6 +100,8 @@ class _$ConstructionModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? debit = freezed,
     Object? etatDemande = freezed,
+    Object? message = freezed,
+    Object? num = freezed,
     Object? offre = freezed,
     Object? reference = freezed,
     Object? createdAt = freezed,
@@ -117,6 +125,14 @@ class _$ConstructionModelCopyWithImpl<$Res>
           ? _value.etatDemande
           : etatDemande // ignore: cast_nullable_to_non_nullable
               as String?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      num: num == freezed
+          ? _value.num
+          : num // ignore: cast_nullable_to_non_nullable
+              as int?,
       offre: offre == freezed
           ? _value.offre
           : offre // ignore: cast_nullable_to_non_nullable
@@ -168,6 +184,8 @@ abstract class _$$_ConstructionModelCopyWith<$Res>
       {String? id,
       int? debit,
       String? etatDemande,
+      String? message,
+      int? num,
       String? offre,
       String? reference,
       @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
@@ -196,6 +214,8 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? debit = freezed,
     Object? etatDemande = freezed,
+    Object? message = freezed,
+    Object? num = freezed,
     Object? offre = freezed,
     Object? reference = freezed,
     Object? createdAt = freezed,
@@ -219,6 +239,14 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
           ? _value.etatDemande
           : etatDemande // ignore: cast_nullable_to_non_nullable
               as String?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      num: num == freezed
+          ? _value.num
+          : num // ignore: cast_nullable_to_non_nullable
+              as int?,
       offre: offre == freezed
           ? _value.offre
           : offre // ignore: cast_nullable_to_non_nullable
@@ -268,6 +296,8 @@ class _$_ConstructionModel
       {this.id,
       this.debit,
       this.etatDemande,
+      this.message,
+      this.num,
       this.offre,
       this.reference,
       @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
@@ -288,6 +318,10 @@ class _$_ConstructionModel
   int? debit;
   @override
   String? etatDemande;
+  @override
+  String? message;
+  @override
+  int? num;
   @override
   String? offre;
   @override
@@ -313,7 +347,7 @@ class _$_ConstructionModel
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, offre: $offre, reference: $reference, createdAt: $createdAt, userId: $userId, id_region: $id_region, id_rue: $id_rue, id_boite: $id_boite, code_postal: $code_postal, numlot: $numlot)';
+    return 'ConstructionModel(id: $id, debit: $debit, etatDemande: $etatDemande, message: $message, num: $num, offre: $offre, reference: $reference, createdAt: $createdAt, userId: $userId, id_region: $id_region, id_rue: $id_rue, id_boite: $id_boite, code_postal: $code_postal, numlot: $numlot)';
   }
 
   @override
@@ -324,6 +358,8 @@ class _$_ConstructionModel
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('debit', debit))
       ..add(DiagnosticsProperty('etatDemande', etatDemande))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('num', num))
       ..add(DiagnosticsProperty('offre', offre))
       ..add(DiagnosticsProperty('reference', reference))
       ..add(DiagnosticsProperty('createdAt', createdAt))
@@ -352,6 +388,8 @@ abstract class _ConstructionModel implements ConstructionModel {
       {String? id,
       int? debit,
       String? etatDemande,
+      String? message,
+      int? num,
       String? offre,
       String? reference,
       @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)
@@ -372,6 +410,10 @@ abstract class _ConstructionModel implements ConstructionModel {
   int? get debit => throw _privateConstructorUsedError;
   @override
   String? get etatDemande => throw _privateConstructorUsedError;
+  @override
+  String? get message => throw _privateConstructorUsedError;
+  @override
+  int? get num => throw _privateConstructorUsedError;
   @override
   String? get offre => throw _privateConstructorUsedError;
   @override

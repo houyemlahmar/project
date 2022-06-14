@@ -1,3 +1,4 @@
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/user_model.dart';
@@ -6,13 +7,12 @@ import 'package:login/screens/technicien/construction/construction_detail_viewmo
 import 'package:stacked/stacked.dart';
 
 class demandeclientview extends StatelessWidget {
-  final UserModel users;
-  const demandeclientview({Key? key, required this.users}) : super(key: key);
+  final GlobalKey<ExpansionTileCardState> cardA = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<demandeclientviewmodel>.reactive(
-      onModelReady: (model) => model.getUser(users.id),
+      onModelReady: (viewmodel) => viewmodel.getconstructions(),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Utilisateur du demande'),
@@ -31,11 +31,76 @@ class demandeclientview extends StatelessWidget {
           centerTitle: true,
         ),
         backgroundColor: Colors.indigo[50],
-        body: viewModel.isBusy
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(children: [Text("${viewModel.user?.offre}")]),
+        body: Container(
+          child: ListView(children: <Widget>[
+            StreamBuilder(
+              stream: viewModel.consts,
+              builder:
+                  (context, AsyncSnapshot<List<ConstructionModel>> snapshots) {
+                if (snapshots.hasData) {
+                  return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshots.data?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        var model = snapshots.data![index];
+                        return ExpansionTileCard(
+                            baseColor: Colors.cyan[50],
+                            expandedColor: Colors.cyan[50],
+                            title: Text(
+                              "Demande",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            subtitle: Text("${model.createdAt}"),
+                            children: <Widget>[
+                              Divider(
+                                thickness: 1.0,
+                                height: 1.0,
+                              ),
+                              Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                      vertical: 8.0,
+                                    ),
+                                    child: Text(
+                                        "Offre : ${model.offre}    Débit : ${model.debit}                                               Référence : ${model.reference}       Etat : ${model.etatDemande}  "),
+                                  )),
+                              ButtonBar(
+                                alignment: MainAxisAlignment.spaceAround,
+                                buttonHeight: 52.0,
+                                buttonMinWidth: 90.0,
+                                children: <Widget>[
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4.0)),
+                                    ),
+                                    onPressed: () {
+                                      cardA.currentState?.collapse();
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        Icon(Icons.arrow_upward),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 2.0),
+                                        ),
+                                        Text('Fermer'),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ]);
+                      });
+                }
+                return Container();
+              },
+            ),
+          ]),
+        ),
       ),
       viewModelBuilder: () => demandeclientviewmodel(),
     );

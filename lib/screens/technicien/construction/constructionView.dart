@@ -38,9 +38,7 @@ class ConstructionView extends StatelessWidget {
             StreamBuilder(
                 stream: viewmodel.consts,
                 builder: (context,
-                
-    AsyncSnapshot<List<ConstructionModel >> snapshots) {
-                 
+                    AsyncSnapshot<List<ConstructionModel>> snapshots) {
                   if (snapshots.hasData) {
                     return ListView.builder(
                         shrinkWrap: true,
@@ -48,8 +46,9 @@ class ConstructionView extends StatelessWidget {
                         itemBuilder: (context, index) {
                           var model = snapshots.data![index];
 
-                          var user = viewmodel.users.firstWhere((element) => element.id == model.userId) ;
-                          
+                          var user = viewmodel.users.firstWhere(
+                              (element) => element.id == model.userId);
+
                           return ExpansionTileCard(
                               baseColor: Colors.cyan[50],
                               expandedColor: Colors.red[50],
@@ -72,7 +71,7 @@ class ConstructionView extends StatelessWidget {
                                       ),
                                       child: Text(
                                           "     Offre : ${model.offre}                                                                    Débit : ${model.debit}                                                                 Référence : ${model.reference}         "),
-                                 )),
+                                    )),
                                 ButtonBar(
                                   alignment: MainAxisAlignment.spaceAround,
                                   buttonHeight: 52.0,
@@ -89,15 +88,20 @@ class ConstructionView extends StatelessWidget {
                                       },
                                       child: Row(
                                         children: [
-                                          Text ("${user.firstname}"),
-                                          IconButton(icon: const Icon(Icons.details_rounded),
-                                          onPressed: (){
+                                          Text("${user.firstname}"),
+                                          IconButton(
+                                            icon: const Icon(
+                                                Icons.details_rounded),
+                                            onPressed: () {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          ConstructionDetailView(construction: model,)));
-                                          },),
+                                                          ConstructionDetailView(
+                                                            construction: model,
+                                                          )));
+                                            },
+                                          ),
                                           Column(
                                             children: const [
                                               Icon(
@@ -106,8 +110,9 @@ class ConstructionView extends StatelessWidget {
                                                     255, 63, 209, 68),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    vertical: 2.0),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 2.0),
                                               ),
                                               Text(
                                                 'Valider',

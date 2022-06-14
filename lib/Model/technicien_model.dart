@@ -23,4 +23,6 @@ class techModel with _$techModel {
 
   factory techModel.fromJson(Map<String, dynamic> json) =>
       _$techModelFromJson(json);
+
+  static void removeWhere(bool Function(dynamic element) param0) {}
 }
