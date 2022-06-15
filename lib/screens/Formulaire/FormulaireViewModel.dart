@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -74,14 +76,13 @@ class FormulaireViewModel extends BaseViewModel {
       demande.etatDemande = "Accepté";
       demande.message =
           "Félicitation cher client !   Votre demande a été acceptée.  ";
+      demande.numlot = "73820 ${Random().nextInt(999)}";
       return BoiteModel(nbr_max: -1, nbr_used: -1);
     }));
     if (validboite.nbr_max != -1) {
       demande.etatDemande = "Refusé";
-      demande.message =
-          "Désolé cher client!\nVotre demande a été refusé ";
-      
-          
+      demande.message = "Désolé cher client!\nVotre demande a été refusé ";
+
       demande.id_boite = validboite.id_boite;
       updateBoite(validboite.id_boite, validboite.nbr_used);
     }
