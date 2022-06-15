@@ -289,9 +289,8 @@ class __$$_ConstructionModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConstructionModel
-    with DiagnosticableTreeMixin
-    implements _ConstructionModel {
+class _$_ConstructionModel extends _ConstructionModel
+    with DiagnosticableTreeMixin {
   _$_ConstructionModel(
       {this.id,
       this.debit,
@@ -307,7 +306,8 @@ class _$_ConstructionModel
       this.id_rue,
       this.id_boite,
       this.code_postal,
-      this.numlot});
+      this.numlot})
+      : super._();
 
   factory _$_ConstructionModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConstructionModelFromJson(json);
@@ -383,7 +383,7 @@ class _$_ConstructionModel
   }
 }
 
-abstract class _ConstructionModel implements ConstructionModel {
+abstract class _ConstructionModel extends ConstructionModel {
   factory _ConstructionModel(
       {String? id,
       int? debit,
@@ -400,6 +400,7 @@ abstract class _ConstructionModel implements ConstructionModel {
       String? id_boite,
       String? code_postal,
       String? numlot}) = _$_ConstructionModel;
+  _ConstructionModel._() : super._();
 
   factory _ConstructionModel.fromJson(Map<String, dynamic> json) =
       _$_ConstructionModel.fromJson;

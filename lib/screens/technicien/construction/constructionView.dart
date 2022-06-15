@@ -50,7 +50,7 @@ class ConstructionView extends StatelessWidget {
                               (element) => element.id == model.userId);
 
                           return ExpansionTileCard(
-                              baseColor: Colors.cyan[50],
+                              baseColor: model.getColor().withAlpha(50),
                               expandedColor: Colors.red[50],
                               title: Text(
                                 "Demande",
