@@ -35,6 +35,12 @@ class ConstructionViewModel extends BaseViewModel {
     });
   }
 
+  validate(String? id) {
+    final doc = FirebaseFirestore.instance.collection('construction').doc(id);
+
+    doc.update({"etatDemande":"Validé"});
+  }
+
   getUsers() async {
     final collection =
         await FirebaseFirestore.instance.collection('users').get();

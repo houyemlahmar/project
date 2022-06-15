@@ -77,6 +77,7 @@ class ConstructionView extends StatelessWidget {
                                   buttonHeight: 52.0,
                                   buttonMinWidth: 90.0,
                                   children: <Widget>[
+                                    Text("${user.firstname}"),
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         shape: RoundedRectangleBorder(
@@ -84,44 +85,25 @@ class ConstructionView extends StatelessWidget {
                                                 BorderRadius.circular(4.0)),
                                       ),
                                       onPressed: () {
-                                        cardA.currentState?.collapse();
+                                        viewmodel.validate(model.id);
                                       },
-                                      child: Row(
-                                        children: [
-                                          Text("${user.firstname}"),
-                                          IconButton(
-                                            icon: const Icon(
-                                                Icons.details_rounded),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ConstructionDetailView(
-                                                            construction: model,
-                                                          )));
-                                            },
+                                      child: Column(
+                                        children: const [
+                                          Icon(
+                                            Icons.task_alt_outlined,
+                                            color: Color.fromARGB(
+                                                255, 63, 209, 68),
                                           ),
-                                          Column(
-                                            children: const [
-                                              Icon(
-                                                Icons.task_alt_outlined,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 2.0),
+                                          ),
+                                          Text(
+                                            'Valider',
+                                            style: TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 63, 209, 68),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 2.0),
-                                              ),
-                                              Text(
-                                                'Valider',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 63, 209, 68),
-                                                    fontSize: 16),
-                                              ),
-                                            ],
+                                                fontSize: 16),
                                           ),
                                         ],
                                       ),
