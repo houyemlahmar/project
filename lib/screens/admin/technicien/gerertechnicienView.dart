@@ -20,7 +20,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<geretechnicienVieModel>.reactive(
-      onModelReady: (viewmodel) => viewmodel.init(),
+      onModelReady: (viewmodel) => viewmodel.init,
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Liste des Techniciens'),
@@ -53,8 +53,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                       itemCount: snapshots.data?.length ?? 0,
                       itemBuilder: (context, index) {
                         var model = snapshots.data![index];
-                        var User = viewmodel.Technicien.firstWhere(
-                            (element) => element.id == model.id);
+
                         return ExpansionTileCard(
                             baseColor: Colors.cyan[50],
                             expandedColor: Colors.red[50],
@@ -74,9 +73,17 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                       horizontal: 20.0,
                                       vertical: 8.0,
                                     ),
-                                    child: Text(
-                                        "Nom : ${model.Nom}   Prénom : ${model.Prenom}                        Zone : Hammam Sousse   CIN : ${model.CIN}                    Numéro tél : ${model.Numtele}   "),
-                                  )),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start ,
+                                      children: [
+                                        Text(
+                                            "Nom : ${model.Nom}   Prénom : ${model.Prenom}      CIN : ${model.CIN}  Numéro tél : ${model.Numtele}   "),
+                                      
+                                      Text ("Zone : ${model.region}")
+                                      ],
+                                    ),
+                                  )
+                                  ),
                               ButtonBar(
                                 alignment: MainAxisAlignment.spaceAround,
                                 buttonHeight: 52.0,
@@ -103,8 +110,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             modefiertechnicienview(
-                                                                Technicien:
-                                                                    model)));
+                                                                tech: model)));
                                               }),
                                           SizedBox(width: 50),
                                           IconButton(
