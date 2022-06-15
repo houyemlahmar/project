@@ -34,6 +34,7 @@ abstract class ConstructionModel implements _$ConstructionModel {
     String? id_boite,
     String? code_postal,
     String? numlot,
+    bool? visible,
   }) = _ConstructionModel;
   factory ConstructionModel.fromDocument(DocumentSnapshot doc) =>
       ConstructionModel.fromJson(doc.data() as Map<String, dynamic>)

@@ -81,7 +81,7 @@ class MessageView extends StatelessWidget {
                                               BorderRadius.circular(4.0)),
                                     ),
                                     onPressed: () {
-                                      cardA.currentState?.collapse();
+                                      viewmodel.deleteMessage(model.id);
                                     },
                                     child: Column(
                                       children: <Widget>[
