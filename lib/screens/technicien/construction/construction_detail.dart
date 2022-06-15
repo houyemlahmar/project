@@ -10,7 +10,7 @@ class ConstructionDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ConstructionDetailViewModel>.reactive(
+    return ViewModelBuilder<modefiertechnicienviewmodel>.reactive(
       onModelReady: (model) => model.getUser(construction.userId),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
@@ -36,7 +36,7 @@ class ConstructionDetailView extends StatelessWidget {
               )
             : Column(children: [Text("${viewModel.user?.firstname}")]),
       ),
-      viewModelBuilder: () => ConstructionDetailViewModel(),
+      viewModelBuilder: () => modefiertechnicienviewmodel(),
     );
   }
 }

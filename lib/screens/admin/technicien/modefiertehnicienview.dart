@@ -1,17 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login/Model/construction_model.dart';
-import 'package:login/screens/technicien/construction/construction_detail_viewmodel.dart';
+
+import 'package:login/Model/technicien_model.dart';
+import 'package:login/screens/admin/technicien/modefiertzchnicienviewmodel.dart';
+
 import 'package:stacked/stacked.dart';
 
-class ConstructionDetailView extends StatelessWidget {
-  final ConstructionModel construction;
-  const ConstructionDetailView({Key? key, required this.construction})
+class modefiertechnicienview extends StatelessWidget {
+  final techModel Technicien;
+  const modefiertechnicienview({Key? key, required this.Technicien})
       : super(key: key);
-    
+
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ConstructionDetailViewModel>.reactive(
-      onModelReady: (model) => model.getUser(construction.userId),
+    return ViewModelBuilder<modefiertechnicienviewmodel>.reactive(
+      onModelReady: (model) => model.getregion(Technicien.id),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Utilisateur du demande'),
@@ -34,9 +38,9 @@ class ConstructionDetailView extends StatelessWidget {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : Column(children: [Text("${viewModel.user?.firstname}")]),
+            : Column(children: [Text("${viewModel.User?.id_region}")]),
       ),
-      viewModelBuilder: () => ConstructionDetailViewModel(),
+      viewModelBuilder: () => modefiertechnicienviewmodel(),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:login/Model/user_model.dart';
 import 'package:stacked/stacked.dart';
 
-class ConstructionDetailViewModel extends BaseViewModel {
+class modefiertechnicienviewmodel extends BaseViewModel {
   UserModel? user;
 
   getUser(String? id) async {

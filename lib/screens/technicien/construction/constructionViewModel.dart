@@ -9,8 +9,8 @@ class ConstructionViewModel extends BaseViewModel {
   Stream<List<ConstructionModel>> consts = const Stream.empty();
   List<UserModel> users = [];
 
-  init()  {
-     getUsers();
+  init() {
+    getUsers();
     runBusyFuture(getConstruction());
   }
 

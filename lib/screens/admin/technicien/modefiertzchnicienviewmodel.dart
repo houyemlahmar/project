@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:login/Model/user_model.dart';
+import 'package:login/Model/region_model.dart';
+import 'package:login/Model/technicien_model.dart';
+
 import 'package:stacked/stacked.dart';
 
-class ConstructionDetailViewModel extends BaseViewModel {
-  UserModel? user;
+class modefiertechnicienviewmodel extends BaseViewModel {
+  techModel? User;
 
-  getUser(String? id) async {
+  getregion(String? id) async {
     setBusy(true);
     final doc =
-        await FirebaseFirestore.instance.collection('users').doc(id).get();
+        await FirebaseFirestore.instance.collection('Technicien').doc(id).get();
 
-    user = UserModel.fromDocument(doc);
+    User = techModel.fromDocument(doc);
     setBusy(false);
     notifyListeners();
   }

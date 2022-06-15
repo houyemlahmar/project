@@ -4,6 +4,7 @@ import 'package:login/Model/technicien_model.dart';
 import 'package:login/screens/admin/page.dart';
 import 'package:login/screens/admin/technicien/ajoutetechnicienView.dart';
 import 'package:login/screens/admin/technicien/gerertechnicienViewModel.dart';
+import 'package:login/screens/admin/technicien/modefiertehnicienview.dart';
 import 'package:login/screens/technicien/Menu.dart';
 import 'package:stacked/stacked.dart';
 
@@ -19,6 +20,7 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<geretechnicienVieModel>.reactive(
+      onModelReady: (viewmodel) => viewmodel.init(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
           title: const Text('Liste des Techniciens'),
@@ -51,6 +53,8 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                       itemCount: snapshots.data?.length ?? 0,
                       itemBuilder: (context, index) {
                         var model = snapshots.data![index];
+                        var User = viewmodel.Technicien.firstWhere(
+                            (element) => element.id == model.id);
                         return ExpansionTileCard(
                             baseColor: Colors.cyan[50],
                             expandedColor: Colors.red[50],
@@ -87,28 +91,32 @@ class _GerertechnicienViewState extends State<GerertechnicienView> {
                                     onPressed: () {
                                       cardA.currentState?.collapse();
                                     },
-                                    child: Row(
-                                      children: [
-                                        Column(
-                                          children: const <Widget>[
-                                            Icon(Icons.edit),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 2.0),
-                                            ),
-                                            Text('Modifier'),
-                                          ],
-                                        ),
-                                        SizedBox(width: 50),
-                                        IconButton(
-                                          icon: const Icon(Icons.delete),
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 6.0),
-                                          onPressed: () {},
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                    child: Row(children: [
+                                      Column(
+                                        children: [
+                                          IconButton(
+                                              icon: const Icon(
+                                                  Icons.details_rounded),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            modefiertechnicienview(
+                                                                Technicien:
+                                                                    model)));
+                                              }),
+                                          SizedBox(width: 50),
+                                          IconButton(
+                                            icon: const Icon(Icons.delete),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 6.0),
+                                            onPressed: () {},
+                                          ),
+                                        ],
+                                      ),
+                                    ]),
+                                  )
                                 ],
                               )
                             ]);
