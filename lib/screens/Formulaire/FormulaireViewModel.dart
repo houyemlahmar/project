@@ -79,11 +79,13 @@ class FormulaireViewModel extends BaseViewModel {
     if (validboite.nbr_max != -1) {
       demande.etatDemande = "Refusé";
       demande.message =
-          "Désolé cher client!                                                        Votre demande a été refusé ";
+          "Désolé cher client!\nVotre demande a été refusé ";
+      
+          
       demande.id_boite = validboite.id_boite;
       updateBoite(validboite.id_boite, validboite.nbr_used);
     }
-
+    demande.visible = true;
     collection.set(demande.toJson());
   }
 

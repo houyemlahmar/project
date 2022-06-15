@@ -18,6 +18,7 @@ class MessageViewModel extends BaseViewModel {
     final collection = FirebaseFirestore.instance
         .collection('construction')
         .where("userId", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+        .where("visible", isEqualTo: true)
         .snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {
@@ -25,5 +26,11 @@ class MessageViewModel extends BaseViewModel {
           .map((e) => ConstructionModel.fromDocument(e))
           .toList();
     });
+  }
+
+  deleteMessage(String? id) {
+    final doc = FirebaseFirestore.instance.collection('construction').doc(id);
+
+    doc.update({"visible": false});
   }
 }

@@ -22,6 +22,7 @@ class ConstructiontraiteViewModel extends BaseViewModel {
     final collection = FirebaseFirestore.instance
         .collection('construction')
         .where("id_region", isEqualTo: technicien.id_region)
+        .where("etatDemande", isEqualTo :"Validé")
         .orderBy("created_at", descending: true)
         .snapshots();
 

@@ -25,6 +25,7 @@ class ConstructionViewModel extends BaseViewModel {
     final collection = FirebaseFirestore.instance
         .collection('construction')
         .where("id_region", isEqualTo: technicien.id_region)
+        .where("etatDemande", isEqualTo:"Accepté")
         .orderBy("created_at", descending: true)
         .snapshots();
 
@@ -38,7 +39,7 @@ class ConstructionViewModel extends BaseViewModel {
   validate(String? id) {
     final doc = FirebaseFirestore.instance.collection('construction').doc(id);
 
-    doc.update({"etatDemande":"Validé"});
+    doc.update({"etatDemande":"Validé"  });
   }
 
   getUsers() async {
