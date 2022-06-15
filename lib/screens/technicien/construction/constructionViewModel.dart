@@ -9,8 +9,8 @@ class ConstructionViewModel extends BaseViewModel {
   Stream<List<ConstructionModel>> consts = const Stream.empty();
   List<UserModel> users = [];
 
-  init()  {
-     getUsers();
+  init() {
+    getUsers();
     runBusyFuture(getConstruction());
   }
 
@@ -33,6 +33,12 @@ class ConstructionViewModel extends BaseViewModel {
           .map((e) => ConstructionModel.fromDocument(e))
           .toList();
     });
+  }
+
+  validate(String? id) {
+    final doc = FirebaseFirestore.instance.collection('construction').doc(id);
+
+    doc.update({"etatDemande":"Validé"});
   }
 
   getUsers() async {
