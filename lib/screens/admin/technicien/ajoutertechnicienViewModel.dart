@@ -18,7 +18,7 @@ class AjouterTechnicienViewModel extends BaseViewModel {
       UserCredential credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      final doc = FirebaseFirestore.instance
+      final doc = FirebaseFirestore.instance()
           .collection('Technicien')
           .doc(credential.user?.uid);
 
@@ -42,7 +42,7 @@ class AjouterTechnicienViewModel extends BaseViewModel {
 
   Stream<List<RegionModel>> getRegions() {
     final collection =
-        FirebaseFirestore.instance.collection('regions').snapshots();
+        FirebaseFirestore.instance().collection('regions').snapshots();
 
     return collection.map((QuerySnapshot snapshots) {
       return snapshots.docs.map((e) => RegionModel.fromDocument(e)).toList();

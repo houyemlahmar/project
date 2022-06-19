@@ -1,5 +1,6 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Model/construction_model.dart';
 import 'package:login/screens/technicien/Menu.dart';
 import 'package:login/screens/technicien/constructiontrait%C3%A9es/constructiontrait%C3%A9eViewModel.dart';
 
@@ -41,30 +42,45 @@ class _ConstructiontraiteViewState extends State<ConstructiontraiteView> {
           child: ListView(
             children: <Widget>[
               const SizedBox(height: 20),
-              ExpansionTileCard(
-                  baseColor: Colors.blue[50],
-                  expandedColor: Colors.blue[50],
-                  title: Text(
-                    "Ordre traités",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  subtitle: Text("2022-06-05 16:40:46.178590"),
-                  children: <Widget>[
-                    Divider(
-                      thickness: 1.0,
-                      height: 1.0,
-                    ),
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 8.0,
-                          ),
-                          child: Text(
-                              "Nom : Ben masoud        Prénom : Salim                    Adresse: Rue Tataouin Hammam Sousse 4011        Lot n° 26                                                                 Numéro tél :98638403                                       Numéro fix : 73360002                                                Offre : ADSL                                                                Débit : 12                                                                 Référence : uhz5x8RikkhpNmUXtQfPSNN7R3I2"),
-                        )),
-                  ])
+              StreamBuilder(
+                  stream: viewmodel.consts,
+                  builder: (context,
+                      AsyncSnapshot<List<ConstructionModel>> snapshots) {
+                    if (snapshots.hasData) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: snapshots.data?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          var model = snapshots.data![index];
+                          return ExpansionTileCard(
+                              baseColor: Colors.blue[50],
+                              expandedColor: Colors.blue[50],
+                              title: Text(
+                                "Ordre traités",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              subtitle: Text("${model.createdAt}"),
+                              children: <Widget>[
+                                Divider(
+                                  thickness: 1.0,
+                                  height: 1.0,
+                                ),
+                                Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0,
+                                        vertical: 8.0,
+                                      ),
+                                      child: Text(
+                                          "Offre : ${model.offre}                                                                    Débit : ${model.debit}                                                                 Référence : ${model.reference}   "),
+                                    )),
+                              ]);
+                        },
+                      );
+                    }
+                    return Container();
+                  })
             ],
           ),
         ),

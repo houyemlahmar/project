@@ -10,11 +10,12 @@ class RegistrationViewModel extends BaseViewModel {
 
   Future<bool> register(BuildContext context, UserModel user) async {
     try {
-    UserCredential credential =  await FirebaseAuth.instance
+      UserCredential credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      final doc =
-           FirebaseFirestore.instance.collection('users').doc(credential.user?.uid);
+      final doc = FirebaseFirestore.instance()
+          .collection('users')
+          .doc(credential.user?.uid);
       doc.set(user.toJson());
       return true;
     } on FirebaseAuthException catch (e) {

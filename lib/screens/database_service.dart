@@ -8,7 +8,7 @@ class DatabaseService {
   }) async {
     try {
       CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+          FirebaseFirestore.instance().collection('users');
       // Call the user's CollectionReference to add a new user
       await users.doc(email).set({
         'first name': firstname,
@@ -23,7 +23,7 @@ class DatabaseService {
   Future<String?> getUser(String email) async {
     try {
       CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+          FirebaseFirestore.instance().collection('users');
       final snapshot = await users.doc(email).get();
       final data = snapshot.data() as Map<String, dynamic>;
       return data['first name' 'second name'];

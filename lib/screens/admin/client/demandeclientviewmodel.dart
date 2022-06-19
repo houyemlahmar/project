@@ -9,7 +9,7 @@ class demandeclientviewmodel extends BaseViewModel {
   ConstructionModel? construction;
   getconstructions() async {
     final collection =
-        FirebaseFirestore.instance.collection('construction').snapshots();
+        FirebaseFirestore.instance().collection('construction').snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {
       return snapshots.docs

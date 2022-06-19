@@ -51,7 +51,7 @@ class MessageView extends StatelessWidget {
                             baseColor: Colors.cyan[50],
                             expandedColor: Colors.cyan[50],
                             title: Text(
-                              "Demande",
+                              "Tunisie Télécom",
                               style: TextStyle(fontSize: 20),
                             ),
                             subtitle: Text("${model.createdAt}"),
@@ -67,7 +67,8 @@ class MessageView extends StatelessWidget {
                                       horizontal: 20.0,
                                       vertical: 8.0,
                                     ),
-                                    child: Text(" ${model.message}   "),
+                                    child: Text(
+                                        " ${model.message}  Votre numéro est${model.num}    "),
                                   )),
                               ButtonBar(
                                 alignment: MainAxisAlignment.spaceAround,

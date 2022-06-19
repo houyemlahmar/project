@@ -15,7 +15,7 @@ class MessageViewModel extends BaseViewModel {
   }
 
   getmessage() async {
-    final collection = FirebaseFirestore.instance
+    final collection = FirebaseFirestore.instance()
         .collection('construction')
         .where("userId", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
         .where("visible", isEqualTo: true)
@@ -29,7 +29,7 @@ class MessageViewModel extends BaseViewModel {
   }
 
   deleteMessage(String? id) {
-    final doc = FirebaseFirestore.instance.collection('construction').doc(id);
+    final doc = FirebaseFirestore.instance().collection('construction').doc(id);
 
     doc.update({"visible": false});
   }

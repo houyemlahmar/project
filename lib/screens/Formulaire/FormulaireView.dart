@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_time_patterns.dart';
 import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/region_model.dart';
 import 'package:login/Model/rue_model.dart';
@@ -160,7 +161,7 @@ class FormulaireView extends StatelessWidget {
                   ConstructionModel construction = ConstructionModel(
                     createdAt: DateTime.now(),
                   );
-
+                  construction.numlot = controllerNumlot.text;
                   model.createDemande(
                     construction,
                     context,

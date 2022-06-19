@@ -34,6 +34,8 @@ mixin _$techModel {
   set CIN(String? value) => throw _privateConstructorUsedError;
   String? get Numtele => throw _privateConstructorUsedError;
   set Numtele(String? value) => throw _privateConstructorUsedError;
+  bool? get Visible => throw _privateConstructorUsedError;
+  set Visible(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +54,8 @@ abstract class $techModelCopyWith<$Res> {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele});
+      String? Numtele,
+      bool? Visible});
 }
 
 /// @nodoc
@@ -72,6 +75,7 @@ class _$techModelCopyWithImpl<$Res> implements $techModelCopyWith<$Res> {
     Object? region = freezed,
     Object? CIN = freezed,
     Object? Numtele = freezed,
+    Object? Visible = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -102,6 +106,10 @@ class _$techModelCopyWithImpl<$Res> implements $techModelCopyWith<$Res> {
           ? _value.Numtele
           : Numtele // ignore: cast_nullable_to_non_nullable
               as String?,
+      Visible: Visible == freezed
+          ? _value.Visible
+          : Visible // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -119,7 +127,8 @@ abstract class _$$_techModelCopyWith<$Res> implements $techModelCopyWith<$Res> {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele});
+      String? Numtele,
+      bool? Visible});
 }
 
 /// @nodoc
@@ -141,6 +150,7 @@ class __$$_techModelCopyWithImpl<$Res> extends _$techModelCopyWithImpl<$Res>
     Object? region = freezed,
     Object? CIN = freezed,
     Object? Numtele = freezed,
+    Object? Visible = freezed,
   }) {
     return _then(_$_techModel(
       id: id == freezed
@@ -171,6 +181,10 @@ class __$$_techModelCopyWithImpl<$Res> extends _$techModelCopyWithImpl<$Res>
           ? _value.Numtele
           : Numtele // ignore: cast_nullable_to_non_nullable
               as String?,
+      Visible: Visible == freezed
+          ? _value.Visible
+          : Visible // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -185,7 +199,8 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
       this.Prenom,
       this.region,
       this.CIN,
-      this.Numtele});
+      this.Numtele,
+      this.Visible});
 
   factory _$_techModel.fromJson(Map<String, dynamic> json) =>
       _$$_techModelFromJson(json);
@@ -204,10 +219,12 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
   String? CIN;
   @override
   String? Numtele;
+  @override
+  bool? Visible;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'techModel(id: $id, id_region: $id_region, Nom: $Nom, Prenom: $Prenom, region: $region, CIN: $CIN, Numtele: $Numtele)';
+    return 'techModel(id: $id, id_region: $id_region, Nom: $Nom, Prenom: $Prenom, region: $region, CIN: $CIN, Numtele: $Numtele, Visible: $Visible)';
   }
 
   @override
@@ -221,7 +238,8 @@ class _$_techModel with DiagnosticableTreeMixin implements _techModel {
       ..add(DiagnosticsProperty('Prenom', Prenom))
       ..add(DiagnosticsProperty('region', region))
       ..add(DiagnosticsProperty('CIN', CIN))
-      ..add(DiagnosticsProperty('Numtele', Numtele));
+      ..add(DiagnosticsProperty('Numtele', Numtele))
+      ..add(DiagnosticsProperty('Visible', Visible));
   }
 
   @JsonKey(ignore: true)
@@ -243,7 +261,8 @@ abstract class _techModel implements techModel {
       String? Prenom,
       String? region,
       String? CIN,
-      String? Numtele}) = _$_techModel;
+      String? Numtele,
+      bool? Visible}) = _$_techModel;
 
   factory _techModel.fromJson(Map<String, dynamic> json) =
       _$_techModel.fromJson;
@@ -262,6 +281,8 @@ abstract class _techModel implements techModel {
   String? get CIN => throw _privateConstructorUsedError;
   @override
   String? get Numtele => throw _privateConstructorUsedError;
+  @override
+  bool? get Visible => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_techModelCopyWith<_$_techModel> get copyWith =>

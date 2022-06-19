@@ -17,13 +17,14 @@ Timestamp _createdAtToJson(DateTime date) => Timestamp.fromDate(date);
 
 @unfreezed
 abstract class ConstructionModel implements _$ConstructionModel {
-   const ConstructionModel._();
+  const ConstructionModel._();
   factory ConstructionModel({
     String? id,
     int? debit,
     String? etatDemande,
     String? message,
-    int? num,
+    String? etatOrdre,
+    String? num,
     String? offre,
     String? reference,
     @JsonKey(name: 'created_at', fromJson: _createdAtFromJson, toJson: _createdAtToJson)

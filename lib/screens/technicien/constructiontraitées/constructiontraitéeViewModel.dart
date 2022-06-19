@@ -12,17 +12,17 @@ class ConstructiontraiteViewModel extends BaseViewModel {
   }
 
   getConstruction() async {
-    final doc = await FirebaseFirestore.instance
+    final doc = await FirebaseFirestore.instance()
         .collection('Technicien')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
 
     techModel technicien = techModel.fromDocument(doc);
 
-    final collection = FirebaseFirestore.instance
+    final collection = FirebaseFirestore.instance()
         .collection('construction')
         .where("id_region", isEqualTo: technicien.id_region)
-        .where("etatDemande", isEqualTo :"Validé")
+        .where("etatDemande", isEqualTo: "Validé")
         .orderBy("created_at", descending: true)
         .snapshots();
 

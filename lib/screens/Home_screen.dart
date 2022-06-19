@@ -18,7 +18,7 @@ class _profilScreenState extends State<profilScreen> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel(id: "s");
   GetUser() {
-    FirebaseFirestore.instance
+    FirebaseFirestore.instance()
         .collection("users")
         .doc(user!.uid)
         .get()

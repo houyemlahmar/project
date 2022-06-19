@@ -10,12 +10,12 @@ class consulterclientViewModel extends BaseViewModel {
 
   init() {
     getconstruction();
-    runBusyFuture(getconstruction());
+    runBusyFuture(getclient());
   }
 
   getclient() async {
     final collection =
-        FirebaseFirestore.instance.collection('users').snapshots();
+        FirebaseFirestore.instance().collection('users').snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {
       return snapshots.docs.map((e) => UserModel.fromDocument(e)).toList();
@@ -24,7 +24,7 @@ class consulterclientViewModel extends BaseViewModel {
 
   getconstruction() async {
     final collection =
-        await FirebaseFirestore.instance.collection('construction').get();
+        await FirebaseFirestore.instance().collection('construction').get();
 
     construction = collection.docs
         .map((doc) => ConstructionModel.fromDocument(doc).copyWith(id: doc.id))

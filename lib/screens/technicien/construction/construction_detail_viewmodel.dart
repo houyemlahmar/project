@@ -8,7 +8,7 @@ class modefiertechnicienviewmodel extends BaseViewModel {
   getUser(String? id) async {
     setBusy(true);
     final doc =
-        await FirebaseFirestore.instance.collection('users').doc(id).get();
+        await FirebaseFirestore.instance().collection('users').doc(id).get();
 
     user = UserModel.fromDocument(doc);
     setBusy(false);

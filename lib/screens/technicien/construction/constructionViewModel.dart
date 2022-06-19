@@ -8,24 +8,24 @@ import 'package:stacked/stacked.dart';
 class ConstructionViewModel extends BaseViewModel {
   Stream<List<ConstructionModel>> consts = const Stream.empty();
   List<UserModel> users = [];
-
+  UserModel? user;
   init() {
     getUsers();
     runBusyFuture(getConstruction());
   }
 
   getConstruction() async {
-    final doc = await FirebaseFirestore.instance
+    final doc = await FirebaseFirestore.instance()
         .collection('Technicien')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
 
     techModel technicien = techModel.fromDocument(doc);
 
-    final collection = FirebaseFirestore.instance
+    final collection = FirebaseFirestore.instance()
         .collection('construction')
         .where("id_region", isEqualTo: technicien.id_region)
-        .where("etatDemande", isEqualTo:"Accepté")
+        .where("etatDemande", isEqualTo: "Accepté")
         .orderBy("created_at", descending: true)
         .snapshots();
 
@@ -37,14 +37,20 @@ class ConstructionViewModel extends BaseViewModel {
   }
 
   validate(String? id) {
-    final doc = FirebaseFirestore.instance.collection('construction').doc(id);
+    final doc = FirebaseFirestore.instance().collection('construction').doc(id);
 
-    doc.update({"etatDemande":"Validé"  });
+    doc.update({"etatDemande": "Validé"});
+  }
+
+  encours(String? id) {
+    final doc = FirebaseFirestore.instance().collection('construction').doc(id);
+
+    doc.update({"etatOrdre": "encours"});
   }
 
   getUsers() async {
     final collection =
-        await FirebaseFirestore.instance.collection('users').get();
+        await FirebaseFirestore.instance().collection('users').get();
 
     users = collection.docs
         .map((doc) => UserModel.fromDocument(doc).copyWith(id: doc.id))

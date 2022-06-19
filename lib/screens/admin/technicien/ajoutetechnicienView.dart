@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import 'package:login/Model/region_model.dart';
 import 'package:login/Model/technicien_model.dart';
 import 'package:login/screens/admin/technicien/ajoutertechnicienViewModel.dart';
+import 'package:login/screens/admin/technicien/gerertechnicienView.dart';
 import 'package:stacked/stacked.dart';
 
 class AjouterTechnicienView extends StatefulWidget {
@@ -38,7 +39,12 @@ class _AjouterTechnicienViewState extends State<AjouterTechnicienView> {
           centerTitle: true,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GerertechnicienView()));
+              },
               color: Colors.white),
         ),
         body: ListView(padding: EdgeInsets.all(16), children: <Widget>[

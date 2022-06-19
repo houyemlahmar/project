@@ -1,19 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login/Model/construction_model.dart';
+import 'package:login/Model/technicien_model.dart';
 import 'package:stacked/stacked.dart';
 
-class DemandeViewModel extends BaseViewModel {
+class ordretraiteviewmodel extends BaseViewModel {
   Stream<List<ConstructionModel>> consts = const Stream.empty();
 
   init() {
-    runBusyFuture(getDemandes());
+    runBusyFuture(getConstruction());
   }
 
-  getDemandes() async {
+  getConstruction() async {
     final collection = FirebaseFirestore.instance()
         .collection('construction')
-        .where("userId", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+        .where("etatDemande", isEqualTo: "Validé")
+        .orderBy("created_at", descending: true)
         .snapshots();
 
     consts = collection.map((QuerySnapshot snapshots) {

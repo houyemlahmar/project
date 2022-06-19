@@ -69,14 +69,14 @@ class FormulaireViewModel extends BaseViewModel {
         reference: FirebaseAuth.instance.currentUser?.uid,
         createdAt: DateTime.now());
     final collection =
-        FirebaseFirestore.instance.collection('construction').doc();
-    final boites = await getBoite("idrue", "idregion");
+        FirebaseFirestore.instance().collection('construction').doc();
+    final boites = await getBoite("id_rue", "id_region");
     final validboite = boites.firstWhere(
         (element) => element.nbr_used < element.nbr_max, orElse: (() {
       demande.etatDemande = "Accepté";
       demande.message =
           "Félicitation cher client !   Votre demande a été acceptée.  ";
-      demande.numlot = "73820 ${Random().nextInt(999)}";
+      demande.num = "73820${Random().nextInt(999)}";
       return BoiteModel(nbr_max: -1, nbr_used: -1);
     }));
     if (validboite.nbr_max != -1) {
@@ -91,7 +91,7 @@ class FormulaireViewModel extends BaseViewModel {
   }
 
   Future<List<BoiteModel>> getBoite(String idrue, String idregion) async {
-    final collection = await FirebaseFirestore.instance
+    final collection = await FirebaseFirestore.instance()
         .collection('Boite')
         .where("id_rue", isEqualTo: idrue)
         .where("id_region", isEqualTo: idregion)
@@ -101,13 +101,13 @@ class FormulaireViewModel extends BaseViewModel {
   }
 
   updateBoite(String? idBoite, int used) {
-    final doc = FirebaseFirestore.instance.collection('Boite').doc(idBoite);
+    final doc = FirebaseFirestore.instance().collection('Boite').doc(idBoite);
     doc.update({"nbr_used": used + 1});
   }
 
   Stream<List<RegionModel>> getRegions() {
     final collection =
-        FirebaseFirestore.instance.collection('regions').snapshots();
+        FirebaseFirestore.instance().collection('regions').snapshots();
 
     return collection.map((QuerySnapshot snapshots) {
       return snapshots.docs.map((e) => RegionModel.fromDocument(e)).toList();
@@ -117,8 +117,8 @@ class FormulaireViewModel extends BaseViewModel {
   Stream<List<RueModel>> rues = Stream.empty();
   getRues() {
     final collection = selectedRegion == null
-        ? FirebaseFirestore.instance.collection('rues').snapshots()
-        : FirebaseFirestore.instance
+        ? FirebaseFirestore.instance().collection('rues').snapshots()
+        : FirebaseFirestore.instance()
             .collection('rues')
             .where("id_region", isEqualTo: selectedRegion?.id_region)
             .snapshots();

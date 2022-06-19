@@ -7,30 +7,16 @@ import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
   User? user = FirebaseAuth.instance.currentUser;
- 
 
   UserModel loggedInUser = UserModel(id: "s");
 
-  ConstructionModel loggedInConstruction =
-      ConstructionModel(createdAt: DateTime.now());
   GetUser() {
-    FirebaseFirestore.instance
+    FirebaseFirestore.instance()
         .collection("users")
         .doc(user!.uid)
         .get()
         .then((value) {
       loggedInUser = UserModel.fromDocument(value);
-      notifyListeners();
-    });
-  }
-
-  Getconstruction() {
-    FirebaseFirestore.instance
-        .collection("construction")
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      loggedInConstruction = ConstructionModel.fromDocument(value);
       notifyListeners();
     });
   }

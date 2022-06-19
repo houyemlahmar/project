@@ -4,12 +4,11 @@ import 'package:login/screens/Menu/MenuView.dart';
 import 'package:login/screens/home/Homeviewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../utils/Controllerprofil.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -17,6 +16,7 @@ class HomeView extends StatelessWidget {
     var model;
     var name;
     var adresse;
+
     Get.put(ProfileController());
     return ViewModelBuilder<HomeViewModel>.reactive(
       onModelReady: (model) => model.GetUser(),
@@ -62,20 +62,41 @@ class HomeView extends StatelessWidget {
                             ),
                           )
                         ])),
-                Positioned(
-                  top: 100,
-                  left: MediaQuery.of(context).size.width * 0.5,
-                  child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Colors.grey[350],
-                      ), // BoxDecoration
-                      child: Icon(
-                        Icons.camera_alt,
-                        color: Colors.white,
-                      )),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 240, 227, 179), 
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                    minimumSize: const Size.fromHeight(10),
+                  ),
+                  child: Row(children: const <Widget>[
+                    Icon(
+                      Icons.camera_alt,
+                      color: Colors.grey,
+                      size: 34,
+                    ),
+                  ]),
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            // <-- SEE HERE
+                            topLeft: Radius.circular(25.0),
+                          ),
+                        ),
+                        builder: (context) {
+                          return SizedBox(
+                            height: 200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: const <Widget>[],
+                            ),
+                          );
+                        });
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 90),
@@ -244,8 +265,7 @@ class HomeView extends StatelessWidget {
                               ),
                               child: TextFormField(
                                   decoration: InputDecoration(
-                                      label: Text(
-                                          '  ${model.loggedInConstruction.offre}',
+                                      label: Text('  ',
                                           style: const TextStyle(
                                               color: Colors.black54,
                                               fontWeight: FontWeight.w500)),
@@ -276,27 +296,15 @@ class HomeView extends StatelessWidget {
                                               child: Icon(Icons.edit_outlined,
                                                   color: Colors.blueGrey)))))),
 
-                          TextButton.icon(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.data_saver_on,
-                                color: Colors.blueGrey,
-                                size: 20,
-                              ),
-                              label: Text(
-                                (''),
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 16, 15, 15),
-                                ),
-                              ),
-                              style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          side: BorderSide(
-                                              color: Colors.blueGrey))))),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.data_saver_on,
+                              color: Colors.blueGrey,
+                              size: 20,
+                            ),
+                          ),
+
                           const Divider(
                             thickness: 1,
                             color: Colors.grey,

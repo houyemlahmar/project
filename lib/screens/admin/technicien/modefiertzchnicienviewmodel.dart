@@ -9,7 +9,7 @@ class modefiertechnicienviewmodel extends BaseViewModel {
 
   Stream<List<RegionModel>> getRegions() {
     final collection =
-        FirebaseFirestore.instance.collection('regions').snapshots();
+        FirebaseFirestore.instance().collection('regions').snapshots();
 
     return collection.map((QuerySnapshot snapshots) {
       return snapshots.docs
@@ -24,7 +24,8 @@ class modefiertechnicienviewmodel extends BaseViewModel {
   }
 
   updateRegion(String? techId) {
-    final doc = FirebaseFirestore.instance.collection('Technicien').doc(techId);
+    final doc =
+        FirebaseFirestore.instance().collection('Technicien').doc(techId);
 
     doc.update({
       "id_region": selectedRegion?.id_region,

@@ -14,6 +14,7 @@ _$_techModel _$$_techModelFromJson(Map<String, dynamic> json) => _$_techModel(
       region: json['region'] as String?,
       CIN: json['CIN'] as String?,
       Numtele: json['Numtele'] as String?,
+      Visible: json['Visible'] as bool?,
     );
 
 Map<String, dynamic> _$$_techModelToJson(_$_techModel instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_techModelToJson(_$_techModel instance) =>
       'region': instance.region,
       'CIN': instance.CIN,
       'Numtele': instance.Numtele,
+      'Visible': instance.Visible,
     };

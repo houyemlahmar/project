@@ -1,23 +1,24 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login/Model/construction_model.dart';
 import 'package:login/Model/user_model.dart';
+import 'package:login/screens/admin/client/clientViewModel.dart';
 
-import 'package:login/screens/admin//client/clientViewModel.dart';
-import 'package:login/screens/admin/client/demandeclientview.dart';
-import 'package:login/screens/admin/client/demandeclientviewmodel.dart';
 import 'package:login/screens/admin/page.dart';
+import 'package:login/screens/admin/technicien/consulterdemandeviewmodel.dart';
+import 'package:login/screens/admin/technicien/gerertechnicienView.dart';
 import 'package:stacked/stacked.dart';
 
-class consulterclientView extends StatelessWidget {
+class consulterdemandeview extends StatelessWidget {
   final GlobalKey<ExpansionTileCardState> cardA = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<consulterclientViewModel>.reactive(
-      onModelReady: (viewmodel) => viewmodel.getclient(),
+    return ViewModelBuilder<consulterdemandeviewmodel>.reactive(
+      onModelReady: (viewmodel) => viewmodel.init(),
       builder: (context, viewmodel, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('Consulter Client',
+          title: const Text('Liste des demandes',
               style: TextStyle(fontSize: 24, color: Colors.white)),
           flexibleSpace: const Image(
             image: AssetImage('assets/TT2.png'),
@@ -30,14 +31,16 @@ class consulterclientView extends StatelessWidget {
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => page()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GerertechnicienView()));
               },
               color: Colors.white),
         ),
         backgroundColor: Colors.indigo[50],
         body: StreamBuilder(
           stream: viewmodel.consts,
-          builder: (context, AsyncSnapshot<List<UserModel>> snapshots) {
+          builder: (context, AsyncSnapshot<List<ConstructionModel>> snapshots) {
             if (snapshots.hasData) {
               return ListView.builder(
                   shrinkWrap: true,
@@ -49,7 +52,7 @@ class consulterclientView extends StatelessWidget {
                         baseColor: Colors.cyan[50],
                         expandedColor: Colors.red[50],
                         title: Text(
-                          "${model.lastname}   ${model.firstname}   ",
+                          "Demande ",
                         ),
                         children: <Widget>[
                           const Divider(
@@ -64,7 +67,7 @@ class consulterclientView extends StatelessWidget {
                                   vertical: 8.0,
                                 ),
                                 child: Text(
-                                    "  Numéro tél : ${model.phonenumber} \n CIN : ${model.cin} \n E-mail : ${model.email}  "),
+                                    " Offre : ${model.offre}    Débit : ${model.debit}                                               Référence : ${model.reference}       Etat : ${model.etatDemande}  "),
                               )),
                           ButtonBar(
                             alignment: MainAxisAlignment.spaceAround,
@@ -80,33 +83,6 @@ class consulterclientView extends StatelessWidget {
                                   cardA.currentState?.collapse();
                                 },
                                 child: Row(children: [
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4.0)),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  demandeclientview()));
-                                    },
-                                    child: Column(
-                                      children: const <Widget>[
-                                        Icon(Icons.wifi_calling),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 2.0),
-                                        ),
-                                        Text('Demandes'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
                                   TextButton(
                                     style: TextButton.styleFrom(
                                       shape: RoundedRectangleBorder(
@@ -140,7 +116,7 @@ class consulterclientView extends StatelessWidget {
           },
         ),
       ),
-      viewModelBuilder: () => consulterclientViewModel(),
+      viewModelBuilder: () => consulterdemandeviewmodel(),
     );
   }
 }
